@@ -1,0 +1,171 @@
+/* Clean reset for everything */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+/* Theme preference colors */
+@media (prefers-color-scheme: light) {
+    :root {
+        --text: hsl(77, 20%, 7%);
+        --background: hsl(72, 20%, 95%);
+        --primary: hsl(72, 17%, 28%);
+        --secondary: hsl(131, 17%, 68%);
+        --accent: hsl(148, 17%, 45%);
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text: hsl(77, 19%, 93%);
+        --background: hsl(72, 20%, 5%);
+        --primary: hsl(70, 17%, 72%);
+        --secondary: hsl(131, 17%, 32%);
+        --accent: hsl(148, 17%, 55%);
+    }
+}
+
+/* Variable definitions */
+:root {
+    /* ff and ff2 fonts */
+    --ff1: "Open Sans", sans-serif;
+    --ff2: "Oswald", sans-serif;
+    /* font sizes */
+    --fsize1: 1rem;
+    --fsize2: 1.125rem;
+    --fsize3: 1.25rem;
+    --fsize4: 1.5rem;
+    --fsize5: 0.875rem;
+    /* Spacings */
+    --spacing1: 4px;
+    --spacing2: 8px;
+    --spacing3: 16px;
+    --spacing4: 20px;
+    --spacing5: 40px;
+    --spacing6: 80px;
+    --spacing7: 160px;
+    /* fonts in typography file */
+    --h1: 600 3rem/1.2em var(--ff1);
+    --h2: 600 2rem/1.2em var(--ff2);
+    --p: 1rem/1.5em var(--ff1);
+}
+
+/* HTML global styles */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    /* use your defined for globals for bg, font, and color */
+    text-wrap: balance;
+    font: var(--p);
+    background-color: var(--background);
+    color: var(--text);
+}
+
+h1 {
+    font: var(--h1);
+    color: var(--primary);
+    margin: var(--spacing1);
+}
+
+h2 {
+    font: var(--h2);
+    color: var(--primary);
+    margin: var(--spacing2);
+}
+
+p {
+    margin: var(--spacing2);
+}
+
+a {
+    text-decoration: none;
+    color: var(--accent);
+}
+
+a:hover {
+    color: var(--secondary);
+}
+
+.btn,
+button {
+    all: unset;
+    background-color: var(--primary);
+    font: var(--p);
+    color: var(--background);
+    margin: var(--spacing2) auto;
+    padding: var(--spacing2) var(--spacing3);
+    display: inline-block;
+    border-radius: var(--spacing2);
+    /* border-bottom: solid var(--spacing1) var(--accent); */
+    cursor: pointer;
+}
+
+button:hover {
+    scale: 1.125
+}
+
+img {
+    width: 80%;
+}
+
+/* Utility Classes for quick styles during dev*/
+
+/* Margins and Paddings */
+.padding1 {
+    padding: var(--spacing1) 0;
+}
+
+.padding2 {
+    padding: var(--spacing2) 0;
+}
+
+.padding3 {
+    padding: var(--spacing3) 0;
+}
+
+.padding4 {
+    padding: var(--spacing4) 0;
+}
+
+.padding5 {
+    padding: var(--spacing5) 0;
+}
+
+.padding6 {
+    padding: var(--spacing6) 0;
+}
+
+.padding7 {
+    padding: var(--spacing7) 0;
+}
+
+.margin1 {
+    margin: var(--spacing1) auto;
+}
+
+.margin2 {
+    margin: var(--spacing2) auto;
+}
+
+.margin3 {
+    margin: var(--spacing3) auto;
+}
+
+.margin4 {
+    margin: var(--spacing4) auto;
+}
+
+.margin5 {
+    margin: var(--spacing5) auto;
+}
+
+.margin6 {
+    margin: var(--spacing6) auto;
+}
+
+.margin7 {
+    margin: var(--spacing7) auto;
+}
