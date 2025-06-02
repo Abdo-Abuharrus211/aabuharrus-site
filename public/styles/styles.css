@@ -8,23 +8,26 @@
 /* Theme preference colors */
 @media (prefers-color-scheme: light) {
     :root {
-        --text: hsl(77, 20%, 7%);
-        --background: hsl(72, 20%, 95%);
-        --primary: hsl(72, 17%, 28%);
-        --secondary: hsl(131, 17%, 68%);
-        --accent: hsl(148, 17%, 45%);
+        --text: hsl(80, 22%, 8%);
+        --subtext: hsl(80, 22%, 70%);
+        --background: hsl(83, 27%, 94%);
+        --primary: hsl(80, 28%, 29%);
+        --secondary: hsl(80, 29%, 70%);
+        --accent: hsl(80, 33%, 41%);
     }
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --text: hsl(77, 19%, 93%);
-        --background: hsl(72, 20%, 5%);
-        --primary: hsl(70, 17%, 72%);
-        --secondary: hsl(131, 17%, 32%);
-        --accent: hsl(148, 17%, 55%);
+        --text: hsl(80, 22%, 92%);
+        --subtext: hsl(80, 22%, 20%);
+        --background: hsl(83, 27%, 6%);
+        --primary: hsl(80, 28%, 71%);
+        --secondary: hsl(80, 29%, 30%);
+        --accent: hsl(80, 33%, 50%);
     }
 }
+
 
 /* Variable definitions */
 :root {
@@ -107,9 +110,6 @@ button:hover {
     scale: 1.125
 }
 
-img {
-    width: 80%;
-}
 
 /* Utility Classes for quick styles during dev*/
 
@@ -168,4 +168,59 @@ img {
 
 .margin7 {
     margin: var(--spacing7) auto;
+}
+
+section {
+    width: 90%;
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.center {
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing4);
+    flex-wrap: wrap;
+}
+
+.flex>* {
+    flex: 1;
+    min-width: 200px;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.reverse {
+    flex-direction: row-reverse;
+}
+
+.accent-tab {
+    background-color: var(--accent);
+    border-top-left-radius: var(--spacing1);
+    border-top-right-radius: var(--spacing1);
+}
+
+.container {
+    margin: var(--spacing2) auto;
+    padding: 0 var(--spacing3);
+    /* background-color: var(--secondary); */
+    border-radius: var(--spacing3);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 600px) {
+    .flex {
+        flex-direction: column;
+    }
 }
