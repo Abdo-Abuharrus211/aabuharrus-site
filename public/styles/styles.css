@@ -84,7 +84,8 @@ h2 {
 p {
     margin: var(--spacing2);
 }
-small{
+
+small {
     color: var(--subtext);
 }
 
@@ -113,12 +114,19 @@ button {
     padding: var(--spacing2) var(--spacing3);
     display: inline-block;
     border-radius: var(--spacing2);
-    /* border-bottom: solid var(--spacing1) var(--accent); */
     cursor: pointer;
 }
 
 button:hover {
-    scale: 1.125
+    scale: 1.115;
+    box-shadow: 0 var(--spacing1) var(--spacing2) var(--accent);
+
+}
+
+.outline-btn {
+    color: var(--text);
+    background-color: transparent;
+    border: 2px solid var(--primary);
 }
 
 
