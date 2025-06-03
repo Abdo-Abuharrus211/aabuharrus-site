@@ -9,8 +9,9 @@
 @media (prefers-color-scheme: light) {
     :root {
         --text: hsl(80, 22%, 8%);
-        --subtext: hsl(80, 22%, 70%);
+        --subtext: hsl(80, 22%, 80%);
         --background: hsl(83, 27%, 94%);
+        --subbackground: hsl(83, 27%, 90%);
         --primary: hsl(80, 28%, 29%);
         --secondary: hsl(80, 29%, 70%);
         --accent: hsl(80, 33%, 41%);
@@ -25,7 +26,7 @@
         --subbackground: hsl(83, 27%, 10%);
         --primary: hsl(80, 28%, 71%);
         --secondary: hsl(80, 29%, 30%);
-        --accent: hsl(80, 33%, 50%);
+        --accent: hsl(80, 33%,49%);
     }
 }
 
@@ -212,10 +213,16 @@ section {
     flex-direction: row-reverse;
 }
 
-.accent-tab {
-    background-color: var(--accent);
+.top-accent-tab {
+    border-top: var(--spacing2) solid var(--accent);
     border-top-left-radius: var(--spacing1);
     border-top-right-radius: var(--spacing1);
+}
+.left-accent-tab {
+    border-left: var(--spacing2) solid var(--accent);
+    border-radius: var(--spacing1);
+    /* border-top-left-radius: var(--spacing1);
+    border-top-right-radius: var(--spacing1); */
 }
 
 .container {
@@ -226,7 +233,7 @@ section {
 .card{
     background-color: var(--subbackground);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: var(--spacing3);
+    border-radius: var(--spacing2);
 
 }
 
