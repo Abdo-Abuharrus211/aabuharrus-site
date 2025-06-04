@@ -34,7 +34,7 @@
 /* Variable definitions */
 :root {
     /* ff and ff2 fonts */
-    --ff1: "Open Sans", sans-serif;
+    --ff1: "Noto Sans", sans-serif;
     --ff2: "Oswald", sans-serif;
     /* font sizes */
     --fsize1: 1rem;
@@ -102,6 +102,10 @@ img {
     width: 100%;
     border-radius: var(--spacing2);
     /* margin: var(--spacing2); */
+}
+
+.icon{
+    width: var(--spacing5)
 }
 
 .btn,
@@ -225,13 +229,13 @@ section {
 }
 
 .top-accent-tab {
-    border-top: var(--spacing2) solid var(--accent);
+    border-top: var(--spacing1) solid var(--accent);
     border-top-left-radius: var(--spacing1);
     border-top-right-radius: var(--spacing1);
 }
 
 .left-accent-tab {
-    border-left: var(--spacing2) solid var(--accent);
+    border-left: var(--spacing1) solid var(--accent);
     border-radius: var(--spacing1);
     /* border-top-left-radius: var(--spacing1);
     border-top-right-radius: var(--spacing1); */
@@ -245,7 +249,7 @@ section {
 .card {
     background-color: var(--subbackground);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: var(--spacing2);
+    border-radius: var(--spacing1);
 
 }
 
@@ -282,6 +286,28 @@ section {
     padding: 0;
     background-color: transparent;
     color: var(--accent);
+}
+
+
+.footer{
+    /* background-color: var(--subbackground); */
+    border-top: 2px solid var(--primary);
+    border-radius: var(--spacing2);
+}
+
+.ftr-head{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap:var(--spacing7);
+    /* margin: var(--spacing2); */
+    padding: var(--spacing2);
+    border-bottom: 2px solid var(--primary);
+    border-radius: var(--spacing2);
+}
+
+.ftr-head .icon{
+    margin: 0 var(--spacing3);
 }
 
 /* Responsiveness */
