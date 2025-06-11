@@ -1,0 +1,20 @@
+---
+const { skillProps } = Astro.props;
+---
+
+<div class="container card top-accent-tab">
+  <div class="flex column padding3">
+    <h2>{skillProps.n}</h2>
+    <!-- TODO: replace the SVG  -->
+    <svg class="skill-icon"></svg>
+    <div class="padding2">
+        <!-- TODO: dynamically render these. -->
+      <ul>
+        <li>Talking point 1</li>
+        <li>Talking point 2</li>
+        <li>Talking point 3</li>
+      </ul>
+    </div>
+    <progress value="3" max="5"></progress>
+  </div>
+</div>

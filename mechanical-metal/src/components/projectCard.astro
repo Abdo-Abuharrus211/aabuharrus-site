@@ -1,0 +1,21 @@
+---
+const {projectProps} = Astro.props;
+---
+
+<section class="padding2 container card left-accent-tab">
+  <h2>/{projectProps.name}</h2>
+  <div class="flex">
+    <img class="margin3" src={projectProps.image} alt={projectProps.imageAlt} />
+    <div class="container column">
+      <p>{projectProps.text}</p>
+      <!-- TODO: dynamically render these instead.-->
+      <ul>
+        <li>Point 1</li>
+        <li>Point 2</li>
+        <li>Point 3</li>
+      </ul>
+      <!-- TODO: change this to a link -->
+      <button class="margin3">Learn more</button>
+    </div>
+  </div>
+</section>
