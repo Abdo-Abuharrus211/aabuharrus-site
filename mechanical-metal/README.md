@@ -21,6 +21,7 @@ Later on, I'll likely resort to framework like Next.js or Svelte (Sveltekit) whe
 - [ ] Dynamically render data using components and layouts.
 - [ ] Combine all layouts and components together.
 - [ ] Adjust CSS styles for responsiveness on small and medium screens.
+- [ ] Add some dynamic spice y'know?
 - [ ] Design logo.
 - [ ] Write the `robots.txt` file
 - [ ] 
