@@ -259,60 +259,11 @@ section {
 
 /* Custom partials and componenets */
 
-.navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: var(--spacing2);
-    background-color: var(--subbackground);
-}
-
-.navbar .logo {
-    width: 10%;
-}
-
-.nav-links {
-    margin: auto var(--spacing5);
-}
-
-.nav-links>a {
-    margin: var(--spacing3);
-    font-size: var(--fsize2);
-    color: var(--text);
-}
-
-.nav-links>a:hover {
-    color: var(--accent);
-}
-
-.theme-toggle {
-    padding: 0;
-    background-color: transparent;
-    color: var(--accent);
-}
 
 
 
-.footer{
-    /* background-color: var(--subbackground); */
-    border-top: 2px solid var(--primary);
-    border-radius: var(--spacing2);
-}
 
-.ftr-head{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    gap:var(--spacing7);
-    /* margin: var(--spacing2); */
-    padding: var(--spacing2);
-    border-bottom: 2px solid var(--primary);
-    border-radius: var(--spacing2);
-}
 
-.ftr-head .icon{
-    margin: 0 var(--spacing3);
-}
 
 /* Responsiveness */
 
