@@ -80,6 +80,9 @@ h2 {
     color: var(--primary);
     margin: var(--spacing2);
 }
+h3{
+    margin: var(--spacing2);
+}
 
 p {
     margin: var(--spacing2);
@@ -287,6 +290,7 @@ section {
     background-color: transparent;
     color: var(--accent);
 }
+
 
 
 .footer{

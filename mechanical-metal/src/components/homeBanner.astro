@@ -14,22 +14,25 @@ import "../styles/styles.css";
         <h1 class="greeting">Hi,</h1>
       </div>
 
-      <div>
-        <p>I'm Abdu, I try to solve problems, breaking things along the way.</p>
+      <div class="intro-box">
+        <h3>I'm Abdu</h3>
+        <p>I code and break things, then try fixing them.</p>
       </div>
     </div>
 
     <Image class:list={"banner-img"} src={bannerImage} alt="banner photo" />
   </div>
   <div class="center margin5">
-    <button class="outline-btn">Check out my stuff</button>
+    <button style="font-size: var(--spacing4);" class="outline-btn"
+      >Check out my stuff</button
+    >
   </div>
 </section>
 
 <style>
   .flex {
     display: flex;
-    gap: var(--spacing4);
+    gap: var(--spacing5);
     flex-wrap: wrap;
   }
 
@@ -44,6 +47,12 @@ import "../styles/styles.css";
   }
 
   .banner-greet2 {
+    align-self: flex-start;
+  }
+
+  .intro-box {
+    padding: 0%;
+    text-align: start;
     align-self: flex-start;
   }
   .banner-img {
