@@ -10,13 +10,18 @@ I'm attempting to learn proper UI/UX design, by following a *"Design first, buil
 Later on, I'll likely resort to framework like Next.js or Svelte (Sveltekit) when it grows and a need for dynamic components arises.
 
 ## To-do
-- [ ] Build Welcome Banner
-- [ ] Build the Bio
-- [ ] Build Interests and Experiences
-- [ ] Build the layouts and combine together
-- [ ] Design data schemas and store data
-- [ ] Dynamically render data using components and layouts
-- [ ] Adjust styles for responsiveness
+- [X] Build Welcome Banner.
+- [ ] Build the Bio.
+- [ ] Build the Skills conveyor belt.
+- [ ] Build the Projects gallery.
+- [ ] Build Interests and Experiences.
+- [X] Build the base layout.
+- [ ] Build the contact form or section in footer...etc.
+- [ ] Design data schemas and store data.
+- [ ] Dynamically render data using components and layouts.
+- [ ] Combine all layouts and components together.
+- [ ] Adjust CSS styles for responsiveness on small and medium screens.
+- [ ] Design logo.
 - [ ] Write the `robots.txt` file
 - [ ] 
 
