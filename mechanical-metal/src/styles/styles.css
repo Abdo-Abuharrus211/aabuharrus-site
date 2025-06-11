@@ -5,9 +5,31 @@
     box-sizing: border-box
 }
 
+
+/* Default Dark theme */
+:root {
+    --text: hsl(80, 22%, 92%);
+    --subtext: hsl(80, 22%, 40%);
+    --background: hsl(83, 27%, 6%);
+    --subbackground: hsl(83, 27%, 10%);
+    --primary: hsl(80, 28%, 71%);
+    --secondary: hsl(80, 29%, 30%);
+    --accent: hsl(80, 33%, 49%);
+}
+
+.light {
+    --text: hsl(80, 22%, 8%);
+    --subtext: hsl(80, 22%, 60%);
+    --background: hsl(83, 27%, 94%);
+    --subbackground: hsl(83, 27%, 90%);
+    --primary: hsl(80, 28%, 29%);
+    --secondary: hsl(80, 29%, 70%);
+    --accent: hsl(80, 33%, 41%);
+}
+
 /* Theme preference colors */
-@media (prefers-color-scheme: light) {
-    :root {
+/* @media (prefers-color-scheme: light) {
+    :root{
         --text: hsl(80, 22%, 8%);
         --subtext: hsl(80, 22%, 60%);
         --background: hsl(83, 27%, 94%);
@@ -17,7 +39,6 @@
         --accent: hsl(80, 33%, 41%);
     }
 }
-
 @media (prefers-color-scheme: dark) {
     :root {
         --text: hsl(80, 22%, 92%);
@@ -28,7 +49,8 @@
         --secondary: hsl(80, 29%, 30%);
         --accent: hsl(80, 33%, 49%);
     }
-}
+} */
+
 
 
 /* Variable definitions */
@@ -80,7 +102,8 @@ h2 {
     color: var(--primary);
     margin: var(--spacing2);
 }
-h3{
+
+h3 {
     margin: var(--spacing2);
 }
 
@@ -107,7 +130,7 @@ img {
     /* margin: var(--spacing2); */
 }
 
-.icon{
+.icon {
     width: var(--spacing5)
 }
 
