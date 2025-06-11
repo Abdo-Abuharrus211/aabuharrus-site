@@ -4,11 +4,14 @@ import ProjectCard from "../components/projectCard.astro"
 import SkillCard from "../components/skillCard.astro"
 import BaseLayout from "../layouts/baseLayout.astro"
 
+const layoutProps = {
+	title: "aabuharrus",
+}
 ---
 
-<BaseLayout>
+<BaseLayout {layoutProps}>
 
-	<h1>What's gud?</h1>
+	<HomeBanner />
 </BaseLayout>
 
 
