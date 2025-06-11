@@ -1,0 +1,52 @@
+---
+import { Image } from "astro:assets";
+import bannerImage from "../images/abdu-banner.webp";
+import "../styles/styles.css";
+---
+
+<section id="banner-section" class="margin3">
+  <div class="flex">
+    <div class="flex column">
+      <div class="banner-greet1">
+        <h1 class="greeting">،أهلًا</h1>
+      </div>
+      <div class="banner-greet2">
+        <h1 class="greeting">Hi,</h1>
+      </div>
+
+      <div>
+        <p>I'm Abdu, I try to solve problems, breaking things along the way.</p>
+      </div>
+    </div>
+
+    <Image class:list={"banner-img"} src={bannerImage} alt="banner photo" />
+  </div>
+  <div class="center margin5">
+    <button class="outline-btn">Check out my stuff</button>
+  </div>
+</section>
+
+<style>
+  .flex {
+    display: flex;
+    gap: var(--spacing4);
+    flex-wrap: wrap;
+  }
+
+  #banner-section {
+  }
+  .greeting {
+    font-size: 8rem;
+  }
+
+  .banner-greet1 {
+    align-self: flex-end;
+  }
+
+  .banner-greet2 {
+    align-self: flex-start;
+  }
+  .banner-img {
+    height: 100%;
+  }
+</style>
