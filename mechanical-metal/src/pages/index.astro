@@ -1,20 +1,19 @@
 ---
-import HomeBanner from '../components/homeBanner.astro'
-import ProjectCard from "../components/projectCard.astro"
-import SkillCard from "../components/skillCard.astro"
-import BaseLayout from "../layouts/baseLayout.astro"
+import HomeBanner from "../components/homeBanner.astro";
+import ProjectCard from "../components/projectCard.astro";
+import SkillsSection from "../components/skillsSection.astro";
+import BaseLayout from "../layouts/baseLayout.astro";
 
 const layoutProps = {
-	title: "aabuharrus",
-}
+  title: "aabuharrus",
+};
 ---
 
 <BaseLayout {layoutProps}>
-
-	<HomeBanner />
-	<h1>Test</h1>
+  <HomeBanner />
+  <h1>Test</h1>
+  <SkillsSection />
 </BaseLayout>
-
 
 <!-- 
 <html lang="en">

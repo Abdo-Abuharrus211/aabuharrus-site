@@ -4,17 +4,37 @@ const { skillProps } = Astro.props;
 
 <div class="container card top-accent-tab">
   <div class="flex column padding3">
-    <h2>{skillProps.n}</h2>
-    <!-- TODO: replace the SVG  -->
-    <svg class="skill-icon"></svg>
-    <div class="padding2">
-        <!-- TODO: dynamically render these. -->
-      <ul>
-        <li>Talking point 1</li>
-        <li>Talking point 2</li>
-        <li>Talking point 3</li>
+    <h2>{skillProps.data.name}</h2>
+    <img
+      src={skillProps.data.icon}
+      alt={`${skillProps.data.name} icon`}
+      class="skill-icon"
+    />
+    <div class="margin2 points-box">
+      <ul class="points-list">
+        {skillProps.data.points.map((point: string) => <li>{point}</li>)}
       </ul>
     </div>
-    <progress value="3" max="5"></progress>
   </div>
 </div>
+
+<style>
+  .skill-icon {
+    min-width: 1em;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    padding: 0.5rem;
+  }
+  .points-box {
+    padding: 0 var(--spacing2);
+    margin: 0 var(--spacing4);
+  }
+  .points-list {
+    list-style: disc;
+    line-height: 1.5rem;
+  }
+  .points-list li {
+    margin-bottom: 0.5em;
+    padding-left: 0.2em;
+  }
+</style>

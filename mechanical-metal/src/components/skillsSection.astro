@@ -1,0 +1,17 @@
+---
+import { getCollection } from "astro:content";
+import SkillCard from "./skillCard.astro";
+import "../styles/styles.css"
+
+// TODO: I eventually want to make the carousel with the pop-ups
+//  but first let's try making the stuff render...
+
+const skills = await getCollection('skills');
+---
+
+<section id="skills-section">
+  <h1>Skills</h1>
+  <div class="flex">
+      {skills.map((skill: any) => <SkillCard skillProps={skill} />)}
+  </div>
+</section>
