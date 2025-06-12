@@ -1,11 +1,13 @@
+// This file is used to define the data collections and schemas.
 // For more about this check out https://docs.astro.build/en/guides/content-collections/
 
 // 1. Import utilities from `astro:content`
 import { defineCollection, z } from 'astro:content';
+// import "./data"
 // 2. Import loader(s)
-import { glob, file } from 'astro/loaders';
+import { file } from 'astro/loaders';
 
-/* TODO: Will likely use the `file` loader since most of the data will live in a single JSON file.
+/* Using the `file` loader since most of the data will live in a single JSON file.
     "Use this loader when your data file can be parsed as an array of objects."
 */
 
@@ -36,4 +38,4 @@ const skills = defineCollection({
 // const hobbies = defineCollection({/*..*/});
 
 // 4. Export a single `collections` object to register your collection(s)
-export const collections = { projects, skills };
+export const collections = {projects, skills };
