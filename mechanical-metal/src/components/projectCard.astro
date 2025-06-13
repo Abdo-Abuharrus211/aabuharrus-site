@@ -1,21 +1,27 @@
 ---
-const {projectProps} = Astro.props;
+const { projectProps } = Astro.props;
 ---
 
 <section class="padding2 container card left-accent-tab">
-  <h2>/{projectProps.name}</h2>
+  <h2>/{projectProps.data.name}</h2>
   <div class="flex">
-    <img class="margin3" src={projectProps.image} alt={projectProps.imageAlt} />
+    <img
+      class="margin3"
+      src={projectProps.data.imagePath}
+      alt=`${projectProps.data.name} image`
+    />
     <div class="container column">
-      <p>{projectProps.text}</p>
-      <!-- TODO: dynamically render these instead.-->
+      <p>{projectProps.data.text}</p>
       <ul>
-        <li>Point 1</li>
-        <li>Point 2</li>
-        <li>Point 3</li>
+        {projectProps.data.keyPoints.map((point: string) => <li>{point}</li>)}
       </ul>
-      <!-- TODO: change this to a link -->
-      <button class="margin3">Learn more</button>
+      <a class="proj-link" href={projectProps.data.link} target="_blank">Learn more</a>
     </div>
   </div>
 </section>
+
+<style>
+  .proj-link{
+    margin-top: var(--spacing2);
+  }
+</style>
