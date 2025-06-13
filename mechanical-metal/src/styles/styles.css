@@ -254,6 +254,10 @@ section {
     flex-direction: row-reverse;
 }
 
+.flex-start {
+    align-items: flex-start;
+}
+
 .top-accent-tab {
     border-top: var(--spacing1) solid var(--accent);
     border-top-left-radius: var(--spacing1);

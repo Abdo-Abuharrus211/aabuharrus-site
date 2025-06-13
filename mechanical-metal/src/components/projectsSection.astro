@@ -1,0 +1,11 @@
+---
+import { getCollection } from "astro:content";
+import ProjectCard from "./projectCard.astro";
+
+const projects = await getCollection("projects");
+---
+
+<section id="project-section">
+  <h1>Projects</h1>
+  {projects.map((project: any) => <ProjectCard projectProps={project} />)}
+</section>
