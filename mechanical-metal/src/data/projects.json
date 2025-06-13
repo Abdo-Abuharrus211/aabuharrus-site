@@ -5,9 +5,11 @@
         "imagePath": "https://images.unsplash.com/photo-1741806914386-c60073a0fed3?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
         "date": "2025-02-17",
         "text": " White sand stretches endlessly, shimmering under the warm sun. Its fine grains feel cool and soft beneath your feet. Gentle breezes carry the scent of salt and sea. The tranquil beauty invites peaceful reflection and relaxation.",
-        "keyPoints": [],
+        "keyPoints": [
+            "Saved all BIOdiversity EVERYWHERE!"
+        ],
         "status": "In Progress",
-        "link": "/",
+        "link": "https://github.com/Abdo-Abuharrus211",
         "tags": [
             "environmental",
             "Machine Learning",
