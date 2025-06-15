@@ -91,6 +91,13 @@ body {
     color: var(--text);
 }
 
+section {
+    width: 90%;
+    max-width: 1080px;
+    margin: var(--spacing7) auto;
+}
+
+
 h1 {
     font: var(--h1);
     color: var(--primary);
@@ -217,12 +224,6 @@ button:hover {
 
 .margin7 {
     margin: var(--spacing7) auto;
-}
-
-section {
-    width: 90%;
-    max-width: 1080px;
-    margin: 0 auto;
 }
 
 .center {
