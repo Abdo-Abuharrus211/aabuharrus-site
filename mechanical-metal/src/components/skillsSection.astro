@@ -6,7 +6,7 @@ import SkillCarousel from "./skillCarousel.astro";
 // TODO: I eventually want to make the carousel with the pop-ups
 //  but first let's try making the stuff render...
 
-const skills = await getCollection('skills');
+const skills = await getCollection("skills");
 ---
 
 <section id="skills-section center">
@@ -14,39 +14,50 @@ const skills = await getCollection('skills');
   <div class="flex">
     {skills.map((skill: any) => <SkillCard skillProps={skill} />)}
   </div>
-  <button class="outline-btn" onclick="reset()">Reset</button>
+  <button id="skill-reset" class="outline-btn hidden" onclick="reset()"
+    >Reset</button
+  >
   <SkillCarousel />
 </section>
 
-
 <script is:inline>
-    let currentPopup = null;
-    let currentIndex;
+  const resetBtn = document.getElementById("skill-reset");
+  let shownSkills = [];
 
-    const toggleVis = (index)=>{
-      if(currentPopup!= null && !currentPopup.classList.contains("hidden")){
-        currentPopup.classList.add("hidden");
+  /**
+   * Remove the 'hidden' class from respective SkillCard to display details.
+   *
+   * @param element reference to DOM element to be made visible.
+   */
+  const unhide = (element) => {
+    if (element.classList.contains("hidden")) {
+      element.classList.remove("hidden");
+    }
+  };
+
+  /**
+   * Reset the array of visible SkillCards and hide them and the reset button.
+   */
+  function reset() {
+    shownSkills.forEach((element) => {
+      if (!element.classList.contains("hidden")) {
+        element.classList.add("hidden");
       }
-      // deselect the current pop up if user clicks on the same
-      // else if(currentPopup!= null && !currentPopup.classList.contains("hidden") && currentIndex==index){
-      //   currentPopup.classList.add("hidden");
-      //   currentPopup = null;
-      //   return;
-      // }
-      currentPopup = document.getElementById(`skill-${index}`);
-      currentPopup.classList.toggle("hidden");
-    }
+    });
+    shownSkills = [];
+    resetBtn.classList.add("hidden");
+  }
 
-    // TODO:
-    function reset(){
-      // reset all visible skills
-    }
-
-    document.querySelectorAll('.carousel-item').forEach(item => {
-    item.addEventListener('click', (e) => {
-      const idx = parseInt(item.getAttribute('data-index'));
-      currentIndex = idx;
-      toggleVis(idx);
+  // Attach listeners and handle carousel item clicks to make SkillCards visible
+  document.querySelectorAll(".carousel-item").forEach((item) => {
+    item.addEventListener("click", (e) => {
+      const idx = parseInt(item.getAttribute("data-index"));
+      const newPopup = document.getElementById(`skill-${idx}`);
+      if (!shownSkills.includes(newPopup)) {
+        shownSkills.push(newPopup);
+        unhide(newPopup);
+      }
+      resetBtn.classList.remove("hidden");
     });
   });
 </script>
