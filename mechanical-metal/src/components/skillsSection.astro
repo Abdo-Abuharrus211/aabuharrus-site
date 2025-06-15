@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import SkillCard from "./skillCard.astro";
-import "../styles/styles.css"
+import SkillCarousel from "./skillCarousel.astro";
 
 // TODO: I eventually want to make the carousel with the pop-ups
 //  but first let's try making the stuff render...
@@ -9,9 +9,44 @@ import "../styles/styles.css"
 const skills = await getCollection('skills');
 ---
 
-<section id="skills-section">
+<section id="skills-section center">
   <h1>Skills</h1>
   <div class="flex">
-      {skills.map((skill: any) => <SkillCard skillProps={skill} />)}
+    {skills.map((skill: any) => <SkillCard skillProps={skill} />)}
   </div>
+  <button class="outline-btn" onclick="reset()">Reset</button>
+  <SkillCarousel />
 </section>
+
+
+<script is:inline>
+    let currentPopup = null;
+    let currentIndex;
+
+    const toggleVis = (index)=>{
+      if(currentPopup!= null && !currentPopup.classList.contains("hidden")){
+        currentPopup.classList.add("hidden");
+      }
+      // deselect the current pop up if user clicks on the same
+      // else if(currentPopup!= null && !currentPopup.classList.contains("hidden") && currentIndex==index){
+      //   currentPopup.classList.add("hidden");
+      //   currentPopup = null;
+      //   return;
+      // }
+      currentPopup = document.getElementById(`skill-${index}`);
+      currentPopup.classList.toggle("hidden");
+    }
+
+    // TODO:
+    function reset(){
+      // reset all visible skills
+    }
+
+    document.querySelectorAll('.carousel-item').forEach(item => {
+    item.addEventListener('click', (e) => {
+      const idx = parseInt(item.getAttribute('data-index'));
+      currentIndex = idx;
+      toggleVis(idx);
+    });
+  });
+</script>
