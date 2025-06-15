@@ -9,14 +9,14 @@ import SkillCarousel from "./skillCarousel.astro";
 const skills = await getCollection("skills");
 ---
 
-<section id="skills-section center">
+<section id="skills-section">
   <h1>Skills</h1>
   <div class="flex">
     {skills.map((skill: any) => <SkillCard skillProps={skill} />)}
   </div>
-  <button id="skill-reset" class="outline-btn hidden" onclick="reset()"
-    >Reset</button
-  >
+  <div class="center">
+    <button id="skill-reset" class="outline-btn hidden" onclick="reset()">Reset</button>
+  </div>
   <SkillCarousel />
 </section>
 
