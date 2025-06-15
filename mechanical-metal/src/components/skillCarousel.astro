@@ -1,0 +1,76 @@
+---
+import { getCollection } from "astro:content";
+
+const skillsCollection = await getCollection("skills");
+---
+
+<section id="skill-carousel" class="margin7">
+  <div class="carousel padding5">
+    <div class="track">
+      {
+        skillsCollection.map((skill: any, index) => (
+          <div class="carousel-item">
+            <img
+              class="track-icon"
+              src={skill.data.icon}
+              alt={`${skill.data.icon} icon`}
+            />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .carousel {
+    overflow: hidden;
+    width: 100%;
+    height: max-content;
+    
+    /* This is the part that defines the fade out effect */
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 15%,
+      black 85%,
+      transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 15%,
+      black 85%,
+      transparent 100%
+    );
+  }
+  .track {
+    padding: var(--spacing3);
+    display: flex;
+    width: max-content;
+    height: max-content;
+    animation: scroll 10s linear infinite;
+  }
+  .carousel-item {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--spacing7);
+    height: var(--spacing6);
+    margin-right: 2rem;
+  }
+
+  .carousel-item:hover {
+    scale: 0.75;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(10);
+    }
+    100% {
+      transform: translateX(-70%);
+    }
+  }
+</style>
