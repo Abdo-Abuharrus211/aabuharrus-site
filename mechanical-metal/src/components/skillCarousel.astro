@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import SkillCard from "./skillCard.astro";
 
 const skillsCollection = await getCollection("skills");
 ---
@@ -9,7 +10,11 @@ const skillsCollection = await getCollection("skills");
     <div class="track">
       {
         skillsCollection.map((skill: any, index) => (
-          <div class="carousel-item">
+          <div
+            id={`carousel-item-${index}`}
+            class="carousel-item"
+            data-index={index}
+          >
             <img
               class="track-icon"
               src={skill.data.icon}
@@ -27,7 +32,7 @@ const skillsCollection = await getCollection("skills");
     overflow: hidden;
     width: 100%;
     height: max-content;
-    
+
     /* This is the part that defines the fade out effect */
     mask-image: linear-gradient(
       to right,
@@ -63,6 +68,7 @@ const skillsCollection = await getCollection("skills");
 
   .carousel-item:hover {
     scale: 0.75;
+    cursor: pointer;
   }
 
   @keyframes scroll {
