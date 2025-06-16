@@ -1,5 +1,6 @@
 ---
 import HomeBanner from "../components/homeBanner.astro";
+import Banner2 from "../components/banner2.astro";
 import ProjectsSection from "../components/projectsSection.astro";
 import SkillsSection from "../components/skillsSection.astro";
 import BaseLayout from "../layouts/baseLayout.astro";
@@ -9,8 +10,8 @@ const layoutProps = {
   title: "aabuharrus",
 };
 ---
-
 <BaseLayout {layoutProps}>
+  <Banner2 />
   <HomeBanner />
   <ProjectsSection />
   <SkillsSection />

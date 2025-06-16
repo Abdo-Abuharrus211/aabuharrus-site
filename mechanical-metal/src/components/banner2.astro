@@ -1,0 +1,16 @@
+---
+import Image from "astro/components/Image.astro";
+import dunes from '../images/silver-dunes.webp';
+---
+
+<section style="width: fit-content; max-width: max-content; margin:auto;" class="center">
+    <Image class:list={"banner-img"} src={dunes} alt=`dunes banner photo` />
+</section>
+
+
+<style>
+    .banner-img{
+        width: fit-content;
+        overflow-x: visible;
+    }
+</style>
