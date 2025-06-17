@@ -5,7 +5,7 @@ import ProjectCard from "./projectCard.astro";
 const projects = await getCollection("projects");
 ---
 
-<section id="project-section">
+<section id="Projects">
   <h1>Projects</h1>
   {projects.map((project: any) => <ProjectCard projectProps={project} />)}
 </section>

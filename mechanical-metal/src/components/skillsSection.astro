@@ -9,7 +9,7 @@ import SkillCarousel from "./skillCarousel.astro";
 const skills = await getCollection("skills");
 ---
 
-<section id="skills-section">
+<section id="Skills">
   <h1>Skills</h1>
   <div class="flex">
     {skills.map((skill: any) => <SkillCard skillProps={skill} />)}
