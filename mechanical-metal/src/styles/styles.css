@@ -242,6 +242,14 @@ button:hover {
     flex-wrap: wrap;
 }
 
+.tag{
+    font-size: var(--fsize2);
+    margin: var(--spacing2);
+    padding: var(--spacing1);
+    background-color: var(--secondary);
+    border-radius: var(--spacing1);
+}
+
 .flex>* {
     flex: 1;
     min-width: 200px;
