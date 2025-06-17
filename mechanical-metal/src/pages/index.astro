@@ -1,10 +1,10 @@
 ---
 import HomeBanner from "../components/homeBanner.astro";
 import Banner2 from "../components/banner2.astro";
+import Bio from "../components/bio.astro";
 import ProjectsSection from "../components/projectsSection.astro";
 import SkillsSection from "../components/skillsSection.astro";
 import BaseLayout from "../layouts/baseLayout.astro";
-import SkillCarousel from "../components/skillCarousel.astro";
 
 const layoutProps = {
   title: "aabuharrus",
@@ -12,8 +12,9 @@ const layoutProps = {
 ---
 <BaseLayout {layoutProps}>
   <Banner2 />
-  <HomeBanner />
+  <!-- <HomeBanner /> -->
+   <Bio/>
   <ProjectsSection />
   <SkillsSection />
-  <!-- <SkillCarousel /> -->
+  <!-- TODO: Interests go here -->
 </BaseLayout>
