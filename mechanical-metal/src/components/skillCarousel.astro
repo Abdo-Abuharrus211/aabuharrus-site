@@ -54,7 +54,9 @@ const skillsCollection = await getCollection("skills");
     display: flex;
     width: max-content;
     height: max-content;
-    animation: scroll 20s linear infinite;
+    animation: scroll 60s linear infinite;
+    /* For smoother animation */
+    will-change: transform;
   }
   .carousel-item {
     flex: 0 0 auto;
@@ -73,10 +75,10 @@ const skillsCollection = await getCollection("skills");
 
   @keyframes scroll {
     0% {
-      transform: translateX(10);
+      transform: translateX(2%);
     }
     100% {
-      transform: translateX(-40%);
+      transform: translateX(-100%);
     }
   }
 </style>
