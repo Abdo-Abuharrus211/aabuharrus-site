@@ -1,122 +1,137 @@
 ---
 import Image from "astro/components/Image.astro";
-import bioPic from "../images/abdu-banner.webp";
+import bioHeadshot from "../images/abdu-headshot.webp";
+import eduPhoto from "../images/ubc-sign.webp";
+import hobbyPhoto from "../images/Jackie.webp";
+import workPhoto from "../images/bcit-tech-collider.webp";
 ---
 
 <!-- Build out the Bio -->
 <section id="Bio">
-    <div class="center">
+  <!-- <div class="center">
+    <Image
+      class:list={"bio-img"}
+      src={bioHeadshot}
+      alt={"Bio photo"}
+      aria-label={"Headshot photo for Bio section"}
+    />
+  </div> -->
+  <div class="container flex column">
+    <div class="bio-box flex">
+      <div>
         <Image
-            class:list={"bio-img"}
-            src={bioPic}
-            alt={"Bio photo"}
-            aria-label={"Headshot photo for Bio section"}
+          class:list={"bio-img"}
+          src={bioHeadshot}
+          alt={"Bio photo"}
+          aria-label={"Headshot photo for Bio section"}
         />
+      </div>
+      <div>
+        <h2>Background</h2>
+        <!-- TODO:  update this later -->
+        <p>Libyan, born and raised in Tripoli along the Mediterrean coast.</p>
+        <p>
+          My love for video games sparked an interest in Technology.
+          Which led to my first programming foray with Arduino robots.
+          I've been coding ever since.
+        </p>
+      </div>
     </div>
-    <div class="container flex column">
-        <div class="bio-box flex">
-            <div>
-                <img src="" alt="" />
-            </div>
-            <div>
-                <h2>Background</h2>
-                <!-- TODO:  update this later -->
-                <p>
-                    From Tripoli, Libya. Born and raised along the Mediterrean
-                    coast. Learned to code, and here I am.
-                </p>
-            </div>
-        </div>
 
-        <div class="bio-box flex reverse">
-            <div>
-                <img src="" alt="" />
-            </div>
-            <div>
-                <h2>What I do</h2>
-                <p>
-                    I'm a Software Developer, I like to build solutions to
-                    problems that life throws at us.
-                </p>
-                <p>
-                    I graduated from BCIT in June 2025, and I'm searching for
-                    what's next.
-                </p>
-                <p>
-                    Check out my some of my <a href="#Projects">projects</a> & <a
-                        href="#Skills">skills</a
-                    >.
-                </p>
-                <!-- TODO: hook this up -->
-                <button class="outline-btn">Contact Me</button>
-            </div>
-        </div>
-
-        <div class="bio-box flex">
-            <div>
-                <img src="" alt="" />
-            </div>
-            <div>
-                <h2>Education</h2>
-                <!-- TODO:  update this later -->
-                <p>
-                    Fortunate to have amazing loving parents that value and
-                    prioritize education. My schooling has encompassed many
-                    countries and continents. From elementary in the UK and LY,
-                    to University in British Columbia.
-                </p>
-                <ul style="list-style:inside;">
-                    <li>
-                        British Columbia Institute of Technology - <span
-                            ><a
-                                href="https://www.bcit.ca/programs/computer-systems-technology-diploma-full-time-5500dipma/"
-                                >CST</a
-                            ></span
-                        > (2020-2022)
-                    </li>
-                    <li>University of British Columbia - BSc. (2020-2022)</li>
-                    <li>Shuhada al-Shat - High School (2017-2019)</li>
-                    <li>Kennedy-Lugar YES Exchange Program - (2017-2018)</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="bio-box flex reverse">
-            <div>
-                <img src="" alt="" />
-            </div>
-            <div>
-                <h2>Interests</h2>
-                <p>
-                    I'm a man of many hobbies and passions, most of which I
-                    cannot afford, hah!
-                </p>
-                <p>
-                    I'll share my favorite in detail <a href="#Interests">below</a>, but here's some
-                    notable interests:
-                </p>
-                <ul class="hobbies-list">
-                    <li class="tag">Café-hopping</li>
-                    <li class="tag">Aquariums</li>
-                    <li class="tag">Cyberpunk media</li>
-                    <li class="tag">Guitar</li>
-                    <li class="tag">Wildlife & Automotive Photography</li>
-                </ul>
-            </div>
-        </div>
+    <div class="bio-box flex reverse">
+      <div>
+        <Image class:list={"bio-img"} src={workPhoto} alt={"Work photo"} />
+      </div>
+      <div>
+        <h2>What I do</h2>
+        <p>
+          I'm a Software Developer. Which means I creatively build solutions to
+          problems that life presents.
+        </p>
+        <p>
+          I graduated from BCIT's CST program in June 2025, where I learned the
+          fundamentals of Software Development and System Design.
+        </p>
+        <p>I'm searching for what's next.</p>
+        <p>
+          Check out my some of my <a href="#Projects">projects</a> & <a
+            href="#Skills">skills</a
+          >.
+        </p>
+        <!-- TODO: hook this up -->
+        <button class="outline-btn">Contact Me</button>
+      </div>
     </div>
+
+    <div class="bio-box flex">
+      <div>
+        <Image class:list={"bio-img"} src={eduPhoto} alt={"Education photo"} />
+      </div>
+      <div>
+        <h2>Education</h2>
+        <!-- TODO:  update this later -->
+        <p>
+          Fortunate to have amazing loving parents that value and prioritize
+          education. My schooling has encompassed many countries and continents.
+          From elementary in the UK and LY, to University in British Columbia.
+        </p>
+        <ul style="list-style:inside;">
+          <li>
+            British Columbia Institute of Technology - <span
+              ><a
+                href="https://www.bcit.ca/programs/computer-systems-technology-diploma-full-time-5500dipma/"
+                >CST</a
+              ></span
+            > (2020-2022)
+          </li>
+          <li>University of British Columbia - BSc. (2020-2022)</li>
+          <li>Shuhada al-Shat - High School (2017-2019)</li>
+          <li>Kennedy-Lugar YES Exchange Program - (2017-2018)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bio-box flex reverse">
+      <div>
+        <Image
+          class:list={"bio-img"}
+          src={hobbyPhoto}
+          alt={"Interests and Hobbies photographs"}
+        />
+      </div>
+      <div>
+        <h2>Interests</h2>
+        <p>
+          I'm a man of many hobbies and passions, most of which I cannot afford,
+          hah!
+        </p>
+        <p>
+          I'll share my favorite in detail <a href="#Interests">below</a>, but
+          here's some notable interests:
+        </p>
+        <ul class="hobbies-list">
+          <li class="tag">Café-hopping</li>
+          <li class="tag">Aquariums</li>
+          <li class="tag">Cyberpunk Media</li>
+          <li class="tag">Guitar</li>
+          <li class="tag">Sci-fi and Fantasy Novels</li>
+          <li class="tag">Wildlife & Automotive Photography</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </section>
 
 <style>
-    .bio-img {
-        height: 100%;
-        width: 60%;
-    }
+  .bio-img {
+    height: 100%;
+    width: 100%;
+  }
 
-    .hobbies-list {
-        line-height: 2em;
-    }
-    .hobbies-list > li {
-        display: inline;
-    }
+  .hobbies-list {
+    line-height: 2.5em;
+  }
+  .hobbies-list > li {
+    display: inline;
+  }
 </style>
