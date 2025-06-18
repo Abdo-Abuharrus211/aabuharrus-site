@@ -9,7 +9,7 @@ const skillsCollection = await getCollection("skills");
   <div class="carousel padding5">
     <div class="track">
       {
-        skillsCollection.map((skill: any, index) => (
+        skillsCollection.concat(skillsCollection).map((skill: any, index) => (
           <div
             id={`carousel-item-${index}`}
             class="carousel-item"
