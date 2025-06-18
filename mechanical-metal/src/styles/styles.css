@@ -244,7 +244,7 @@ button:hover {
 
 .tag{
     font-size: var(--fsize2);
-    margin: var(--spacing2);
+    margin: var(--spacing1);
     padding: var(--spacing1);
     background-color: var(--secondary);
     border-radius: var(--spacing1);
