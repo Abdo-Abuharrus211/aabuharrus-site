@@ -4,7 +4,7 @@ import ProjectCard from "./projectCard.astro";
 
 const projects = await getCollection("projects");
 ---
-
+<!-- TODO: Sort the array by newest using the date format-->
 <section id="Projects">
   <h1>Projects</h1>
   {projects.map((project: any) => <ProjectCard projectProps={project} />)}
