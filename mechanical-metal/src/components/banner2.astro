@@ -4,16 +4,20 @@ import dunes from "../images/silver-dunes.webp";
 ---
 
 <section id="Home" class="center">
-    <h1>Welcome,</h1>
-    <Image class:list={"banner-img"} src={dunes} alt=`dunes banner photo` />
+  <div class="banner-greet1">
+    <h1 class="greeting">،أهلًا</h1>
+  </div>
+  <div class="banner-greet2">
+    <h1 class="greeting">Hi,</h1>
+  </div>
+  <Image class:list={"banner-img"} src={dunes} alt=`dunes banner photo` />
 </section>
 
 <style>
-    #Home {
-        width: fit-content;
-        max-width: max-content;
-        margin: auto;
-        overflow: hidden;
-    }
-
+  #Home {
+    width: fit-content;
+    max-width: max-content;
+    margin: auto;
+    overflow: hidden;
+  }
 </style>
