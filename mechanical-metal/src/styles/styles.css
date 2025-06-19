@@ -91,6 +91,13 @@ body {
     color: var(--text);
 }
 
+section {
+    width: 90%;
+    max-width: 1080px;
+    margin: var(--spacing7) auto;
+}
+
+
 h1 {
     font: var(--h1);
     color: var(--primary);
@@ -219,12 +226,6 @@ button:hover {
     margin: var(--spacing7) auto;
 }
 
-section {
-    width: 90%;
-    max-width: 1080px;
-    margin: 0 auto;
-}
-
 .center {
     text-align: center;
 }
@@ -239,6 +240,14 @@ section {
     justify-content: center;
     gap: var(--spacing4);
     flex-wrap: wrap;
+}
+
+.tag{
+    font-size: var(--fsize2);
+    margin: var(--spacing1);
+    padding: var(--spacing1);
+    background-color: var(--secondary);
+    border-radius: var(--spacing1);
 }
 
 .flex>* {

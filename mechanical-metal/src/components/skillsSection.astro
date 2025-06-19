@@ -1,17 +1,71 @@
 ---
 import { getCollection } from "astro:content";
 import SkillCard from "./skillCard.astro";
-import "../styles/styles.css"
+import SkillCarousel from "./skillCarousel.astro";
 
-// TODO: I eventually want to make the carousel with the pop-ups
-//  but first let's try making the stuff render...
-
-const skills = await getCollection('skills');
+const skills = await getCollection("skills");
 ---
 
-<section id="skills-section">
+<!-- TODO: 
+  1. Make the responsive and adaptive flex gallery-style with the cards.
+  2. Max of 8 skillCards then make Reste button "jump" to urge user to reset.
+  -->
+<section id="Skills">
   <h1>Skills</h1>
+  <p>
+    Like many with a passion for programming, I've tried out many languages and
+    frameworks.
+  </p>
+  <p>Some I use frequently, others only once...</p>
   <div class="flex">
-      {skills.map((skill: any) => <SkillCard skillProps={skill} />)}
+    {skills.map((skill: any) => <SkillCard skillProps={skill} />)}
   </div>
+  <div class="center">
+    <button id="skill-reset" class="outline-btn hidden" onclick="reset()"
+      >Reset</button
+    >
+  </div>
+  <SkillCarousel />
 </section>
+
+<script is:inline>
+  const resetBtn = document.getElementById("skill-reset");
+  let shownSkills = [];
+
+  /**
+   * Remove the 'hidden' class from respective SkillCard to display details.
+   *
+   * @param element reference to DOM element to be made visible.
+   */
+  const unhide = (element) => {
+    if (element.classList.contains("hidden")) {
+      element.classList.remove("hidden");
+    }
+  };
+
+  /**
+   * Reset the array of visible SkillCards and hide them and the reset button.
+   */
+  function reset() {
+    shownSkills.forEach((element) => {
+      if (!element.classList.contains("hidden")) {
+        element.classList.add("hidden");
+      }
+    });
+    shownSkills = [];
+    resetBtn.classList.add("hidden");
+  }
+
+  // Attach listeners and handle carousel item clicks to make SkillCards visible
+  document.querySelectorAll(".carousel-item").forEach((item) => {
+    item.addEventListener("click", (e) => {
+      const idx = parseInt(item.getAttribute("data-index"));
+      const newPopup = document.getElementById(`skill-${idx}`);
+      if (!shownSkills.includes(newPopup)) {
+        shownSkills.push(newPopup);
+        unhide(newPopup);
+      }
+      resetBtn.classList.remove("hidden");
+    });
+  });
+</script>

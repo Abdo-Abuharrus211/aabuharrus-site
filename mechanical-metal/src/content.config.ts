@@ -22,7 +22,7 @@ const projects = defineCollection({
         text: z.string(),
         keyPoints: z.array(z.string()), //array of string for the bullet points
         link: z.string(),
-        status: z.enum(["Planning", "In Progress", "Complete"]),
+        status: z.enum(["Planning", "Upcoming", "In Progress", "Completed", "Paused"]),
         tags: z.array(z.string()),
     })
 });
@@ -38,4 +38,4 @@ const skills = defineCollection({
 // const hobbies = defineCollection({/*..*/});
 
 // 4. Export a single `collections` object to register your collection(s)
-export const collections = {projects, skills };
+export const collections = { projects, skills };

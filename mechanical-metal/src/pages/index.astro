@@ -1,5 +1,7 @@
 ---
 import HomeBanner from "../components/homeBanner.astro";
+import Banner2 from "../components/banner2.astro";
+import Bio from "../components/bio.astro";
 import ProjectsSection from "../components/projectsSection.astro";
 import SkillsSection from "../components/skillsSection.astro";
 import BaseLayout from "../layouts/baseLayout.astro";
@@ -8,37 +10,11 @@ const layoutProps = {
   title: "aabuharrus",
 };
 ---
-
 <BaseLayout {layoutProps}>
-  <HomeBanner />
-  <h1>Test</h1>
+  <Banner2 />
+  <!-- <HomeBanner /> -->
+   <Bio/>
   <ProjectsSection />
   <SkillsSection />
+  <!-- TODO: Contact goes here -->
 </BaseLayout>
-
-<!-- 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>aabuharrus</title>
-  </head>
-  <body>
-
-	<header>
-		<Navbar/>
-	</header>
-
-	<main>
-		<HomeBanner/>
-	</main>
-
-
-	<Footer></Footer>
-    <script>
-		// Add the script imports here laters
-	</script>
-  </body>
-</html> -->

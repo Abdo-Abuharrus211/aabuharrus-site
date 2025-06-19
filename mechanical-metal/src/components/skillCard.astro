@@ -2,7 +2,7 @@
 const { skillProps } = Astro.props;
 ---
 
-<div class="container card top-accent-tab">
+<div id={`skill-${skillProps.id}`} class="container card top-accent-tab hidden">
   <div class="flex column padding3">
     <h2>{skillProps.data.name}</h2>
     <img
@@ -21,6 +21,8 @@ const { skillProps } = Astro.props;
 <style>
   .skill-icon {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    width: 2rem;
+    height: 2rem;
   }
   .points-box {
     padding: 0 var(--spacing2);
