@@ -2,38 +2,40 @@
 import Image from "astro/components/Image.astro";
 import dunes from "../images/silver-dunes.webp";
 ---
+<!-- 
+  TODO: adjust responsiveness for 1080, medium and small screens.
+ -->
 
 <section id="Home">
   <div class="banner-box">
     <div class="flex column">
       <h1 class="greeting1">،أهلًا</h1>
-      <h1 class="greeting2">Hi,</h1>
+      <!-- <h1 class="greeting2">Hi,</h1> -->
     </div>
     <h2 class="banner-text">I'm Abdu, a dev</h2>
     <button>My stuff</button>
   </div>
-  <div class="action-box">
+  <!-- <div class="action-box">
     <button>My stuff</button>
-  </div>
+  </div> -->
   <Image class:list={"banner-img"} src={dunes} alt=`dunes banner photo` />
 </section>
 
 <style>
   #Home {
-    width: fit-content;
-    max-width: max-content; 
+    max-width: fit-content;
     margin: auto;
     overflow: visible;
   }
 
-  .banner-img{
-    height: 30%;
+  .banner-img {
+    height: 80%;
   }
 
   .banner-box {
     position: absolute;
     top: 20%;
-    left: 80%;
+    left: 70%;
     /* to move along x and y axis */
     transform: translate(-90%, -30%);
   }

@@ -88,12 +88,15 @@ body {
     text-wrap: balance;
     font: var(--p);
     background-color: var(--background);
+    background-color: var(--background);
     color: var(--text);
 }
 
 section {
-    width: 90%;
-    max-width: 1080px;
+    width: 80%;
+    /* max-width: 1080px; */
+    max-width: 1200px;
+    /* max-width: 90%; */
     margin: var(--spacing7) auto;
 }
 
