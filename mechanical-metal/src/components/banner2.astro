@@ -3,12 +3,17 @@ import Image from "astro/components/Image.astro";
 import dunes from "../images/silver-dunes.webp";
 ---
 
-<section id="Home" class="center">
-  <div class="banner-greet1">
-    <h1 class="greeting">،أهلًا</h1>
+<section id="Home">
+  <div class="banner-box">
+    <div class="flex column">
+      <h1 class="greeting1">،أهلًا</h1>
+      <h1 class="greeting2">Hi,</h1>
+    </div>
+    <h2 class="banner-text">I'm Abdu, a dev</h2>
+    <button>My stuff</button>
   </div>
-  <div class="banner-greet2">
-    <h1 class="greeting">Hi,</h1>
+  <div class="action-box">
+    <button>My stuff</button>
   </div>
   <Image class:list={"banner-img"} src={dunes} alt=`dunes banner photo` />
 </section>
@@ -16,8 +21,47 @@ import dunes from "../images/silver-dunes.webp";
 <style>
   #Home {
     width: fit-content;
-    max-width: max-content;
+    max-width: max-content; 
     margin: auto;
-    overflow: hidden;
+    overflow: visible;
+  }
+
+  .banner-img{
+    height: 30%;
+  }
+
+  .banner-box {
+    position: absolute;
+    top: 20%;
+    left: 80%;
+    /* to move along x and y axis */
+    transform: translate(-90%, -30%);
+  }
+  .action-box {
+    position: absolute;
+    top: 60%;
+    left: 30%;
+    /* to move along x and y axis */
+    transform: translate(-50%, -50%);
+  }
+
+  .greeting1,
+  .greeting2 {
+    font-size: 10rem;
+    color: hsl(80, 22%, 8%);
+  }
+
+  .greeting1 {
+    align-self: flex-end;
+    margin-left: var(--spacing7);
+  }
+
+  .greeting2 {
+    align-self: flex-start;
+    margin-right: var(--spacing7);
+  }
+
+  .banner-text {
+    color: hsl(80, 22%, 8%);
   }
 </style>
