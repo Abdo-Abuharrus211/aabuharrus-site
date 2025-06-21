@@ -1,62 +1,50 @@
 ---
 import Image from "astro/components/Image.astro";
-import heroBanner from "../images/josefin-hnqJlzt6R9c-unsplash.jpg";
+import heroBanner from "../images/silver-dunes.webp";
 ---
 
-<!-- 
-  TODO: adjust responsiveness for 19201080, medium and small screens.
- -->
 <div id="Home">
+  <!-- Animated gradient background -->
+
   <div class="banner-box">
     <div class="flex column">
       <h1 class="greeting1">،أهلًا</h1>
-      <!-- <h1 class="greeting2">Hi,</h1> -->
+      <h1 class="greeting2">Hi,</h1>
     </div>
     <h2 class="banner-text">I'm Abdu, a Software Developer</h2>
     <div class="center margin5">
-      <!-- TODO: make this smoothly scroll down to first section -->
-      <button style="font-size: var(--spacing4);" class="outline-btn"
-      onclick="document.getElementById('Bio')?.scrollIntoView({ behavior: 'smooth' });"
+      <button
+        style="font-size: var(--spacing4);"
+        class="outline-btn"
+        onclick="document.getElementById('Bio')?.scrollIntoView({ behavior: 'smooth' });"
         >Check out my stuff</button
       >
     </div>
   </div>
-  <!-- <div class="action-box">
-    <button>My stuff</button>
-    </div> -->
-  <Image class:list={"banner-img"} src={heroBanner} alt=`hero banner photo` />
 </div>
 
-<style>
+<style define:vars={{heroBanner}}>
   #Home {
+    position: relative;
     width: 100%;
-    max-width: fit-content;
-    margin: auto;
-    overflow: visible;
-  }
-
-  .banner-img {
-    height: 20%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-image: url("../images/snail2.JPG");
   }
 
   .banner-box {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    /* to move along x and y axis */
-    transform: translate(-50%, -80%);
+    position: relative;
+    z-index: 2;
+    color: white;
+    text-align: center;
   }
-  /* .action-box {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  } */
 
   .greeting1,
   .greeting2 {
     font-size: 10rem;
-    /* color: var(--text); */
   }
 
   .greeting1 {
