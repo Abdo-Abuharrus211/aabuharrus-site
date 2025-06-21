@@ -5,7 +5,7 @@ import SkillCard from "./skillCard.astro";
 const skillsCollection = await getCollection("skills");
 ---
 
-<section id="skill-carousel" class="margin7">
+<div id="skill-carousel" class="margin4">
   <div class="carousel padding5">
     <div class="track">
       {
@@ -25,7 +25,7 @@ const skillsCollection = await getCollection("skills");
       }
     </div>
   </div>
-</section>
+</div>
 
 <style>
   .carousel {
