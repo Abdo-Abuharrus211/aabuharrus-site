@@ -88,9 +88,10 @@ body {
     /* use your defined for globals for bg, font, and color */
     text-wrap: balance;
     font: var(--p);
-    background-color: var(--background);
-    background-color: var(--background);
     color: var(--text);
+
+    background: var(--background);
+    /* background-image: linear-gradient(to top, var(--background) 10%, var(--subbackground) 100%); */
 }
 
 section {
@@ -142,7 +143,7 @@ img {
 
 .icon {
     width: var(--spacing5);
-    vertical-align:middle;
+    vertical-align: middle;
 }
 
 
