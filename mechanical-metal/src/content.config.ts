@@ -22,6 +22,7 @@ const projects = defineCollection({
         text: z.string(),
         keyPoints: z.array(z.string()), //array of string for the bullet points
         link: z.string(),
+        github: z.string(),
         status: z.enum(["Planning", "Upcoming", "In Progress", "Completed", "Paused"]),
         tags: z.array(z.string()),
     })

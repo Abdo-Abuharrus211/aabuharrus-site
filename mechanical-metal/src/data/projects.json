@@ -10,6 +10,7 @@
         ],
         "status": "In Progress",
         "link": "https://github.com/Abdo-Abuharrus211",
+        "github": "https://github.com/Abdo-Abuharrus211",
         "tags": [
             "environmental",
             "Machine Learning",
@@ -26,11 +27,12 @@
         "keyPoints": [
             "Pick a difficulty and theme.",
             "Google's Gemini generates the text.",
-            "ClickClack times the user and calculates stats liked words-per-minute (WPM) and more.",
+            "ClickClack times the user and calculates stats including words-per-minute (WPM) and more.",
             "Clean and minimal UI."
         ],
         "status": "Completed",
         "link": "https://clickclack.aabuharrus.dev/",
+        "github": "",
         "tags": [
             "Typing-test",
             "Next.js",
@@ -52,6 +54,7 @@
         ],
         "status": "Paused",
         "link": "https://github.com/Abdo-Abuharrus211/Project-Vitalis",
+        "github": "https://github.com/Abdo-Abuharrus211/Project-Vitalis",
         "tags": [
             "Go",
             "Multithreading",
@@ -72,6 +75,7 @@
         ],
         "status": "Paused",
         "link": "https://audioreaper.aabuharrus.dev/",
+        "github": "",
         "tags": [
             "Flask",
             "Python",
@@ -95,6 +99,7 @@
         ],
         "status": "Completed",
         "link": "https://github.com/Abdo-Abuharrus211/Project-NaqaMD",
+        "github": "https://github.com/Abdo-Abuharrus211/Project-NaqaMD",
         "tags": [
             "OCaml",
             "Pattern-Matching",
@@ -115,6 +120,7 @@
         ],
         "status": "Planning",
         "link": "",
+        "github": "",
         "tags": [
             "Obsidian",
             "SSG",
