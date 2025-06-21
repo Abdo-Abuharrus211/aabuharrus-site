@@ -12,11 +12,9 @@ const skills = await getCollection("skills");
   -->
 <section id="Skills">
   <h1>Skills</h1>
-  <p>
-    Like many with a passion for programming, I've tried out many languages and
-    frameworks.
-  </p>
-  <p>Some I use frequently, others only once...</p>
+  <p>I've experience with several languages,frameworks, and dev tools.</p>
+  <!-- TODO: route to resume! -->
+  <button>Resume</button>
   <div class="flex">
     {skills.map((skill: any) => <SkillCard skillProps={skill} />)}
   </div>
