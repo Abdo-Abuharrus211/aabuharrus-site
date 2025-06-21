@@ -1,56 +1,62 @@
 ---
 import Image from "astro/components/Image.astro";
-import dunes from "../images/silver-dunes.webp";
+import heroBanner from "../images/josefin-hnqJlzt6R9c-unsplash.jpg";
 ---
-<!-- 
-  TODO: adjust responsiveness for 1080, medium and small screens.
- -->
 
-<section id="Home">
+<!-- 
+  TODO: adjust responsiveness for 19201080, medium and small screens.
+ -->
+<div id="Home">
   <div class="banner-box">
     <div class="flex column">
       <h1 class="greeting1">،أهلًا</h1>
       <!-- <h1 class="greeting2">Hi,</h1> -->
     </div>
-    <h2 class="banner-text">I'm Abdu, a dev</h2>
-    <button>My stuff</button>
+    <h2 class="banner-text">I'm Abdu, a Software Developer</h2>
+    <div class="center margin5">
+      <!-- TODO: make this smoothly scroll down to first section -->
+      <button style="font-size: var(--spacing4);" class="outline-btn"
+      onclick="document.getElementById('Bio')?.scrollIntoView({ behavior: 'smooth' });"
+        >Check out my stuff</button
+      >
+    </div>
   </div>
   <!-- <div class="action-box">
     <button>My stuff</button>
-  </div> -->
-  <Image class:list={"banner-img"} src={dunes} alt=`dunes banner photo` />
-</section>
+    </div> -->
+  <Image class:list={"banner-img"} src={heroBanner} alt=`hero banner photo` />
+</div>
 
 <style>
   #Home {
+    width: 100%;
     max-width: fit-content;
     margin: auto;
     overflow: visible;
   }
 
   .banner-img {
-    height: 80%;
+    height: 20%;
   }
 
   .banner-box {
     position: absolute;
-    top: 60%;
-    left: 30%;
+    top: 50%;
+    left: 50%;
     /* to move along x and y axis */
     transform: translate(-50%, -80%);
   }
-  .action-box {
+  /* .action-box {
     position: absolute;
-    top: 60%;
-    left: 30%;
-    /* to move along x and y axis */
+    top: 50%;
+    left: 50%;
     transform: translate(-50%, -50%);
-  }
+  } */
 
   .greeting1,
   .greeting2 {
     font-size: 10rem;
-    color: hsl(80, 22%, 8%);
+    /* color: var(--text); */
   }
 
   .greeting1 {
@@ -64,6 +70,6 @@ import dunes from "../images/silver-dunes.webp";
   }
 
   .banner-text {
-    color: hsl(80, 22%, 8%);
+    color: var(--text);
   }
 </style>
