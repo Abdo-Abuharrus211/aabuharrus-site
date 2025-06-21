@@ -4,15 +4,13 @@ import heroBanner from "../images/silver-dunes.webp";
 ---
 
 <div id="Home">
-  <!-- Animated gradient background -->
-
   <div class="banner-box">
     <div class="flex column">
       <h1 class="greeting1">،أهلًا</h1>
       <h1 class="greeting2">Hi,</h1>
     </div>
     <h2 class="banner-text">I'm Abdu, a Software Developer</h2>
-    <div class="center margin5">
+    <div class="margin5">
       <button
         style="font-size: var(--spacing4);"
         class="outline-btn"
@@ -20,26 +18,29 @@ import heroBanner from "../images/silver-dunes.webp";
         >Check out my stuff</button
       >
     </div>
+    <p>May this little fella inspire you to stay curious.</p>
   </div>
 </div>
 
-<style define:vars={{heroBanner}}>
+<style define:vars={{ heroBanner }}>
   #Home {
     position: relative;
     width: 100%;
     height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     overflow: hidden;
     background-image: url("../images/snail2.JPG");
+    background-size: cover; /* Adjusts zoom to cover the area */
+    background-position: center; /* Keeps image centered */
   }
 
   .banner-box {
     position: relative;
     z-index: 2;
     color: white;
-    text-align: center;
+    margin-left: var(--spacing6);
   }
 
   .greeting1,
