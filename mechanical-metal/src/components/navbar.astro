@@ -6,11 +6,19 @@
   <div>
     <div class="navbar">
       <div>
-        <h2>Abdu Abuharrus</h2>
+        <a href="/">
+          <h2>Abdu Abuharrus</h2>
+        </a>
       </div>
 
       <div class="nav-links">
-        <button id="theme-toggle" class="theme-toggle" onclick="theme" tabindex="0" aria-label="theme toggle">
+        <button
+          id="theme-toggle"
+          class="theme-toggle"
+          onclick="theme"
+          tabindex="0"
+          aria-label="theme toggle"
+        >
           <!-- Moon twinkle -->
           <svg
             id="moon-icon"
@@ -302,7 +310,7 @@
       return localStorageTheme;
     }
     if (window.matchMedia("(prefers-color-scheme: light)").matches) {
-      console.log("match yeh")
+      console.log("match yeh");
       return "light";
     }
     return "dark";
