@@ -4,8 +4,61 @@ import ProjectCard from "./projectCard.astro";
 
 const projects = await getCollection("projects");
 ---
-<!-- TODO: Sort the array by newest using the date format-->
+
 <section id="Projects">
   <h1>Projects</h1>
-  {projects.map((project: any) => <ProjectCard projectProps={project} />)}
+  <div class="projects-scroll-container">
+    {projects.map((project: any) => <ProjectCard projectProps={project} />)}
+  </div>
 </section>
+
+<style>
+  .projects-scroll-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: var(--spacing4);
+    padding: var(--spacing3);
+    scroll-padding: var(--spacing4);
+  }
+
+  .projects-scroll-container::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  .projects-scroll-container::-webkit-scrollbar-thumb {
+    background-color: var(--secondary);
+    border-radius: 4px;
+  }
+
+  .projects-scroll-container > * {
+    flex: 0 0 85%;
+    scroll-snap-align: center;
+  }
+</style>
+
+<script is:inline>
+  const scrollContainer = document.querySelector(".projects-scroll-container");
+
+  let isTouchpad = false;
+
+  scrollContainer?.addEventListener(
+    "wheel",
+    (e) => {
+      // Ignore the native horizontal scroll (for trackpads)
+      if (Math.abs(e.deltaX) > 0) {
+        isTouchpad = true;
+        return;
+      }
+
+      if (!isTouchpad && scrollContainer) {
+        e.preventDefault();
+        scrollContainer.scrollBy({
+          left: e.deltaY,
+          behavior: "smooth",
+        });
+      }
+    },
+    { passive: false }
+  );
+</script>
