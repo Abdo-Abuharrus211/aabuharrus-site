@@ -95,10 +95,9 @@ body {
 
 section {
     width: 80%;
-    /* max-width: 1080px; */
     max-width: 1200px;
-    /* max-width: 90%; */
-    margin: var(--spacing8) auto;
+    padding-top: var(--spacing6);
+    margin: var(--spacing6) auto;
 }
 
 
