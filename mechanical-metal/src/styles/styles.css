@@ -141,8 +141,10 @@ img {
 }
 
 .icon {
-    width: var(--spacing5)
+    width: var(--spacing5);
+    vertical-align:middle;
 }
+
 
 .btn,
 button {
@@ -245,12 +247,13 @@ button:hover {
     flex-wrap: wrap;
 }
 
-.tag{
+.tag {
     font-size: var(--fsize2);
     margin: var(--spacing1);
     padding: var(--spacing1);
     background-color: var(--secondary);
     border-radius: var(--spacing1);
+    display: inline;
 }
 
 .flex>* {
@@ -284,8 +287,8 @@ button:hover {
 }
 
 .container {
-    margin: var(--spacing2) auto;
-    padding: var(--spacing2);
+    margin: var(--spacing3) auto;
+    padding: var(--spacing4);
 }
 
 .card {
