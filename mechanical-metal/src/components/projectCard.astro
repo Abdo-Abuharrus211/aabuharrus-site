@@ -2,11 +2,7 @@
 const { projectProps } = Astro.props;
 ---
 
-<!-- 
-  TODO:
-  Consider some spicy CSS effects and or animations for projects (Carousel is boring)
- -->
-<div class="container card left-accent-tab">
+<div class="container card left-accent-tab project-card">
   <h2>// {projectProps.data.name}</h2>
   <div class="flex">
     <img
@@ -42,12 +38,19 @@ const { projectProps } = Astro.props;
       </div>
     </div>
   </div>
-  <div>
+  <!-- Tags -->
+  <!-- <div>
     {projectProps.data.tags.map((tag: string) => <p class="tag">{tag}</p>)}
-  </div>
+  </div> -->
 </div>
 
 <style>
+  .project-card {
+    scroll-snap-align: start;
+    min-width: 100%;
+    margin: auto;
+  }
+
   ul {
     text-wrap: stable;
     list-style-position: inside;
