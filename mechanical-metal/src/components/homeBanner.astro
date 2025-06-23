@@ -16,19 +16,19 @@ import bannerImage from "../images/silver-dunes.webp";
 
     <div class="intro-box">
       <h2 class="banner-text">I'm Abdu, a Software Developer</h2>
-      <div class="margin5">
+      <p>Full Stack, Scripting, and Functional Programming.</p>
+      <div>
         <button
-          style="font-size: var(--spacing4);"
-          class="outline-btn"
           onclick="document.getElementById('Bio')?.scrollIntoView({ behavior: 'smooth' });"
           >Check out my stuff</button
         >
+        <button class="outline-btn">Resume</button>
       </div>
     </div>
   </div>
   <div class="visual-box">
     <Image class:list={"banner-img"} src={bannerImage} alt="banner photo" />
-    <small>// I write code not design UIs so here's my fav photograph</small>
+    <small>// Not much of a web/graphic designer so here's my fav photo.</small>
   </div>
 </div>
 
@@ -58,15 +58,25 @@ import bannerImage from "../images/silver-dunes.webp";
     text-align: start;
     align-self: flex-start;
   }
+  .intro-box button {
+    font-size: var(--fsize2);
+    margin-right: var(--spacing3);
+  }
+
   .banner-img {
+    align-self: flex-start;
     height: 100%;
-    width: 100%;
+    width: 120%;
   }
 
   .hero-gradient {
     width: 100vw;
     height: 100vh;
-    background: radial-gradient(circle at 20% 20%, var(--background), var(--subbackground));
+    background: radial-gradient(
+      circle at 20% 20%,
+      var(--background),
+      var(--subbackground)
+    );
     background-size: 200% 200%;
     animation: radialGradientMove 10s ease-in-out infinite;
   }
