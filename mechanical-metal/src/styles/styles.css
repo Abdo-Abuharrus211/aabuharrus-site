@@ -97,7 +97,7 @@ body {
 section {
     width: 80%;
     max-width: 1200px;
-    padding-top: var(--spacing6);
+    padding: var(--spacing6);
     margin: var(--spacing6) auto;
 }
 
