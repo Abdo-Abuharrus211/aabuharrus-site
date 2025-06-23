@@ -31,7 +31,8 @@ import heroBanner from "../images/silver-dunes.webp";
     align-items: center;
     justify-content: flex-start;
     overflow: hidden;
-    background-image: url("../images/snail2.JPG");
+    /* background-image: url("../images/silver-dunes.webp"); */
+    background-image: url("../images/silver-dunes.webp");
     background-size: cover; /* Adjusts zoom to cover the area */
     background-position: center; /* Keeps image centered */
   }
@@ -41,24 +42,28 @@ import heroBanner from "../images/silver-dunes.webp";
     z-index: 2;
     color: white;
     margin-left: var(--spacing6);
+    color: hsl(83, 27%, 6%);
   }
 
   .greeting1,
   .greeting2 {
     font-size: 10rem;
+    color: hsl(83, 27%, 6%);
   }
-
+  
   .greeting1 {
     align-self: flex-end;
     margin-left: var(--spacing7);
   }
-
+  
   .greeting2 {
     align-self: flex-start;
     margin-right: var(--spacing7);
   }
-
+  
   .banner-text {
-    color: var(--text);
+    /* Commented this out to ensure dark text over the banner image */
+    /* color: var(--text); */
+    color: hsl(83, 27%, 6%);
   }
 </style>
