@@ -8,8 +8,6 @@ const projects = await getCollection("projects");
 
 <section id="Projects">
   <h1>Projects</h1>
-  <h3>Always working on something</h3>
-  <p>have a look</p>
   <div class="proj-gallery">
     {projects.map((project: any) => <ProjectCard projectProps={project} />)}
   </div>
