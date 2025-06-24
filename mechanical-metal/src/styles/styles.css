@@ -139,6 +139,11 @@ a:hover {
     color: var(--secondary);
 }
 
+ul {
+    list-style: inside;
+    margin: var(--spacing2);
+}
+
 img {
     width: 100%;
     border-radius: var(--spacing2);
@@ -149,7 +154,6 @@ img {
     width: var(--spacing5);
     vertical-align: middle;
 }
-
 
 .btn,
 button {
@@ -252,12 +256,19 @@ button:hover {
     flex-wrap: wrap;
 }
 
+.tag-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
 .tag {
     font-size: var(--fsize2);
-    margin: var(--spacing1);
+    margin: 0;
     padding: var(--spacing1);
     background-color: var(--secondary);
     border-radius: var(--spacing1);
+    display: inline-block;
 }
 
 .flex>* {

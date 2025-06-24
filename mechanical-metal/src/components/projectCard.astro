@@ -9,7 +9,7 @@ const { projectProps } = Astro.props;
     src={projectProps.data.imagePath}
     alt={`${projectProps.data.name} image`}
   />
-  <div class="proj-tags-box">
+  <div class="tag-box">
     {projectProps.data.tags.map((tag: string) => <p class="tag">{tag}</p>)}
   </div>
 </div>
@@ -29,11 +29,7 @@ const { projectProps } = Astro.props;
     object-fit: cover;
     border-radius: var(--spacing1);
   }
-  .proj-tags-box {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
+
   .tag {
     font-size: var(--fsize2);
     margin: 0;
