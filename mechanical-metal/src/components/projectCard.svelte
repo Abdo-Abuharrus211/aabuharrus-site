@@ -2,8 +2,8 @@
   import { createEventDispatcher } from "svelte";
   let showModal = $state(false);
   let { projectProps } = $props();
-  
-  // Dispatch the event to projectGallery 
+
+  // Dispatch the event to projectGallery
   const dispatch = createEventDispatcher<{ select: typeof projectProps }>();
   function showProject() {
     dispatch("select", projectProps);
@@ -23,11 +23,6 @@
     src={projectProps.data.imagePath}
     alt="{projectProps.data.name} image"
   />
-  <div class="proj-tags-box">
-    {#each projectProps.data.tags as tag}
-      <p class="tag">{tag}</p>
-    {/each}
-  </div>
 </div>
 
 <style>
@@ -45,19 +40,7 @@
     object-fit: cover;
     border-radius: var(--spacing1);
   }
-  .proj-tags-box {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-  .tag {
-    font-size: var(--fsize2);
-    margin: 0;
-    padding: var(--spacing1);
-    background-color: var(--secondary);
-    border-radius: var(--spacing1);
-    display: inline-block;
-  }
+
   @media (max-width: 700px) {
     .proj-card {
       width: 100%;
