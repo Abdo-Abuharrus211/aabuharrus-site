@@ -2,10 +2,10 @@
   import ProjectCard from "./projectCard.svelte";
   import ProjectModal from "./projectModal.svelte";
 
-  export let projects: any[] = [];
-
-  let showModal = false;
-  let selectedProject: any = null;
+  let { projects } = $props();
+  // State to track the modal
+  let showModal = $state(false);
+  let selectedProject: any = $state(null);
 
   function openModal(project: any) {
     selectedProject = project;
@@ -20,12 +20,17 @@
 
 <div class="proj-gallery margin4">
   {#each projects as project}
-    <ProjectCard projectProps={project} on:click={() => openModal(project)} />
+    <ProjectCard
+      projectProps={project}
+      on:select={() => {
+        openModal(project);
+      }}
+    />
   {/each}
+  {#if showModal}
+    <ProjectModal projectProps={selectedProject} on:close={closeModal} />
+  {/if}
 </div>
-{#if showModal && selectedProject}
-  <ProjectModal projectProps={selectedProject} on:close={closeModal} />
-{/if}
 
 <style>
   .proj-gallery {
