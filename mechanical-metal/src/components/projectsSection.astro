@@ -1,18 +1,20 @@
 ---
+/**
+ * This Astro component's a wrapper around the Svelte islands, which I used for modal interactivity.
+ * I kept this comp because of the ease of data retrieval using Astro's `getCollection` and content management.
+ * Pass the data to the Svelte gallery as a prop, it then renders the flex box display of cards.
+ */
+
 import { getCollection } from "astro:content";
-// import ProjectCard from "./projectCard.astro";
-import ProjectCard from "../components/projectCard.svelte";
-import ProjectModal from "./projectModal.astro";
+import ProjectGallery from "../components/projectGallery.svelte";
 
 const projects = await getCollection("projects");
 ---
 
 <section id="Projects">
   <h1>Projects</h1>
-  <div class="proj-gallery">
-    {projects.map((project: any) => <ProjectCard projectProps={project} />)}
-  </div>
-  <ProjectModal projectProps={projects[1]}/>
+  <!-- Pass the data to the island -->
+  <ProjectGallery projects={projects} />
 </section>
 
 <style>
@@ -24,9 +26,3 @@ const projects = await getCollection("projects");
     align-items: flex-start;
   }
 </style>
-
-<script is:inline>
-  // TODO: onclick pop up the modal for that project.
-  const modal = document.getElementById("project-modal");
-  modal.showModal();
-</script>
