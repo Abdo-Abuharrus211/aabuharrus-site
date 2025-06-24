@@ -258,7 +258,6 @@ button:hover {
     padding: var(--spacing1);
     background-color: var(--secondary);
     border-radius: var(--spacing1);
-    display: inline;
 }
 
 .flex>* {
@@ -301,6 +300,11 @@ button:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: var(--spacing1);
 
+}
+
+.click-hover:hover {
+    cursor: pointer;
+    transform: scale(1.125);
 }
 
 /* Animations */
