@@ -8,6 +8,8 @@
     };
   };
 
+  console.log("should be rendering")
+
   // Placeholder for click handler
   function showProject() {
     // TODO: implement showProject logic

@@ -1,11 +1,11 @@
----
-const {projectProps} = Astro.props;
----
+<script>
+    export let projectProps;
+</script>
 
 <div id="project-modal">
     <div class="flex column">
         <h1>{projectProps.data.name}</h1>
         <p>{projectProps.data.text}</p>
-        <img src={projectProps.data.image} alt=`${projectProps.title} image`>
+        <img src={projectProps.data.image} alt={`${projectProps.title} image`} />
     </div>
 </div>
