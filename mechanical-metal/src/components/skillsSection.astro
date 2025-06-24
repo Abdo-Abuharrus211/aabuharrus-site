@@ -22,6 +22,7 @@ const skills = await getCollection("skills");
     <button id="skill-reset" class="outline-btn hidden" onclick="reset()"
       >Reset</button
     >
+    <p id="reset-msg" class="hidden">Easy there!🫵✋🤌</p>
   </div>
   <SkillCarousel />
 </section>
@@ -59,9 +60,13 @@ const skills = await getCollection("skills");
     item.addEventListener("click", (e) => {
       const idx = parseInt(item.getAttribute("data-index"));
       const newPopup = document.getElementById(`skill-${idx}`);
-      if (!shownSkills.includes(newPopup)) {
+      if (!shownSkills.includes(newPopup) && shownSkills.length < 8) {
         shownSkills.push(newPopup);
         unhide(newPopup);
+        // If user tries to display over 8 skill cards trigger bounce animation
+      } else if (shownSkills.length == 8) {
+        document.getElementById('reset-msg').classList.remove("hidden");
+        resetBtn.classList.add("bounce");
       }
       resetBtn.classList.remove("hidden");
     });

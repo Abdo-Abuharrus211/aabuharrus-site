@@ -324,6 +324,21 @@ button:hover {
     will-change: transform;
 }
 
+.bounce {
+    animation: bounceUp 0.5s infinite alternate;
+}
+
+
+@keyframes bounceUp {
+    0% {
+        transform: scale(1.0);
+    }
+    100% {
+        transform: scale(1.2);
+    }
+
+}
+
 /* Animations */
 
 @keyframes radialGradientMove {
