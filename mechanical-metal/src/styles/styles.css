@@ -313,6 +313,10 @@ button:hover {
 
 }
 
+.url-box a {
+    margin-right: var(--spacing2);
+}
+
 .click-hover:hover {
     cursor: pointer;
     transform: scale(1.0625);

@@ -131,9 +131,6 @@
     width: 80%;
   }
 
-  .url-box a {
-    margin-right: var(--spacing2);
-  }
   .modal-close {
     position: absolute;
     top: 1rem;
