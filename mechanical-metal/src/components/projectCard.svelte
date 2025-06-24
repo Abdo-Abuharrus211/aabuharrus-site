@@ -1,27 +1,21 @@
 <script lang="ts">
-  export let projectProps: {
-    id: string | number;
-    data: {
-      name: string;
-      imagePath: string;
-      tags: string[];
-    };
-  };
-
-  console.log("should be rendering")
-
-  // Placeholder for click handler
+  import { createEventDispatcher } from "svelte";
+  let showModal = $state(false);
+  let { projectProps } = $props();
+  
+  // Dispatch the event to projectGallery 
+  const dispatch = createEventDispatcher<{ select: typeof projectProps }>();
   function showProject() {
-    // TODO: implement showProject logic
+    dispatch("select", projectProps);
   }
 </script>
 
-<!-- svelte-ignore a11y_no_static_element_interactions -->
 <!-- svelte-ignore a11y_click_events_have_key_events -->
+<!-- svelte-ignore a11y_no_static_element_interactions -->
 <div
   id={`proj-${projectProps.id}-card`}
   class="card left-accent-tab proj-card click-hover"
-  on:click={showProject}
+  onclick={showProject}
 >
   <h2>// {projectProps.data.name}</h2>
   <img
