@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import ProjectCard from "./projectCard.astro";
+import ProjectModal from "./projectModal.astro";
 
 const projects = await getCollection("projects");
 ---
@@ -9,58 +10,24 @@ const projects = await getCollection("projects");
   <h1>Projects</h1>
   <h3>Always working on something</h3>
   <p>have a look</p>
-  <div class="projects-scroll-container">
+  <div class="proj-gallery">
     {projects.map((project: any) => <ProjectCard projectProps={project} />)}
   </div>
+  <ProjectModal projectProps={projects[1]}/>
 </section>
 
 <style>
-  .projects-scroll-container {
+  .proj-gallery {
     display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: var(--spacing4);
-    padding: var(--spacing3);
-    scroll-padding: var(--spacing4);
-  }
-
-  .projects-scroll-container::-webkit-scrollbar {
-    height: 8px;
-  }
-
-  .projects-scroll-container::-webkit-scrollbar-thumb {
-    background-color: var(--secondary);
-    border-radius: 4px;
-  }
-
-  .projects-scroll-container > * {
-    flex: 0 0 85%;
-    scroll-snap-align: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    align-items: flex-start;
   }
 </style>
 
 <script is:inline>
-  const scrollContainer = document.querySelector(".projects-scroll-container");
-
-  let isTouchpad = false;
-
-  scrollContainer?.addEventListener(
-    "wheel",
-    (e) => {
-      // Ignore the native horizontal scroll (for trackpads)
-      if (Math.abs(e.deltaX) > 0) {
-        isTouchpad = true;
-        return;
-      }
-
-      if (!isTouchpad && scrollContainer) {
-        e.preventDefault();
-        scrollContainer.scrollBy({
-          left: e.deltaY,
-          behavior: "smooth",
-        });
-      }
-    },
-    { passive: false }
-  );
+  // TODO: onclick pop up the modal for that project.
+  const modal = document.getElementById("project-modal");
+  modal.showModal();
 </script>
