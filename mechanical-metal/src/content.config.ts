@@ -17,7 +17,7 @@ const projects = defineCollection({
     schema: z.object({
         // TODO: define the schemas
         name: z.string(),
-        imagePath: z.string(),
+        images: z.array(z.string()),
         date: z.string(),
         text: z.string(),
         keyPoints: z.array(z.string()), //array of string for the bullet points
