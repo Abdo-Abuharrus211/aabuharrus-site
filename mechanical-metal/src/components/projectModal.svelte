@@ -62,7 +62,7 @@
         ></svg
       >
     </button>
-    <div style="padding: var(--spacing4);">
+    <div class="details-box">
       <h2>{projectProps.data.name}</h2>
       <p>{projectProps.data.text}</p>
       <div class="url-box padding2">
@@ -201,10 +201,6 @@
     max-height: 80%;
     overflow: auto;
     position: relative;
-  }
-
-  .details-box {
-    padding: var(--spacing4);
   }
 
   .modal-close {
