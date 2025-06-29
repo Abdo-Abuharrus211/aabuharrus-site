@@ -1,6 +1,17 @@
 <script>
   import { createEventDispatcher } from "svelte";
   let { projectProps } = $props();
+
+  let current = $state(0);
+  const images = projectProps.data.images;
+
+  function prev() {
+    current = (current - 1 + images.length) % images.length;
+  }
+  function next() {
+    current = (current + 1) % images.length;
+  }
+
   const dispatch = createEventDispatcher();
 
   function close() {
@@ -51,7 +62,7 @@
         ></svg
       >
     </button>
-    <div class="details-box">
+    <div style="padding: var(--spacing4);">
       <h2>{projectProps.data.name}</h2>
       <p>{projectProps.data.text}</p>
       <div class="url-box padding2">
@@ -83,14 +94,72 @@
           </svg>
         </a>
       </div>
-      <div class="center">
-        <img
-          class="proj-modal-img"
-          src={projectProps.data.imagePath}
-          alt={`${projectProps.data.name} image`}
-        />
-      </div>
-      <!-- Add more project details as needed -->
+
+      {#if 1 < images.length}
+        <div class="proj-carousel center">
+          <button
+            class="carousel-btn left"
+            onclick={prev}
+            aria-label="Previous image"
+          >
+            <svg
+              style="color: var(--secondary);"
+              xmlns="http://www.w3.org/2000/svg"
+              width="1em"
+              height="1em"
+              viewBox="0 0 24 24"
+              ><path
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M20 12H4m0 0l6-6m-6 6l6 6"
+              /></svg
+            >
+          </button>
+          <img
+            class="proj-thumbnail"
+            src={images[current]}
+            alt="{projectProps.data.name} image"
+          />
+          <button
+            class="carousel-btn right"
+            onclick={next}
+            aria-label="Next image"
+          >
+            <svg
+              style="color: var(--secondary);"
+              xmlns="http://www.w3.org/2000/svg"
+              width="1em"
+              height="1em"
+              viewBox="0 0 24 24"
+              ><path
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 12h16m0 0l-6 6m6-6l-6-6"
+              /></svg
+            >
+          </button>
+        </div>
+        <div class="carousel-indicators">
+          {#each images as _, idx}
+            <span class:active={idx === current}></span>
+          {/each}
+        </div>
+      {:else}
+        <div class="center">
+          <img
+            class="proj-thumbnail"
+            src={projectProps.data.images[0]}
+            alt={`${projectProps.data.name} image`}
+          />
+        </div>
+      {/if}
+      <!-- If ya need to add more details in the future,here -->
       <ul class="margin3">
         {#each projectProps.data.keyPoints as point}
           <li>{point}</li>
@@ -108,7 +177,6 @@
 </div>
 
 <style>
-  /* Overlay for the Modal NOT the actual div with content */
   .modal-overlay {
     position: fixed;
     inset: 0;
@@ -131,14 +199,45 @@
     padding: var(--spacing4);
   }
 
-  .proj-modal-img {
-    width: 80%;
-  }
-
   .modal-close {
     position: absolute;
     top: 1rem;
     right: 1rem;
     font-size: var(--fsize3);
+  }
+
+  .proj-carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  .carousel-btn {
+    color: var(--text);
+    cursor: pointer;
+    padding: 0 var(--spacing2);
+  }
+
+  .proj-thumbnail {
+    object-fit: cover;
+    border-radius: var(--spacing1);
+    width: 80%;
+  }
+
+  .carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  .carousel-indicators span {
+    display: block;
+    width: var(--spacing2);
+    height: var(--spacing2);
+    background: var(--secondary);
+    border-radius: 50%;
+  }
+  .carousel-indicators .active {
+    background: var(--accent);
   }
 </style>
