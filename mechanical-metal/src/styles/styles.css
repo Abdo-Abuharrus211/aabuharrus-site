@@ -341,6 +341,43 @@ button:hover {
 }
 
 
+/* Svelte Components */
+
+/* Project Modal styles coppied here cuz of Tree shakedown*/
+/* Overlay for the Modal*/
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: var(--subbackground);
+    border-radius: 12px;
+    max-width: 60%;
+    max-height: 80%;
+    overflow: auto;
+    position: relative;
+}
+
+.details-box {
+    padding: var(--spacing4);
+}
+
+.proj-modal-img {
+    width: 80%;
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: var(--fsize3);
+}
 
 
 /* Responsiveness */
