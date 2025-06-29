@@ -37,7 +37,7 @@
         ],
         "status": "Completed",
         "link": "https://clickclack.aabuharrus.dev/",
-        "github": "",
+        "github": "https://github.com/Abdo-Abuharrus211/ClickClack",
         "tags": [
             "Typing-test",
             "Next.js",
@@ -60,7 +60,7 @@
             "More features to come before proper release-build!"
         ],
         "status": "Paused",
-        "link": "https://github.com/Abdo-Abuharrus211/Project-Vitalis",
+        "link": "",
         "github": "https://github.com/Abdo-Abuharrus211/Project-Vitalis",
         "tags": [
             "Go",
@@ -85,7 +85,7 @@
         ],
         "status": "Paused",
         "link": "https://audioreaper.aabuharrus.dev/",
-        "github": "",
+        "github": "https://github.com/Abdo-Abuharrus211/Project-Audio-Reaper-pure",
         "tags": [
             "Flask",
             "Python",
@@ -110,7 +110,7 @@
             "Identified some bugs, but I've moved on to other projects."
         ],
         "status": "Completed",
-        "link": "https://github.com/Abdo-Abuharrus211/Project-NaqaMD",
+        "link": "",
         "github": "https://github.com/Abdo-Abuharrus211/Project-NaqaMD",
         "tags": [
             "OCaml",
