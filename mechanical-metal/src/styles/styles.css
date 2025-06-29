@@ -329,18 +329,7 @@ button:hover {
 }
 
 
-@keyframes bounceUp {
-    0% {
-        transform: scale(1.0);
-    }
-    100% {
-        transform: scale(1.2);
-    }
-
-}
-
 /* Animations */
-
 @keyframes radialGradientMove {
     0% {
         background-position: 20% 20%;
@@ -355,8 +344,16 @@ button:hover {
     }
 }
 
+@keyframes bounceUp {
+    0% {
+        transform: scale(1.0);
+    }
 
+    100% {
+        transform: scale(1.2);
+    }
 
+}
 
 /* Responsiveness */
 
