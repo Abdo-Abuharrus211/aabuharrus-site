@@ -24,7 +24,8 @@
         "id": 1,
         "name": "ClickClack",
         "images": [
-            "./src/images/clickclack1.webp"
+            "/images/projects/clickclack.png",
+            "/images/projects/clickclack2.png"
         ],
         "date": "2025-04-08",
         "text": "My friends and I wanted to explore Next.js, we wanted to build something fun. ClickClack was born.\n This typing-test prompts the user to select a difficulty and type in a theme, it then generates a text for the user to type before the time runs out!",
@@ -49,7 +50,7 @@
         "id": 2,
         "name": "Project Vitalis",
         "images": [
-            "./src/images/project-vitalis.webp"
+            "/images/projects/project-vitalis.png"
         ],
         "date": "2025-03-22",
         "text": "I built Project Vitalis as a learning experience, to explore Go's multithreading while building something I needed.\nOne thread monitors PC components, while the other renders the Temrinal UI.",
@@ -72,7 +73,8 @@
         "id": 3,
         "name": "AudioReaper",
         "images": [
-            "./src/images/audioreaper1.webp"
+            "/images/projects/audioreaper.png",
+            "/images/projects/audioreaper2.png"
         ],
         "date": "2024-8-15",
         "text": "AudioReaper is a simple Web app that makes adding the songs in your PC's library to your Spotify easy.\n It reads MP3 and WAV files' metadata and filename and searches for the songs on Spotify.\n Users are required to authorize access to their account to specify a playlist or create a new one, but NO data is collected nor stored. Zero strings attached!",
@@ -98,7 +100,7 @@
         "id": 4,
         "name": "NaqaMD",
         "images": [
-            "./src/images/NaqaMD.webp"
+            "/images/projects/NaqaMD.png"
         ],
         "date": "2024-11-18",
         "text": "Quick and powerful Markdown to HTML converter written in OCaml. This was the first Functional Programming language at BCIT, and I made this to get a solid understanding of its pattern matching and functional nature.\nOCaml made Recursion click for me!",
@@ -121,7 +123,7 @@
         "id": 5,
         "name": "Project ShrubGarden",
         "images": [
-            "./src/images/project-shrubgarden.webp"
+            "/images/projects/project-shrubgarden.png"
         ],
         "date": "22",
         "text": "I write a lot in my Obsidian vault. Covering a variety of topics including Computer Scienct and Software, book summaries, to project planning. Some of what I write reads like a blog, so why not share it?\n That's precisely the plan!",
