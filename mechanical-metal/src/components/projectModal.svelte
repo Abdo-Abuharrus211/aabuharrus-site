@@ -7,6 +7,10 @@
     dispatch("close");
   }
 
+  function stopPropagation() {
+    event.stopPropagation();
+  }
+
   // Event listener for Esc key
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
