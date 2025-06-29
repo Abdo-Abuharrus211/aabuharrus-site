@@ -317,6 +317,11 @@ button:hover {
     margin-right: var(--spacing2);
 }
 
+
+.details-box {
+    padding: var(--spacing4);
+}
+
 .click-hover:hover {
     cursor: pointer;
     transform: scale(1.0625);
@@ -324,21 +329,7 @@ button:hover {
     will-change: transform;
 }
 
-/* Animations */
 
-@keyframes radialGradientMove {
-    0% {
-        background-position: 20% 20%;
-    }
-
-    50% {
-        background-position: 80% 80%;
-    }
-
-    100% {
-        background-position: 20% 20%;
-    }
-}
 
 
 /* Svelte Components */
@@ -364,10 +355,6 @@ button:hover {
     position: relative;
 }
 
-.details-box {
-    padding: var(--spacing4);
-}
-
 .proj-modal-img {
     width: 80%;
 }
@@ -379,6 +366,22 @@ button:hover {
     font-size: var(--fsize3);
 }
 
+
+/* Animations */
+
+@keyframes radialGradientMove {
+    0% {
+        background-position: 20% 20%;
+    }
+
+    50% {
+        background-position: 80% 80%;
+    }
+
+    100% {
+        background-position: 20% 20%;
+    }
+}
 
 /* Responsiveness */
 
