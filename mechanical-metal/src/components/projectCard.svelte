@@ -20,7 +20,7 @@
   <h2>// {projectProps.data.name}</h2>
   <img
     class="margin3 proj-thumbnail"
-    src={projectProps.data.imagePath}
+    src={projectProps.data.images[0]}
     alt="{projectProps.data.name} image"
   />
 </div>

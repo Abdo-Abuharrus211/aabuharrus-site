@@ -2,7 +2,9 @@
     {
         "id": 0,
         "name": "Project Zulu",
-        "imagePath": "https://images.unsplash.com/photo-1741806914386-c60073a0fed3?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "images": [
+            "https://images.unsplash.com/photo-1741806914386-c60073a0fed3?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        ],
         "date": "2025-02-17",
         "text": " White sand stretches endlessly, shimmering under the warm sun. Its fine grains feel cool and soft beneath your feet. Gentle breezes carry the scent of salt and sea. The tranquil beauty invites peaceful reflection and relaxation.",
         "keyPoints": [
@@ -21,7 +23,10 @@
     {
         "id": 1,
         "name": "ClickClack",
-        "imagePath": "./src/images/clickclack1.webp",
+        "images": [
+            "/images/projects/clickclack.png",
+            "/images/projects/clickclack2.png"
+        ],
         "date": "2025-04-08",
         "text": "My friends and I wanted to explore Next.js, we wanted to build something fun. ClickClack was born.\n This typing-test prompts the user to select a difficulty and type in a theme, it then generates a text for the user to type before the time runs out!",
         "keyPoints": [
@@ -32,7 +37,7 @@
         ],
         "status": "Completed",
         "link": "https://clickclack.aabuharrus.dev/",
-        "github": "",
+        "github": "https://github.com/Abdo-Abuharrus211/ClickClack",
         "tags": [
             "Typing-test",
             "Next.js",
@@ -44,7 +49,9 @@
     {
         "id": 2,
         "name": "Project Vitalis",
-        "imagePath": "./src/images/project-vitalis.webp",
+        "images": [
+            "/images/projects/project-vitalis.png"
+        ],
         "date": "2025-03-22",
         "text": "I built Project Vitalis as a learning experience, to explore Go's multithreading while building something I needed.\nOne thread monitors PC components, while the other renders the Temrinal UI.",
         "keyPoints": [
@@ -53,7 +60,7 @@
             "More features to come before proper release-build!"
         ],
         "status": "Paused",
-        "link": "https://github.com/Abdo-Abuharrus211/Project-Vitalis",
+        "link": "",
         "github": "https://github.com/Abdo-Abuharrus211/Project-Vitalis",
         "tags": [
             "Go",
@@ -65,7 +72,10 @@
     {
         "id": 3,
         "name": "AudioReaper",
-        "imagePath": "./src/images/audioreaper1.webp",
+        "images": [
+            "/images/projects/audioreaper.png",
+            "/images/projects/audioreaper2.png"
+        ],
         "date": "2024-8-15",
         "text": "AudioReaper is a simple Web app that makes adding the songs in your PC's library to your Spotify easy.\n It reads MP3 and WAV files' metadata and filename and searches for the songs on Spotify.\n Users are required to authorize access to their account to specify a playlist or create a new one, but NO data is collected nor stored. Zero strings attached!",
         "keyPoints": [
@@ -75,7 +85,7 @@
         ],
         "status": "Paused",
         "link": "https://audioreaper.aabuharrus.dev/",
-        "github": "",
+        "github": "https://github.com/Abdo-Abuharrus211/Project-Audio-Reaper-pure",
         "tags": [
             "Flask",
             "Python",
@@ -89,7 +99,9 @@
     {
         "id": 4,
         "name": "NaqaMD",
-        "imagePath": "./src/images/NaqaMD.webp",
+        "images": [
+            "/images/projects/NaqaMD.png"
+        ],
         "date": "2024-11-18",
         "text": "Quick and powerful Markdown to HTML converter written in OCaml. This was the first Functional Programming language at BCIT, and I made this to get a solid understanding of its pattern matching and functional nature.\nOCaml made Recursion click for me!",
         "keyPoints": [
@@ -98,7 +110,7 @@
             "Identified some bugs, but I've moved on to other projects."
         ],
         "status": "Completed",
-        "link": "https://github.com/Abdo-Abuharrus211/Project-NaqaMD",
+        "link": "",
         "github": "https://github.com/Abdo-Abuharrus211/Project-NaqaMD",
         "tags": [
             "OCaml",
@@ -110,7 +122,9 @@
     {
         "id": 5,
         "name": "Project ShrubGarden",
-        "imagePath": "./src/images/project-shrubgarden.webp",
+        "images": [
+            "/images/projects/project-shrubgarden.png"
+        ],
         "date": "22",
         "text": "I write a lot in my Obsidian vault. Covering a variety of topics including Computer Scienct and Software, book summaries, to project planning. Some of what I write reads like a blog, so why not share it?\n That's precisely the plan!",
         "keyPoints": [
