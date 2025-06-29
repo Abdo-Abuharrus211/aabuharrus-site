@@ -400,9 +400,12 @@ button:hover {
     background: var(--accent);
 }
 
+.bounce {
+    animation: bounceUp 0.5s infinite alternate;
+}
+
 
 /* Animations */
-
 @keyframes radialGradientMove {
     0% {
         background-position: 20% 20%;
@@ -415,6 +418,17 @@ button:hover {
     100% {
         background-position: 20% 20%;
     }
+}
+
+@keyframes bounceUp {
+    0% {
+        transform: scale(1.0);
+    }
+
+    100% {
+        transform: scale(1.2);
+    }
+
 }
 
 /* Responsiveness */
