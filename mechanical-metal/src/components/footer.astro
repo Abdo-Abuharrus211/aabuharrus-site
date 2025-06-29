@@ -1,5 +1,7 @@
 ---
+import { getCollection } from "astro:content";
 
+const projects = await getCollection("projects");
 ---
 
 <footer class="footer">
@@ -93,7 +95,20 @@
     </div>
     <div class="flex column">
       <h3>Current Projects</h3>
-      <a href="">Project vitalis</a>
+      {
+        projects
+          .filter(
+            (proj) =>
+              proj.data.status === "Planning" ||
+              proj.data.status === "In Progress" ||
+              proj.data.status === "Paused"
+          )
+          .map((proj) => (
+            <a href={proj.data.github} target="_blank">
+              {proj.data.name}
+            </a>
+          ))
+      }
     </div>
   </section>
 </footer>
