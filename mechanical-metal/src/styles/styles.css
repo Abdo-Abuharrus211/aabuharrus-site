@@ -289,9 +289,9 @@ button:hover {
 .tag {
     font-size: var(--fsize2);
     margin: 0;
-    padding: var(--spacing1);
-    background-color: var(--secondary);
-    border-radius: var(--spacing1);
+    padding: var(--spacing2);
+    border: 2px solid var(--accent);
+    border-radius: var(--spacing3);
     display: inline-block;
 }
 
