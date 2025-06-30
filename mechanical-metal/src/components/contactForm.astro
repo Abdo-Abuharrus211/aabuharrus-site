@@ -6,20 +6,54 @@
     1. reCaptcha check to min spam 
     2. Send to my inbox
     3. Send confirmation to user for better UX
+    4. Text validation for email addresses
+    5. PArse and validate the inputs 
 -->
-
 <section id="Contact">
   <h1>Contact me</h1>
   <p>Whether it's for work or fun, let's chat.</p>
-  <div id="contact-form">
-    <form action="mail">
+  <div class="card">
+    <form id="contact-form" class="flex column" action="mail">
+      <div>
         <label for="name-input">Full name</label>
-        <input type="text" name="name" id="name-input" placeholder="Your full name...">
-        <label for="subject-input">Subject</label>
-        <input type="text" name="name" id="subject-input" placeholder="Your full name...">
-
+        <input
+          class="margin2"
+          type="text"
+          name="name"
+          id="name-input"
+          placeholder="Your full name pls"
+          maxlength="128"
+        />
+        <label for="email-input">Email</label>
+        <input
+          class="margin2"
+          type="text"
+          name="name"
+          id="email-input"
+          placeholder="Your email address"
+          maxlength="128"
+        />
+      </div>
+      <div>
         <label for="message-input">Message</label>
-        <textarea name="msg-txt" id="message-input" placeholder="I wanna chat about..."></textarea>
+        <textarea
+          class="margin2"
+          name="msg-txt"
+          id="message-input"
+          placeholder="I wanna chat about..."
+          maxlength="512"></textarea>
+      </div>
     </form>
   </div>
+  <small>
+    <em>*</em> I don't retain any of your information nor do I sell it to any thrid
+    party, because that's gross.</small
+  >
 </section>
+
+<style>
+  #contact-form div {
+    width: 80%;
+    
+  }
+</style>
