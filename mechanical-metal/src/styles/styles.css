@@ -150,9 +150,27 @@ img {
     /* margin: var(--spacing2); */
 }
 
-.icon {
-    width: var(--spacing5);
-    vertical-align: middle;
+label {
+    width: fit-content;
+    padding: var(--spacing1);
+    display: block;
+    font-size: var(--fsize3);
+}
+
+input,
+textarea {
+    width: 80%;
+    height: var(--spacing5);
+    border-radius: var(--spacing1);
+    padding: var(--spacing1);
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    background-color: var();
+}
+
+textarea {
+    height: var(--spacing6);
+    resize: none;
 }
 
 .btn,
@@ -174,10 +192,16 @@ button:hover {
 
 }
 
+
 .outline-btn {
     color: var(--text);
     background-color: transparent;
     border: 2px solid var(--primary);
+}
+
+.icon {
+    width: var(--spacing5);
+    vertical-align: middle;
 }
 
 
