@@ -322,12 +322,12 @@
   // Apply theme based on what's stored or preferred and display appropriate icon
   if (theme === "dark") {
     document.documentElement.classList.remove("light");
-    document.getElementById("moon-icon").classList.remove("hidden");
-    document.getElementById("sun-icon").classList.add("hidden");
-  } else {
-    document.documentElement.classList.add("light");
     document.getElementById("moon-icon").classList.add("hidden");
     document.getElementById("sun-icon").classList.remove("hidden");
+  } else {
+    document.documentElement.classList.add("light");
+    document.getElementById("moon-icon").classList.remove("hidden");
+    document.getElementById("sun-icon").classList.add("hidden");
   }
 
   window.localStorage.setItem("theme", theme);
