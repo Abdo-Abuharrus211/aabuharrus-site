@@ -13,7 +13,7 @@
   <h1>Contact me</h1>
   <p>Whether it's for work or fun, let's chat.</p>
   <div class="card">
-    <form id="contact-form" class="flex column" action="mail">
+    <form action="" id="contact-form" class="flex column" action="mail">
       <div>
         <label for="name-input">Full name</label>
         <input
@@ -43,6 +43,9 @@
           placeholder="I wanna chat about..."
           maxlength="512"></textarea>
       </div>
+      <div>
+        <input class="form-submit btn" type="submit" value="Send" />
+      </div>
     </form>
   </div>
   <small>
@@ -52,8 +55,48 @@
 </section>
 
 <style>
+  /* TODO: Use Flex basis and stuff to prioritize the left column in size */
   #contact-form div {
     width: 80%;
+    align-items: center;
+  }
+  .input-box {
+    flex: 0 3 auto;
+  }
+  .form-submit {
+    text-align: center;
+    font-size: var(--fsize2);
+    width: var(--spacing7);
+    min-width: var(--spacing3)
+  }
+
+  @media (max-width: 900px) {
+    #Contact .card {
+      width: 90%;
+      margin: 0 auto;
+    }
+    #contact-form div {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 600px) {
+    #Contact {
+      padding: 1rem;
+    }
+    #Contact .card {
+      width: 100%;
+      padding: 0.5rem;
+      box-sizing: border-box;
+    }
+    #contact-form {
+      text-align: center;
+      align-items: center;
+    }
     
+    .form-submit {
+      width: 80%;
+      min-width: unset;
+    }
   }
 </style>
