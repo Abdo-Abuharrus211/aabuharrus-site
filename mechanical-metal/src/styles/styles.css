@@ -151,9 +151,10 @@ img {
 }
 
 label {
+    display: block;
     width: fit-content;
     padding: var(--spacing1);
-    display: block;
+    margin: var(--spacing2) 10%;
     font-size: var(--fsize3);
 }
 
