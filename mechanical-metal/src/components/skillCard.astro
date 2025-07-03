@@ -5,6 +5,7 @@ const { skillProps } = Astro.props;
 <div
   id={`skill-${skillProps.id}`}
   class="skill-card container card top-accent-tab hidden"
+  aria-hidden="true"
 >
   <div class="flex column padding3">
     <h2>{skillProps.data.name}</h2>
