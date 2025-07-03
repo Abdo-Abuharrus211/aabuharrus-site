@@ -13,7 +13,13 @@
   <h1>Contact me</h1>
   <p>Whether it's for work or fun, let's chat.</p>
   <div class="card">
-    <form id="contact-form" class="flex column" action="mail">
+    <form id="contact-form" class="flex column center" method="POST">
+      <!-- Don't be alarmed this is a Public Access Key not API key! -->
+      <input
+        type="hidden"
+        name="access_key"
+        value="7605bbaa-a1a2-4db5-b531-d98ac470c246"
+      />
       <div>
         <label for="name-input">Full name</label>
         <input
@@ -26,8 +32,9 @@
         />
         <label for="email-input">Email</label>
         <input
+          required
           class="margin2"
-          type="text"
+          type="email"
           name="name"
           id="email-input"
           placeholder="Your email address"
@@ -37,23 +44,145 @@
       <div>
         <label for="message-input">Message</label>
         <textarea
+          required
           class="margin2"
           name="msg-txt"
           id="message-input"
           placeholder="I wanna chat about..."
           maxlength="512"></textarea>
       </div>
+      <div>
+        <input class="form-submit btn" type="submit" value="Send" />
+      </div>
+      <dialog id="form-popup" class="card">
+        <button
+          class="modal-close outline-btn"
+          onclick="form-popup.close()"
+          aria-label="close-modal"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="1em"
+            height="1em"
+            viewBox="0 0 24 24"
+            ><path
+              fill="none"
+              stroke="currentColor"
+              stroke-dasharray="12"
+              stroke-dashoffset="12"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 12l7 7M12 12l-7 -7M12 12l-7 7M12 12l7 -7"
+              ><animate
+                fill="freeze"
+                attributeName="stroke-dashoffset"
+                dur="0.3s"
+                values="12;0"></animate></path
+            ></svg
+          >
+        </button>
+        <div>
+          <p id="form-status"></p>
+        </div>
+      </dialog>
     </form>
   </div>
   <small>
-    <em>*</em> I don't retain any of your information nor do I sell it to any thrid
+    Note: I don't retain any of your information nor do I sell it to any thrid
     party, because that's gross.</small
   >
 </section>
 
 <style>
   #contact-form div {
-    width: 80%;
-    
+    width: 100%;
+  }
+  .input-box {
+    flex: 0 3 auto;
+  }
+  .form-submit {
+    text-align: center;
+    margin-bottom: var(--spacing3);
+    font-size: var(--fsize2);
+    width: var(--spacing7);
+    min-width: var(--spacing3);
+  }
+
+  @media (max-width: 900px) {
+    #Contact .card {
+      width: 90%;
+      margin: 0 auto;
+    }
+    #contact-form div {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 600px) {
+    #Contact {
+      padding: 1rem;
+    }
+    #Contact .card {
+      width: 100%;
+      padding: 0.5rem;
+      box-sizing: border-box;
+    }
+    #contact-form {
+      align-items: center;
+    }
+
+    .form-submit {
+      width: 80%;
+      min-width: unset;
+    }
   }
 </style>
+
+<script is:inline>
+  const form = document.getElementById("contact-form");
+  const popup = document.getElementById("form-popup");
+  const status = document.getElementById("form-status");
+
+  // This is from the Web3 forms documentation
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    popup.showModal();
+    const formData = new FormData(form);
+
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+
+    status.innerHTML = "Please wait...";
+
+    fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: json,
+    })
+      .then(async (response) => {
+        let json = await response.json();
+        if (response.status == 200) {
+          status.innerHTML = json.message;
+        } else {
+          console.log(response);
+          status.innerHTML = json.message;
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        status.innerHTML = "Something went wrong!";
+      })
+      .then(function () {
+        form.reset();
+        setTimeout(() => {
+          popup.close();
+          window.location.href = "/#Contact";
+        }, 3000);
+      });
+  });
+</script>
