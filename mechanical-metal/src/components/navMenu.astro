@@ -34,11 +34,11 @@
     display: none;
   }
 
-  #nav-tray.open {
+  #nav-tray.animated.open {
     animation: pullTray 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   }
 
-  #nav-tray:not(.open) {
+  #nav-tray.animated:not(.open) {
     animation: closeTray 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   }
 
@@ -53,9 +53,17 @@
   // Navbar Menu Expansion handling
   const menuToggle = document.getElementById("menu-btn");
   const tray = document.getElementById("nav-tray");
+  let animated = false;
 
-  // Add a class to trigger the animation
   menuToggle.addEventListener("click", () => {
+    /* 
+      This `animated` class is sort of like a predicate flag to check that the tray has been toggled befor
+      in order to prevent the tray from rendering the closing animation onLoad due to abscence of `open` class..
+    */
+    if (!animated) {
+      tray.classList.add("animated");
+      animated = true;
+    }
     tray.classList.toggle("open");
     if (tray.getAttribute("aria-hidden") == "true") {
       tray.setAttribute("aria-hidden", "false");
