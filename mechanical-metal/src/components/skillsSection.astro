@@ -19,10 +19,13 @@ const skills = await getCollection("skills");
     {skills.map((skill: any) => <SkillCard skillProps={skill} />)}
   </div>
   <div class="center">
-    <button id="skill-reset" class="outline-btn hidden" onclick="reset()"
-      >Reset</button
+    <button
+      id="skill-reset"
+      class="outline-btn hidden"
+      onclick="reset()"
+      aria-hidden="true">Reset</button
     >
-    <p id="reset-msg" class="hidden">Easy there!🫵✋🤌</p>
+    <p id="reset-msg" class="hidden" aria-hidden="true">Easy there!🫵✋🤌</p>
   </div>
   <SkillCarousel />
 </section>
@@ -39,6 +42,7 @@ const skills = await getCollection("skills");
   const unhide = (element) => {
     if (element.classList.contains("hidden")) {
       element.classList.remove("hidden");
+      element.setAttribute("aria-hidden", "false");
     }
   };
 
@@ -49,10 +53,12 @@ const skills = await getCollection("skills");
     shownSkills.forEach((element) => {
       if (!element.classList.contains("hidden")) {
         element.classList.add("hidden");
+        element.setAttribute("aria-hidden", "true");
       }
     });
     shownSkills = [];
     resetBtn.classList.add("hidden");
+    resetBtn.setAttribute("aria-hidden", "true");
   }
 
   // Attach listeners and handle carousel item clicks to make SkillCards visible
@@ -65,7 +71,10 @@ const skills = await getCollection("skills");
         unhide(newPopup);
         // If user tries to display over 8 skill cards trigger bounce animation
       } else if (shownSkills.length == 8) {
-        document.getElementById('reset-msg').classList.remove("hidden");
+        document.getElementById("reset-msg").classList.remove("hidden");
+        document
+          .getElementById("reset-msg")
+          .setAttribute("aria-hidden", "false");
         resetBtn.classList.add("bounce");
       }
       resetBtn.classList.remove("hidden");
