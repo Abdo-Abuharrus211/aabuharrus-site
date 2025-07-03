@@ -60,6 +60,7 @@ html {
 
 body {
     /* use your defined for globals for bg, font, and color */
+    min-height: 100vh;
     text-wrap: balance;
     font: var(--p);
     color: var(--text);
@@ -121,7 +122,6 @@ ul {
 img {
     width: 100%;
     border-radius: var(--spacing2);
-    /* margin: var(--spacing2); */
 }
 
 label {
@@ -140,7 +140,6 @@ textarea {
     padding: var(--spacing1);
     border: none;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    background-color: var();
 }
 
 textarea {
@@ -196,6 +195,95 @@ dialog::backdrop {
     width: var(--spacing5);
     vertical-align: middle;
 }
+
+.center {
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing4);
+    flex-wrap: wrap;
+}
+
+.flex>* {
+    flex: 1;
+    min-width: 200px;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.reverse {
+    flex-direction: row-reverse;
+}
+
+.flex-start {
+    align-items: flex-start;
+}
+
+.tag-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tag {
+    font-size: var(--fsize2);
+    margin: 0;
+    padding: var(--spacing2);
+    border: 2px solid var(--accent);
+    border-radius: var(--spacing3);
+    display: inline-block;
+}
+
+
+.top-accent-tab {
+    border-top: var(--spacing1) solid var(--accent);
+    border-top-left-radius: var(--spacing1);
+    border-top-right-radius: var(--spacing1);
+}
+
+.left-accent-tab {
+    border-left: var(--spacing1) solid var(--accent);
+    border-radius: var(--spacing1);
+}
+
+.container {
+    margin: var(--spacing3) auto;
+    padding: var(--spacing4);
+}
+
+.card {
+    background-color: var(--subbackground);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: var(--spacing1);
+
+}
+
+.url-box a {
+    margin-right: var(--spacing2);
+}
+
+
+.details-box {
+    padding: var(--spacing4);
+}
+
+.click-hover:hover {
+    cursor: pointer;
+    transform: scale(1.0625);
+    transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+}
+
 
 /* Utility Classes for quick styles during dev*/
 
@@ -256,100 +344,9 @@ dialog::backdrop {
     margin: var(--spacing7) auto;
 }
 
-.center {
-    text-align: center;
-}
-
-.hidden {
-    display: none;
-}
-
-.flex {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--spacing4);
-    flex-wrap: wrap;
-}
-
-.tag-box {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-}
-
-.tag {
-    font-size: var(--fsize2);
-    margin: 0;
-    padding: var(--spacing2);
-    border: 2px solid var(--accent);
-    border-radius: var(--spacing3);
-    display: inline-block;
-}
-
-.flex>* {
-    flex: 1;
-    min-width: 200px;
-}
-
-.column {
-    flex-direction: column;
-}
-
-.reverse {
-    flex-direction: row-reverse;
-}
-
-.flex-start {
-    align-items: flex-start;
-}
-
-.top-accent-tab {
-    border-top: var(--spacing1) solid var(--accent);
-    border-top-left-radius: var(--spacing1);
-    border-top-right-radius: var(--spacing1);
-}
-
-.left-accent-tab {
-    border-left: var(--spacing1) solid var(--accent);
-    border-radius: var(--spacing1);
-}
-
-.container {
-    margin: var(--spacing3) auto;
-    padding: var(--spacing4);
-}
-
-.card {
-    background-color: var(--subbackground);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: var(--spacing1);
-
-}
-
-.url-box a {
-    margin-right: var(--spacing2);
-}
-
-
-.details-box {
-    padding: var(--spacing4);
-}
-
-.click-hover:hover {
-    cursor: pointer;
-    transform: scale(1.0625);
-    transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: transform;
-}
-
-
-
-
 /* Svelte Components */
 
 /* Project Modal styles coppied here cuz of Tree shakedown*/
-/* Overlay for the Modal*/
 .modal-overlay {
     position: fixed;
     inset: 0;
@@ -497,35 +494,36 @@ dialog::backdrop {
         width: 100%;
     }
 
-    @media (max-width: 640px) {
-        .flex {
-            flex-direction: column;
-            align-items: center;
-        }
+}
 
-
-        /* Project Modal  styles */
-        .modal-content {
-            max-width: 98vw;
-            max-height: 98vh;
-            padding: var(--spacing2);
-            border-radius: var(--spacing1);
-        }
-
-        .modal-close {
-            top: 0.5rem;
-            right: 0.5rem;
-            font-size: var(--fsize2);
-        }
-
-        .proj-carousel {
-            flex-direction: column;
-            gap: var(--spacing2);
-        }
-
-        .proj-thumbnail {
-            width: 100%;
-        }
-
+@media (max-width: 640px) {
+    .flex {
+        flex-direction: column;
+        align-items: center;
     }
+
+
+    /* Project Modal  styles */
+    .modal-content {
+        max-width: 98vw;
+        max-height: 98vh;
+        padding: var(--spacing2);
+        border-radius: var(--spacing1);
+    }
+
+    .modal-close {
+        top: 0.5rem;
+        right: 0.5rem;
+        font-size: var(--fsize2);
+    }
+
+    .proj-carousel {
+        flex-direction: column;
+        gap: var(--spacing2);
+    }
+
+    .proj-thumbnail {
+        width: 100%;
+    }
+
 }
