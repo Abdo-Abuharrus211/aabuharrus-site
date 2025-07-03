@@ -2,8 +2,7 @@
 
 ---
 
-<!-- TODO: Refactor this mess and build out tray -->
-<nav id="nav-tray">
+<nav id="nav-tray" class="hidden" aria-hidden="true">
   <div class="flex padding2">
     <h3>
       <a href="#Bio">Bio</a>
@@ -43,6 +42,12 @@
     animation: closeTray 0.4s cubic-bezier(0.4, 0, 0.2, 1) backwards;
     top: -200px;
   }
+
+  @media (max-width: 900px) {
+    #nav-tray {
+      display: block;
+    }
+  }
 </style>
 
 <script is:inline>
@@ -53,5 +58,10 @@
   // Add a class to trigger the animation
   menuToggle.addEventListener("click", () => {
     tray.classList.toggle("open");
+    if (tray.getAttribute("aria-hidden") == "true") {
+      tray.setAttribute("aria-hidden", "false");
+    } else {
+      tray.setAttribute("aria-hidden", "true");
+    }
   });
 </script>
