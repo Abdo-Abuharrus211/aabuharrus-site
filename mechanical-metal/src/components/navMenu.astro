@@ -2,7 +2,7 @@
 
 ---
 
-<nav id="nav-tray" class="hidden" aria-hidden="true">
+<nav id="nav-tray" aria-hidden="true">
   <div class="flex padding2">
     <h3>
       <a href="#Bio">Bio</a>
@@ -21,7 +21,7 @@
     height: 20vh;
     width: 100%;
     position: fixed;
-    top: -200px;
+    top: -230px;
     padding-bottom: var(--spacing2);
     background: rgba(20, 20, 20, 0.7);
     backdrop-filter: blur(8px);
@@ -31,16 +31,15 @@
       0px 4px 4px hsla(0, 0%, 3%, 0.8),
       0px 12px 12px hsla(0, 0%, 1%, 0.4);
     transition: top 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: none;
   }
 
   #nav-tray.open {
     animation: pullTray 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    top: 100px;
   }
 
   #nav-tray:not(.open) {
-    animation: closeTray 0.4s cubic-bezier(0.4, 0, 0.2, 1) backwards;
-    top: -200px;
+    animation: closeTray 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   }
 
   @media (max-width: 900px) {
