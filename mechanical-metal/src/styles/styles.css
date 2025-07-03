@@ -448,13 +448,13 @@ dialog::backdrop {
     }
 
     to {
-        top: 80px;
+        top: 70px;
     }
 }
 
 @keyframes closeTray {
     from {
-        top: 80px;
+        top: 70px;
     }
 
     to {
