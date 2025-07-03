@@ -17,9 +17,9 @@
   class="card left-accent-tab proj-card click-hover"
   onclick={showProject}
 >
-  <h2>// {projectProps.data.name}</h2>
+  <h2>{projectProps.data.name}</h2>
   <img
-    class="margin3 proj-thumbnail"
+    class="margin2 proj-thumbnail"
     src={projectProps.data.images[0]}
     alt="{projectProps.data.name} image"
   />
@@ -34,6 +34,7 @@
     align-items: flex-start;
     gap: 1rem;
     padding: var(--spacing3);
+    flex: 1 1 40%;
   }
 
   .proj-thumbnail {
@@ -41,10 +42,11 @@
     border-radius: var(--spacing1);
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 900px) {
     .proj-card {
       width: 100%;
       margin: 0.5rem 0;
+      flex: 1 1 auto;
     }
     .proj-thumbnail {
       height: 140px;
