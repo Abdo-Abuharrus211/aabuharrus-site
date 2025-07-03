@@ -1,7 +1,7 @@
 ---
 import Navbar from "../components/navbar.astro";
 import Footer from "../components/footer.astro";
-
+import NavMenu from "../components/navMenu.astro"
 import "../styles/styles.css";
 
 const { layoutProps } = Astro.props;
@@ -16,6 +16,7 @@ const { layoutProps } = Astro.props;
   </head>
   <body>
     <Navbar />
+    <NavMenu />
     <slot />
     <Footer />
   </body>
