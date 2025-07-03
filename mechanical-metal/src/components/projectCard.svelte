@@ -50,4 +50,14 @@
       height: 140px;
     }
   }
+
+  @media (max-width: 1007px) {
+    .proj-card {
+      width: 100%;
+    }
+    .proj-thumbnail {
+      height: auto;
+      width: 100%;
+    }
+  }
 </style>
