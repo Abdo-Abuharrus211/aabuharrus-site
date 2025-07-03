@@ -442,6 +442,28 @@ dialog::backdrop {
 
 }
 
+@keyframes pullTray {
+    from {
+        top: -230px;
+    }
+
+    to {
+        top: 80px;
+    }
+}
+
+@keyframes closeTray {
+    from {
+        top: 80px;
+    }
+
+    to {
+        top: -230px;
+    }
+
+}
+
+
 /* Responsiveness */
 
 
