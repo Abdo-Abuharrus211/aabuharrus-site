@@ -381,12 +381,15 @@ dialog::backdrop {
 }
 
 .carousel-btn {
+    margin: 0 var(--spacing1);
     color: var(--text);
     cursor: pointer;
     padding: 0 var(--spacing2);
 }
 
 .proj-thumbnail {
+    display: block;
+    margin: var(--spacing2) auto;
     object-fit: cover;
     border-radius: var(--spacing1);
     width: 80%;

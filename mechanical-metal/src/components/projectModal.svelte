@@ -104,6 +104,11 @@
       </div>
 
       {#if 1 < images.length}
+        <img
+          class="proj-thumbnail"
+          src={images[current]}
+          alt="{projectProps.data.name} image"
+        />
         <div class="proj-carousel center">
           <button
             class="carousel-btn left"
@@ -126,11 +131,6 @@
               /></svg
             >
           </button>
-          <img
-            class="proj-thumbnail"
-            src={images[current]}
-            alt="{projectProps.data.name} image"
-          />
           <button
             class="carousel-btn right"
             onclick={next}
