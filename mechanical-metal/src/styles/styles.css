@@ -20,8 +20,8 @@
 .light {
     --text: hsl(80, 22%, 8%);
     --subtext: hsl(80, 22%, 60%);
-    --background: hsl(83, 27%, 94%);
-    --subbackground: hsl(83, 27%, 90%);
+    --background: hsl(83, 27%, 90%);
+    --subbackground: hsl(83, 27%, 94%);
     --primary: hsl(80, 28%, 29%);
     --secondary: hsl(80, 29%, 70%);
     --accent: hsl(80, 33%, 41%);
