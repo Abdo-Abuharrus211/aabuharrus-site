@@ -40,7 +40,7 @@ import bannerImage from "../images/silver-dunes.webp";
     overflow: hidden;
   }
   .greeting {
-    font-size: 10rem;
+    font-size: clamp(2.5rem, 8vw, 10rem);
     font-weight: 400;
   }
 
@@ -63,9 +63,9 @@ import bannerImage from "../images/silver-dunes.webp";
   }
 
   .banner-img {
+    width: clamp(60%, 40vw, 100%);
+    height: auto;
     align-self: flex-start;
-    height: 100%;
-    width: 120%;
   }
 
   @media (max-width: 900px) {
