@@ -7,7 +7,7 @@ const { projectProps } = Astro.props;
   <img
     class="margin3 proj-thumbnail"
     src={projectProps.data.imagePath}
-    alt={`${projectProps.data.name} image`}
+    alt={`${projectProps.data.name}`}
   />
   <div class="tag-box">
     {projectProps.data.tags.map((tag: string) => <p class="tag">{tag}</p>)}
@@ -50,7 +50,7 @@ const { projectProps } = Astro.props;
 </style>
 
 <script is:inline>
-  // TODO: set this up, use Svelte if needed!
+  // Set this up, use Svelte if needed!
   const card = document
     .getElementById()
     .addEventListener("click", showProject());

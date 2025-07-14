@@ -20,8 +20,8 @@
 .light {
     --text: hsl(80, 22%, 8%);
     --subtext: hsl(80, 22%, 60%);
-    --background: hsl(83, 27%, 94%);
-    --subbackground: hsl(83, 27%, 90%);
+    --background: hsl(83, 27%, 90%);
+    --subbackground: hsl(83, 27%, 94%);
     --primary: hsl(80, 28%, 29%);
     --secondary: hsl(80, 29%, 70%);
     --accent: hsl(80, 33%, 41%);
@@ -192,6 +192,7 @@ dialog::backdrop {
 }
 
 .icon {
+    margin-left: var(--spacing3);
     width: var(--spacing5);
     vertical-align: middle;
 }
@@ -381,12 +382,15 @@ dialog::backdrop {
 }
 
 .carousel-btn {
+    margin: 0 var(--spacing1);
     color: var(--text);
     cursor: pointer;
     padding: 0 var(--spacing2);
 }
 
 .proj-thumbnail {
+    display: block;
+    margin: var(--spacing2) auto;
     object-fit: cover;
     border-radius: var(--spacing1);
     width: 80%;

@@ -1,0 +1,29 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "../layouts/baseLayout.astro";
+import NotFoundPic from "../images/404.jpg";
+const layoutProps = {
+  title: "Error 404",
+};
+---
+
+<BaseLayout {layoutProps}>
+  <section>
+    <div class="container card">
+      <div class="flex">
+        <div>
+          <h1>There's nothing for ya here</h1>
+          <h3>Not sure, what you were expecting...</h3>
+        </div>
+        <Image class:list={"not-found-img"} src={NotFoundPic} alt="Not Found" />
+      </div>
+      <button onclick="window.location.href='/'">Back</button>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found-img {
+    flex: 1 1 auto;
+  }
+</style>

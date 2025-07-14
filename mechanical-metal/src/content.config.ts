@@ -1,10 +1,7 @@
 // This file is used to define the data collections and schemas.
 // For more about this check out https://docs.astro.build/en/guides/content-collections/
 
-// 1. Import utilities from `astro:content`
 import { defineCollection, z } from 'astro:content';
-// import "./data"
-// 2. Import loader(s)
 import { file } from 'astro/loaders';
 
 /* Using the `file` loader since most of the data will live in a single JSON file.
@@ -15,7 +12,6 @@ import { file } from 'astro/loaders';
 const projects = defineCollection({
     loader: file("src/data/projects.json"),
     schema: z.object({
-        // TODO: define the schemas
         name: z.string(),
         images: z.array(z.string()),
         date: z.string(),
