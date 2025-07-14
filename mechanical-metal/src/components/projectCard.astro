@@ -7,7 +7,7 @@ const { projectProps } = Astro.props;
   <img
     class="margin3 proj-thumbnail"
     src={projectProps.data.imagePath}
-    alt={`${projectProps.data.name} image`}
+    alt={`${projectProps.data.name}`}
   />
   <div class="tag-box">
     {projectProps.data.tags.map((tag: string) => <p class="tag">{tag}</p>)}
