@@ -58,6 +58,10 @@ const skillsCollection = await getCollection("skills");
     /* For smoother animation */
     will-change: transform;
   }
+
+  .track:hover {
+    animation-play-state: paused;
+  }
   .carousel-item {
     flex: 0 0 auto;
     display: flex;
