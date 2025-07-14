@@ -14,7 +14,9 @@ const skills = await getCollection("skills");
   <h1>Skills</h1>
   <p>I've experience with several languages,frameworks, and dev tools.</p>
   <!-- TODO: route to resume! -->
-  <button>Resume</button>
+  <a class="btn" target="_blank" href="./public/Abdulqadir_Abuharrus_Resume.pdf"
+    >Resume</a
+  >
   <div class="flex">
     {skills.map((skill: any) => <SkillCard skillProps={skill} />)}
   </div>
