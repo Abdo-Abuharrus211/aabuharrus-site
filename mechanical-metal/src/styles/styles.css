@@ -192,6 +192,7 @@ dialog::backdrop {
 }
 
 .icon {
+    margin-left: var(--spacing3);
     width: var(--spacing5);
     vertical-align: middle;
 }
