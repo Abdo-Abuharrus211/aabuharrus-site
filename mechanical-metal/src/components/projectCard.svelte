@@ -17,7 +17,7 @@
   class="card left-accent-tab proj-card click-hover"
   onclick={showProject}
 >
-  <h2>// {projectProps.data.name}</h2>
+  <h2>{projectProps.data.name}</h2>
   <img
     class="margin3 proj-thumbnail"
     src={projectProps.data.images[0]}
