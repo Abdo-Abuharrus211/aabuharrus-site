@@ -109,7 +109,7 @@
         <img
           class="proj-thumbnail"
           src={images[current]}
-          alt="{projectProps.data.name} image"
+          alt="{projectProps.data.name}"
         />
         <div class="proj-carousel center">
           <button
@@ -165,7 +165,7 @@
           <img
             class="proj-thumbnail"
             src={projectProps.data.images[0]}
-            alt={`${projectProps.data.name} image`}
+            alt={`${projectProps.data.name}`}
           />
         </div>
       {/if}

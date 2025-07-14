@@ -21,7 +21,7 @@
   <img
     class="margin3 proj-thumbnail"
     src={projectProps.data.images[0]}
-    alt="{projectProps.data.name} image"
+    alt="{projectProps.data.name}"
   />
 </div>
 
