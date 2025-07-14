@@ -2,6 +2,8 @@
   import { createEventDispatcher } from "svelte";
   let { projectProps } = $props();
 
+  const projText = projectProps.data.text;
+
   let current = $state(0);
   const images = projectProps.data.images;
 
@@ -64,7 +66,7 @@
     </button>
     <div class="details-box">
       <h2>{projectProps.data.name}</h2>
-      <p>{projectProps.data.text}</p>
+      <p id="proj-text">{@html projText}</p>
       <div class="url-box padding2">
         {#if projectProps.data.link !== ""}
           <a

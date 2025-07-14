@@ -6,7 +6,7 @@
             "/images/projects/ecometer2.png"
         ],
         "date": "2025-02-17",
-        "text": "Ecometer is a Ruby on Rails app that helps restaurant goers make well-informed and conscious decisions. It was initially developed by a team of volunteers (listed on the site) but was transferred to Enactus BCIT for stewardship and development.\nAs Lead Developer, I led the restoration of the app and its deprecated stack, recruited talented CST students to contribute to the project, implemented analytics, and more.",
+        "text": "Ecometer is a Ruby on Rails app that helps restaurant goers make well-informed and conscious decisions. It was initially developed by a team of volunteers (listed on the site) but was transferred to Enactus BCIT for stewardship and development.<br>As Lead Developer, I led the restoration of the app and its deprecated stack, recruited talented CST students to contribute to the project, implemented analytics, and more.",
         "keyPoints": [
             "Updated Rails stack.",
             "Recruited four volunteer developers.",
@@ -34,7 +34,7 @@
             "/images/projects/clickclack2.png"
         ],
         "date": "2025-04-08",
-        "text": "My friends and I wanted to explore Next.js, we wanted to build something fun. ClickClack was born.\n This typing-test prompts the user to select a difficulty and type in a theme, it then generates a text for the user to type before the time runs out!",
+        "text": "My friends and I wanted to explore Next.js, we wanted to build something fun. ClickClack was born.<br>This typing-test prompts the user to select a difficulty and type in a theme, it then generates a text for the user to type before the time runs out!",
         "keyPoints": [
             "Pick a difficulty and theme.",
             "Google's Gemini generates the text.",
@@ -59,7 +59,7 @@
             "/images/projects/project-vitalis.png"
         ],
         "date": "2025-03-22",
-        "text": "I built Project Vitalis as a learning experience, to explore Go's multithreading while building something I needed.\nOne thread monitors PC components, while the other renders the Temrinal UI.",
+        "text": "I built Project Vitalis as a learning experience, to explore Go's multithreading while building something I needed.<br>One thread monitors PC components, while the other renders the Temrinal UI.",
         "keyPoints": [
             "TUI made in Bubblegum and its Lipgloss library",
             "I still use it!",
@@ -83,7 +83,7 @@
             "/images/projects/audioreaper2.png"
         ],
         "date": "2024-8-15",
-        "text": "AudioReaper is a simple Web app that makes adding the songs in your PC's library to your Spotify easy.\n It reads MP3 and WAV files' metadata and filename and searches for the songs on Spotify.\n Users are required to authorize access to their account to specify a playlist or create a new one, but NO data is collected nor stored. Zero strings attached!",
+        "text": "AudioReaper is a simple Web app that makes adding the songs in your PC's library to your Spotify easy.<br> It reads MP3 and WAV files' metadata and filename and searches for the songs on Spotify.<br> Users are required to authorize access to their account to specify a playlist or create a new one, but NO data is collected nor stored. Zero strings attached!",
         "keyPoints": [
             "Flask backend handles all data processing and API querries.",
             "Simple \"vanilla\" JavaScript frontend.",
@@ -109,7 +109,7 @@
             "/images/projects/NaqaMD.png"
         ],
         "date": "2024-11-18",
-        "text": "Quick and powerful Markdown to HTML converter written in OCaml. This was the first Functional Programming language at BCIT, and I made this to get a solid understanding of its pattern matching and functional nature.\nOCaml made Recursion click for me!",
+        "text": "Quick and powerful Markdown to HTML converter written in OCaml. This was the first Functional Programming language at BCIT, and I made this to get a solid understanding of its pattern matching and functional nature.<br>OCaml made Recursion click for me!",
         "keyPoints": [
             "Not the most polished converter out there, this was a learning experience.",
             "It did its job and I used it several times since.",
@@ -132,7 +132,7 @@
             "/images/projects/project-shrubgarden.png"
         ],
         "date": "22",
-        "text": "I write a lot in my Obsidian vault. Covering a variety of topics including Computer Scienct and Software, book summaries, to project planning. Some of what I write reads like a blog, so why not share it?\n That's precisely the plan!",
+        "text": "I write a lot in my Obsidian vault. Covering a variety of topics including Computer Scienct and Software, book summaries, to project planning. Some of what I write reads like a blog, so why not share it?<br> That's precisely the plan!",
         "keyPoints": [
             "Using an SSG like Hugo, Jykell, or Zola(Rust based btw).",
             "Share relevant ideas and topics.",
