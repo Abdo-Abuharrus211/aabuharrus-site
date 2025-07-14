@@ -3,9 +3,6 @@ import Image from "astro/components/Image.astro";
 import heroBanner from "../images/josefin-hnqJlzt6R9c-unsplash.jpg";
 ---
 
-<!-- 
-  TODO: adjust responsiveness for 19201080, medium and small screens.
- -->
 <div id="Home">
   <div class="banner-box">
     <div class="flex column">
@@ -15,8 +12,10 @@ import heroBanner from "../images/josefin-hnqJlzt6R9c-unsplash.jpg";
     <h2 class="banner-text">I'm Abdu, a Software Developer</h2>
     <div class="center margin5">
       <!-- TODO: make this smoothly scroll down to first section -->
-      <button style="font-size: var(--spacing4);" class="outline-btn"
-      onclick="document.getElementById('Bio')?.scrollIntoView({ behavior: 'smooth' });"
+      <button
+        style="font-size: var(--spacing4);"
+        class="outline-btn"
+        onclick="document.getElementById('Bio')?.scrollIntoView({ behavior: 'smooth' });"
         >Check out my stuff</button
       >
     </div>
