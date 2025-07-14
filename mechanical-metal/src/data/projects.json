@@ -1,23 +1,29 @@
 [
     {
         "id": 0,
-        "name": "Project Zulu",
+        "name": "Ecometer",
         "images": [
-            "https://images.unsplash.com/photo-1741806914386-c60073a0fed3?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            "/images/projects/ecometer2.png"
         ],
         "date": "2025-02-17",
-        "text": " White sand stretches endlessly, shimmering under the warm sun. Its fine grains feel cool and soft beneath your feet. Gentle breezes carry the scent of salt and sea. The tranquil beauty invites peaceful reflection and relaxation.",
+        "text": "Ecometer is a Ruby on Rails app that helps restaurant goers make well-informed and conscious decisions. It was initially developed by a team of volunteers (listed on the site) but was transferred to Enactus BCIT for stewardship and development.\nAs Lead Developer, I led the restoration of the app and its deprecated stack, recruited talented CST students to contribute to the project, implemented analytics, and more.",
         "keyPoints": [
-            "Saved all BIOdiversity EVERYWHERE!"
+            "Updated Rails stack.",
+            "Recruited four volunteer developers.",
+            "Maintained the Heroku pipeline.",
+            "Communicated the app and data's state to leadership to draw plans for future development.",
+            "Removed reliance on \"tribal\" knowledge by writing the missing documentaion."
         ],
-        "status": "In Progress",
-        "link": "https://github.com/Abdo-Abuharrus211",
-        "github": "https://github.com/Abdo-Abuharrus211",
+        "status": "Completed",
+        "link": "https://www.eco-meter.ca/",
+        "github": "",
         "tags": [
-            "environmental",
-            "Machine Learning",
+            "Ruby on Rails",
+            "Heroku",
+            "Environmental",
             "Positive Impact",
-            "#BuildInPublic"
+            "Volunteer",
+            "Enactus BCIT"
         ]
     },
     {
