@@ -186,7 +186,7 @@
       <!-- If ya need to add more details in the future,here -->
       <ul class="margin3">
         {#each projectProps.data.keyPoints as point}
-          <li>{point}</li>
+          <li>{@html point}</li>
         {/each}
       </ul>
       <div class="flex">
