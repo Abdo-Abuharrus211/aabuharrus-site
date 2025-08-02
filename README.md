@@ -14,7 +14,7 @@ Later on, I'll likely resort to framework like Next.js or Svelte (Sveltekit) whe
 - [X] Build the Bio.
 - [X] Build the Skills conveyor belt.
 - [X] Build the Projects gallery.
-- [ ] Build Interests and Experiences.
+- [ ] Build Interests and Hobbies page/section.
 - [X] Build the base layout.
 - [X] Build the contact form or section in footer...etc.
 - [X] Design data schemas and store data.
@@ -23,7 +23,7 @@ Later on, I'll likely resort to framework like Next.js or Svelte (Sveltekit) whe
 - [X] Adjust CSS styles for responsiveness on small and medium screens.
 - [X] Add some dynamic spice y'know?
 - [ ] Design logo.
-- [ ] Write the `robots.txt` file
+- [X] Write the `robots.txt` file
 - [ ] 
 
 
