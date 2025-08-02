@@ -131,20 +131,23 @@
         "images": [
             "/images/projects/project-shrubgarden.png"
         ],
-        "date": "22",
-        "text": "I write a lot in my Obsidian vault. Covering a variety of topics including Computer Scienct and Software, book summaries, to project planning. Some of what I write reads like a blog, so why not share it?<br> That's precisely the plan!",
+        "date": "2025-08-02",
+        "text": "I write a lot in my Obsidian vault. Covering a variety of topics including Computer Science and Software, book summaries, project planning, hobbies...etc.<br>Some of what I write reads like a blog, so why not share it? I researched Static Site Generators like Hugo, Zola...etc, and began designing a workflow to make the process as frictionless as possible.",
         "keyPoints": [
-            "Using an SSG like Hugo, Jykell, or Zola(Rust based btw).",
+            "Used an SSG called Quartz which supports many of Obsidian's awesome features.",
             "Share relevant ideas and topics.",
+            "Wrote a Rust program (<span><a href=\"https://github.com/Abdo-Abuharrus211/coopy\">Project Coopy</a></span>) to scan my main vault and check which files are cleared to sync to the blog.",
             "My own little digital garden on the web."
         ],
-        "status": "Planning",
-        "link": "",
+        "status": "Completed",
+        "link": "https://garden.aabuharrus.dev/",
         "github": "",
         "tags": [
             "Obsidian",
+            "Quartz",
             "SSG",
             "MD-to-HTML",
+            "Rust",
             "Blog"
         ]
     }
