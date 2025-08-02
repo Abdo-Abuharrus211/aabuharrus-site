@@ -160,11 +160,16 @@ button {
     cursor: pointer;
 }
 
-.btn:hover,
-button:hover {
-    scale: 1.115;
-    box-shadow: 0 var(--spacing1) var(--spacing2) var(--accent);
+
+@media (hover: hover) {
+
+    .btn:hover,
+    button:hover {
+        scale: 1.115;
+        box-shadow: 0 var(--spacing1) var(--spacing2) var(--accent);
+    }
 }
+
 
 .outline-btn {
     color: var(--text);
