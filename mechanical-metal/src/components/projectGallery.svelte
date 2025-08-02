@@ -3,6 +3,9 @@
   import ProjectModal from "./projectModal.svelte";
 
   let { projects } = $props();
+  projects.sort(
+    (a: any, b: any) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
+  );
   // State to track the modal
   let showModal = $state(false);
   let selectedProject: any = $state(null);
