@@ -11,17 +11,17 @@ Later on, I'll likely resort to framework like Next.js or Svelte (Sveltekit) whe
 
 ## To-do
 - [X] Build Welcome Banner.
-- [ ] Build the Bio.
-- [ ] Build the Skills conveyor belt.
-- [ ] Build the Projects gallery.
+- [X] Build the Bio.
+- [X] Build the Skills conveyor belt.
+- [X] Build the Projects gallery.
 - [ ] Build Interests and Experiences.
 - [X] Build the base layout.
-- [ ] Build the contact form or section in footer...etc.
-- [ ] Design data schemas and store data.
-- [ ] Dynamically render data using components and layouts.
-- [ ] Combine all layouts and components together.
-- [ ] Adjust CSS styles for responsiveness on small and medium screens.
-- [ ] Add some dynamic spice y'know?
+- [X] Build the contact form or section in footer...etc.
+- [X] Design data schemas and store data.
+- [X] Dynamically render data using components and layouts.
+- [X] Combine all layouts and components together.
+- [X] Adjust CSS styles for responsiveness on small and medium screens.
+- [X] Add some dynamic spice y'know?
 - [ ] Design logo.
 - [ ] Write the `robots.txt` file
 - [ ] 
