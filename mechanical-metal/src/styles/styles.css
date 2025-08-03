@@ -196,6 +196,11 @@ dialog::backdrop {
     backdrop-filter: blur(2px);
 }
 
+.big-text {
+    font-size: var(--fsize3);
+    font-weight: 400;
+}
+
 .icon {
     margin-left: var(--spacing3);
     width: var(--spacing5);
@@ -249,7 +254,6 @@ dialog::backdrop {
     border-radius: var(--spacing3);
     display: inline-block;
 }
-
 
 .top-accent-tab {
     border-top: var(--spacing1) solid var(--accent);
@@ -448,7 +452,6 @@ dialog::backdrop {
     100% {
         transform: scale(1.2);
     }
-
 }
 
 @keyframes pullTray {
