@@ -31,7 +31,7 @@
 :root {
     /* ff and ff2 fonts */
     --ff1: "Noto Sans", sans-serif;
-    --ff2: "Oswald", sans-serif;
+    --ff2: "Archivo", sans-serif;
     /* font sizes */
     --fsize1: 1rem;
     --fsize2: 1.125rem;
@@ -48,7 +48,7 @@
     --spacing7: 160px;
     --spacing8: 320px;
     /* fonts in typography file */
-    --h1: 600 3rem/1.2em var(--ff1);
+    --h1: 600 3rem/1.2em var(--ff2);
     --h2: 600 2rem/1.2em var(--ff2);
     --p: 1rem/1.5em var(--ff1);
 }
