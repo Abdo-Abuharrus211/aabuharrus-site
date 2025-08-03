@@ -197,7 +197,7 @@ dialog::backdrop {
 }
 
 .big-text {
-    font-size: var(--fsize3);
+    font-size: var(--fsize4);
     font-weight: 400;
 }
 
