@@ -4,7 +4,6 @@
 
 <!-- TODO:
     1. reCaptcha check to min spam 
-    2. Send to my inbox
     3. Send confirmation to user for better UX
     4. Text validation for email addresses
     5. PArse and validate the inputs 
@@ -152,11 +151,15 @@
     const formData = new FormData(form);
 
     const object = Object.fromEntries(formData);
+    const validEmail = () =>{
+      const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return regex.test(formData.get("email"));
+
+    }
     const json = JSON.stringify(object);
 
-
     status.innerHTML = "Please wait...";
-
+    if (validEmail()) {
     fetch("https://api.web3forms.com/submit", {
       method: "POST",
       headers: {
@@ -168,6 +171,7 @@
       .then(async (response) => {
         let json = await response.json();
         if (response.status == 200) {
+          popup.classList.add("success");
           status.innerHTML = json.message;
         } else {
           console.log(response);
@@ -176,6 +180,7 @@
       })
       .catch((error) => {
         console.log(error);
+        popup.classList.add("error");
         status.innerHTML = "Something went wrong!";
       })
       .then(function () {
@@ -185,5 +190,9 @@
           window.location.href = "/#Contact";
         }, 3000);
       });
+    } else {
+      document.getElementById("email-input").style.border = "2px solid var(--errorRed)";
+    }
   });
+  
 </script>

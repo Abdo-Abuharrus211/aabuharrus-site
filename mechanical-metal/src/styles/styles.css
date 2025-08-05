@@ -51,6 +51,9 @@
     --h1: 600 3rem/1.2em var(--ff2);
     --h2: 600 2rem/1.2em var(--ff2);
     --p: 1rem/1.5em var(--ff1);
+
+    --successGreen: hsl(120, 48%, 67%);
+    --errorRed: hsl(6, 59%, 55%);
 }
 
 /* HTML global styles */
@@ -275,7 +278,16 @@ dialog::backdrop {
     background-color: var(--subbackground);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: var(--spacing1);
+}
 
+.card.success {
+    background-color: var(--successGreen) !important;
+    color: var(--text);
+}
+
+.card.error {
+    background-color: var(--errorRed) !important;
+    color: var(--text);
 }
 
 .url-box a {
