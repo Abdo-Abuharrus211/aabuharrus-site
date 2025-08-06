@@ -27,14 +27,14 @@
 
 <style>
   .proj-card {
-    width: 30%;
+    width: 40%;
     height: fit-content;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
     padding: var(--spacing3);
-    flex: 0 1 40%;
+    flex: 0 1 45%;
   }
 
   .proj-thumbnail {
