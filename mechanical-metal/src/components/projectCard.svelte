@@ -34,7 +34,7 @@
     align-items: flex-start;
     gap: 1rem;
     padding: var(--spacing3);
-    flex: 1 1 40%;
+    flex: 0 1 40%;
   }
 
   .proj-thumbnail {
