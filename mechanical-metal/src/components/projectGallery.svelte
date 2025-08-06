@@ -40,7 +40,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
-    justify-content: center;
+    justify-content: space-between;
     align-items: flex-start;
   }
 </style>
