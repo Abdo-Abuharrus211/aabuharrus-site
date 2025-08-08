@@ -16,11 +16,7 @@ const skills = await getCollection("skills");
     {skills.map((skill: any) => <SkillCard skillProps={skill} />)}
   </div>
   <div class="center">
-    <button
-      id="skill-reset"
-      class="outline-btn hidden"
-      onclick="reset()"
-      aria-hidden="true">Reset</button
+    <button id="skill-reset" class="outline-btn hidden" aria-hidden="true">Reset</button
     >
     <p id="reset-msg" class="hidden" aria-hidden="true">Easy there!🫵✋🤌</p>
   </div>
