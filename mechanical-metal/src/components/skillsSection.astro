@@ -58,30 +58,47 @@ const skills = await getCollection("skills");
         }
       });
       shownSkills = [];
-      resetBtn.classList.add("hidden");
-      resetBtn.setAttribute("aria-hidden", "true");
-      resetMsg.classList.add("hidden");
-      resetMsg.setAttribute("aria-hidden", "true");
+      if (resetBtn) {
+        resetBtn.classList.remove("bounce");
+        resetBtn.classList.add("hidden");
+        resetBtn.setAttribute("aria-hidden", "true");
+      }
+      if (resetMsg) {
+        resetMsg.classList.add("hidden");
+        resetMsg.setAttribute("aria-hidden", "true");
+      }
       document
         .getElementById("Skills")
         .scrollIntoView({ behavior: "smooth", block: "start" });
     }
 
+    const skillCards = document.querySelectorAll('[id^="skill-"]');
+    const totalSkills = skillCards.length;
+
     // Attach listeners and handle carousel item clicks to make SkillCards visible
     document.querySelectorAll(".carousel-item").forEach((item) => {
       item.addEventListener("click", (e) => {
         const idx = parseInt(item.getAttribute("data-index"));
-        const newPopup = document.getElementById(`skill-${idx}`);
-        if (!shownSkills.includes(newPopup) && shownSkills.length < 8) {
+        if (isNaN(idx) || idx < 0) return;
+
+        // Using modulo here because there are duplicates in the carousel due to it "looping"
+        const skillIndex = idx % totalSkills;
+        const newPopup = document.getElementById(`skill-${skillIndex}`);
+
+        if (newPopup && !shownSkills.includes(newPopup) && shownSkills.length < 8) {
           shownSkills.push(newPopup);
           unhide(newPopup);
-          // If user tries to display over 8 skill cards trigger bounce animation
-        } else if (shownSkills.length == 8) {
-          resetMsg.classList.remove("hidden");
-          resetMsg.setAttribute("aria-hidden", "false");
-          resetBtn.classList.add("bounce");
+        } else if (shownSkills.length >= 8) {
+          if (resetMsg) {
+            resetMsg.classList.remove("hidden");
+            resetMsg.setAttribute("aria-hidden", "false");
+          }
+          if (resetBtn) resetBtn.classList.add("bounce");
         }
-        resetBtn.classList.remove("hidden");
+        if (resetBtn && shownSkills.length > 0) {
+          resetBtn.classList.remove("hidden");
+          resetBtn.setAttribute("aria-hidden", "false");
+        }
       });
     });
   });
