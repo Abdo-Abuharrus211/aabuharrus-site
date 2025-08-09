@@ -54,6 +54,7 @@
 
     --successGreen: hsl(120, 48%, 67%);
     --errorRed: hsl(6, 59%, 55%);
+    --focus: 2px solid lightblue;
 }
 
 /* HTML global styles */
@@ -164,6 +165,7 @@ button {
 }
 
 
+
 @media (hover: hover) {
 
     .btn:hover,
@@ -180,6 +182,11 @@ button {
     border: 2px solid var(--primary);
 }
 
+*:focus,
+button:focus,
+anchor:focus {
+    outline: var(--focus);
+}
 
 dialog {
     position: fixed;
