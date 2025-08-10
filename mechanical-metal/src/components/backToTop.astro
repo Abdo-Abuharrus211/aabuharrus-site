@@ -1,0 +1,68 @@
+---
+
+---
+
+<a id="to-top-btn" class="btn hidden" href="#Home"> Back to Top </a>
+
+<script>
+    // Show/hide button when scrolling past #Home
+    window.addEventListener("DOMContentLoaded", () => {
+        const topBtn = document.getElementById("to-top-btn");
+        const homeSection = document.getElementById("Home");
+
+        function toggleButton() {
+            if (!homeSection || !topBtn) return;
+
+            const rect = homeSection.getBoundingClientRect();
+            if (rect.bottom < 0) {
+                topBtn.classList.remove("hidden");
+            } else {
+                topBtn.classList.add("hidden");
+            }
+        }
+
+        window.addEventListener("scroll", toggleButton);
+        toggleButton(); // Initial check
+    });
+</script>
+
+<style>
+    #to-top-btn {
+        position: sticky;
+        top: 10%;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1000;
+        transition:
+            opacity 0.3s ease,
+            visibility 0.3s ease;
+        white-space: nowrap;
+        opacity: 0.8;
+    }
+
+    #to-top-btn:hover{
+        opacity: 1;
+    }
+
+    /* #top-button.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    } */
+
+    /* Ensure button is visible when not hidden
+    #top-button:not(.hidden) {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    } */
+
+    /* Responsive adjustments */
+    @media (max-width: 640px) {
+        #top-button {
+            top: 15%;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+        }
+    }
+</style>

@@ -5,6 +5,7 @@ import ProjectsSection from "../components/projectsSection.astro";
 import SkillsSection from "../components/skillsSection.astro";
 import BaseLayout from "../layouts/baseLayout.astro";
 import ContactForm from "../components/contactForm.astro";
+import BackToTop from "../components/backToTop.astro";
 
 const layoutProps = {
   title: "aabuharrus",
@@ -16,9 +17,10 @@ const layoutProps = {
     <HomeBanner />
   </header>
   <main>
+    <BackToTop />
     <Bio />
     <ProjectsSection />
     <SkillsSection />
   </main>
-   <ContactForm />
+  <ContactForm />
 </BaseLayout>
