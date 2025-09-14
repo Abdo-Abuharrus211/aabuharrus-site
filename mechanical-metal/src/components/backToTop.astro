@@ -12,34 +12,28 @@ const icon =
     var scrollPosition = 0;
     const topBtn = document.getElementById("to-top-btn");
 
-    // // Show/hide button when scrolling past #Home
-    // window.addEventListener("DOMContentLoaded", () => {
-    //     const topBtn = document.getElementById("to-top-btn");
-    //     const homeSection = document.getElementById("Home");
+    window.addEventListener("DOMContentLoaded", () => {
+        const topBtn = document.getElementById("to-top-btn");
+        const homeSection = document.getElementById("Home");
 
-    //     function toggleButton() {
-    //         if (!homeSection || !topBtn) return;
+        function toggleButton() {
+            if (!homeSection || !topBtn) return;
 
-    //         const rect = homeSection.getBoundingClientRect();
-    //         if (rect.bottom < 0) {
-    //             topBtn.classList.remove("hidden");
-    //         } else {
-    //             topBtn.classList.add("hidden");
-    //         }
-    //     }
-
-    //     window.addEventListener("scroll", toggleButton);
-    //     toggleButton(); // Initial check
-    // });
-
-    //TODO: apply the scroll up detector
-    window.addEventListener("scroll", () => {
-        if (document.body.getBoundingClientRect().top > scrollPosition) {
-            topBtn?.classList.remove("hidden");
-        } else {
-            topBtn?.classList.add("hidden");
+            const rect = homeSection.getBoundingClientRect();
+            // If beyond the `Home` section and scrolling Up
+            if (
+                rect.bottom < 0 &&
+                document.body.getBoundingClientRect().top > scrollPosition
+            ) {
+                topBtn.classList.remove("hidden");
+            } else {
+                topBtn.classList.add("hidden");
+            }
+            scrollPosition = document.body.getBoundingClientRect().top;
         }
-        scrollPosition = document.body.getBoundingClientRect().top;
+
+        window.addEventListener("scroll", toggleButton);
+        toggleButton(); // Initial check
     });
 </script>
 
