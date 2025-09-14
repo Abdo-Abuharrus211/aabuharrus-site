@@ -25,7 +25,7 @@ Later on, I'll likely resort to framework like Next.js or Svelte (Sveltekit) whe
 - [ ] Design logo.
 - [X] Write the `robots.txt` file
 - [X] Implement the back to top button - only appears when scrolling up.
-- [ ] Adjust the `to-top-btn` to only appear when scrolling up AND past the `Home` section.
+- [X] Adjust the `to-top-btn` to only appear when scrolling up AND past the `Home` section.
 
 
 ### References & Inspirations
