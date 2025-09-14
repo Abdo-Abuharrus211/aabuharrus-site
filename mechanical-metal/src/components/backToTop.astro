@@ -1,7 +1,7 @@
 ---
 import Image from "astro/components/Image.astro";
-const icon = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yNCAwdjI0SDBWMHpNMTIuNTkzIDIzLjI1OGwtLjAxMS4wMDJsLS4wNzEuMDM1bC0uMDIuMDA0bC0uMDE0LS4wMDRsLS4wNzEtLjAzNXEtLjAxNi0uMDA1LS4wMjQuMDA1bC0uMDA0LjAxbC0uMDE3LjQyOGwuMDA1LjAybC4wMS4wMTNsLjEwNC4wNzRsLjAxNS4wMDRsLjAxMi0uMDA0bC4xMDQtLjA3NGwuMDEyLS4wMTZsLjAwNC0uMDE3bC0uMDE3LS40MjdxLS4wMDQtLjAxNi0uMDE3LS4wMThtLjI2NS0uMTEzbC0uMDEzLjAwMmwtLjE4NS4wOTNsLS4wMS4wMWwtLjAwMy4wMTFsLjAxOC40M2wuMDA1LjAxMmwuMDA4LjAwN2wuMjAxLjA5M3EuMDE5LjAwNS4wMjktLjAwOGwuMDA0LS4wMTRsLS4wMzQtLjYxNHEtLjAwNS0uMDE5LS4wMi0uMDIybS0uNzE1LjAwMmEuMDIuMDIgMCAwIDAtLjAyNy4wMDZsLS4wMDYuMDE0bC0uMDM0LjYxNHEuMDAxLjAxOC4wMTcuMDI0bC4wMTUtLjAwMmwuMjAxLS4wOTNsLjAxLS4wMDhsLjAwNC0uMDExbC4wMTctLjQzbC0uMDAzLS4wMTJsLS4wMS0uMDF6Ii8+PHBhdGggZmlsbD0iY3VycmVudENvbG9yIiBkPSJNMTEuMjkzIDguMjkzYTEgMSAwIDAgMSAxLjQxNCAwbDUuNjU3IDUuNjU3YTEgMSAwIDAgMS0xLjQxNCAxLjQxNEwxMiAxMC40MTRsLTQuOTUgNC45NWExIDEgMCAwIDEtMS40MTQtMS40MTR6Ii8+PC9nPjwvc3ZnPg==";
-
+const icon =
+    "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0yNCAwdjI0SDBWMHpNMTIuNTkzIDIzLjI1OGwtLjAxMS4wMDJsLS4wNzEuMDM1bC0uMDIuMDA0bC0uMDE0LS4wMDRsLS4wNzEtLjAzNXEtLjAxNi0uMDA1LS4wMjQuMDA1bC0uMDA0LjAxbC0uMDE3LjQyOGwuMDA1LjAybC4wMS4wMTNsLjEwNC4wNzRsLjAxNS4wMDRsLjAxMi0uMDA0bC4xMDQtLjA3NGwuMDEyLS4wMTZsLjAwNC0uMDE3bC0uMDE3LS40MjdxLS4wMDQtLjAxNi0uMDE3LS4wMThtLjI2NS0uMTEzbC0uMDEzLjAwMmwtLjE4NS4wOTNsLS4wMS4wMWwtLjAwMy4wMTFsLjAxOC40M2wuMDA1LjAxMmwuMDA4LjAwN2wuMjAxLjA5M3EuMDE5LjAwNS4wMjktLjAwOGwuMDA0LS4wMTRsLS4wMzQtLjYxNHEtLjAwNS0uMDE5LS4wMi0uMDIybS0uNzE1LjAwMmEuMDIuMDIgMCAwIDAtLjAyNy4wMDZsLS4wMDYuMDE0bC0uMDM0LjYxNHEuMDAxLjAxOC4wMTcuMDI0bC4wMTUtLjAwMmwuMjAxLS4wOTNsLjAxLS4wMDhsLjAwNC0uMDExbC4wMTctLjQzbC0uMDAzLS4wMTJsLS4wMS0uMDF6Ii8+PHBhdGggZmlsbD0iY3VycmVudENvbG9yIiBkPSJNMTEuMjkzIDguMjkzYTEgMSAwIDAgMSAxLjQxNCAwbDUuNjU3IDUuNjU3YTEgMSAwIDAgMS0xLjQxNCAxLjQxNEwxMiAxMC40MTRsLTQuOTUgNC45NWExIDEgMCAwIDEtMS40MTQtMS40MTR6Ii8+PC9nPjwvc3ZnPg==";
 ---
 
 <a id="to-top-btn" class="btn hidden" href="#Home">
@@ -9,24 +9,37 @@ const icon = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
 </a>
 
 <script>
-    // Show/hide button when scrolling past #Home
-    window.addEventListener("DOMContentLoaded", () => {
-        const topBtn = document.getElementById("to-top-btn");
-        const homeSection = document.getElementById("Home");
+    var scrollPosition = 0;
+    const topBtn = document.getElementById("to-top-btn");
 
-        function toggleButton() {
-            if (!homeSection || !topBtn) return;
+    // // Show/hide button when scrolling past #Home
+    // window.addEventListener("DOMContentLoaded", () => {
+    //     const topBtn = document.getElementById("to-top-btn");
+    //     const homeSection = document.getElementById("Home");
 
-            const rect = homeSection.getBoundingClientRect();
-            if (rect.bottom < 0) {
-                topBtn.classList.remove("hidden");
-            } else {
-                topBtn.classList.add("hidden");
-            }
+    //     function toggleButton() {
+    //         if (!homeSection || !topBtn) return;
+
+    //         const rect = homeSection.getBoundingClientRect();
+    //         if (rect.bottom < 0) {
+    //             topBtn.classList.remove("hidden");
+    //         } else {
+    //             topBtn.classList.add("hidden");
+    //         }
+    //     }
+
+    //     window.addEventListener("scroll", toggleButton);
+    //     toggleButton(); // Initial check
+    // });
+
+    //TODO: apply the scroll up detector
+    window.addEventListener("scroll", () => {
+        if (document.body.getBoundingClientRect().top > scrollPosition) {
+            topBtn?.classList.remove("hidden");
+        } else {
+            topBtn?.classList.add("hidden");
         }
-
-        window.addEventListener("scroll", toggleButton);
-        toggleButton(); // Initial check
+        scrollPosition = document.body.getBoundingClientRect().top;
     });
 </script>
 
@@ -46,7 +59,7 @@ const icon = "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
         border-radius: var(--spacing3);
     }
 
-    #to-top-btn:hover{
+    #to-top-btn:hover {
         opacity: 1;
     }
 
