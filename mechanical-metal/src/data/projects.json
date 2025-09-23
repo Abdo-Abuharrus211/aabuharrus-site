@@ -150,21 +150,5 @@
       "Rust",
       "Blog"
     ]
-  },
-  {
-    "id": 6,
-    "name": "Coopy",
-    "images": [],
-    "date": "2025-08-03",
-    "text": "My Digital Garden required a tool to sync between my main Obsidian vault and the DG's content. I wrote a Rust program that scans MD files for frontmatter and other metadata to verify they're marked for publishing and then syncs the content between vaults.<br>I paired this with a Bash script to be able to run the entire process in a single command from my terminal. The next step is to convert it into a proper Obsidian Plugin!",
-    "keyPoints": [
-        "Built in Rust, works via command line.",
-        "Scans frontmatter for each Markdown file and checks if it's in permitted folders.",
-        "Copies new documents and updates old ones that have been edited."
-    ],
-    "status": "In Progress",
-    "link": "",
-    "github": "https://github.com/Abdo-Abuharrus211/coopy",
-    "tags": ["Obsidian", "Rust", "Blog"]
   }
 ]
