@@ -2,6 +2,9 @@
 import { getCollection } from "astro:content";
 
 const projects = await getCollection("projects");
+
+const currentDate = new Date();
+const year = currentDate.getFullYear();
 ---
 
 <footer class="footer">
@@ -111,7 +114,7 @@ const projects = await getCollection("projects");
       }
     </div>
   </section>
-  <p class="center">© 2025 ABDULQADIR ABUHARRUS - All Rights Reserved</p>
+  <p class="center">© {year} ABDULQADIR ABUHARRUS - All Rights Reserved</p>
 </footer>
 
 <style>
