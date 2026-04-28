@@ -29,9 +29,10 @@
 
 /* Variable definitions */
 :root {
-    /* ff and ff2 fonts */
+    /* ff and ff2, and other fonts */
     --ff1: "Noto Sans", sans-serif;
     --ff2: "Archivo", sans-serif;
+    --fcode: "IBM Plex Mono", "monospace"
     /* font sizes */
     --fsize1: 1rem;
     --fsize2: 1.125rem;
@@ -204,6 +205,11 @@ dialog {
 dialog::backdrop {
     background: hsla(0, 0, 0, 0.6);
     backdrop-filter: blur(2px);
+}
+
+.code-text{
+    font: var(--fcode);
+    font-weight:  400;
 }
 
 .big-text {
