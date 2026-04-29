@@ -12,6 +12,7 @@
     --subtext: hsl(80, 22%, 75%);
     --background: hsl(83, 27%, 6%);
     --subbackground: hsl(83, 27%, 10%);
+    --codebackground: hsl(80, 19%, 13%);
     --primary: hsl(80, 28%, 71%);
     --secondary: hsl(80, 29%, 30%);
     --accent: hsl(80, 33%, 49%);
@@ -32,7 +33,7 @@
     /* ff and ff2, and other fonts */
     --ff1: "Noto Sans", sans-serif;
     --ff2: "Archivo", sans-serif;
-    --fcode: "IBM Plex Mono", "monospace"
+    --fcode: "IBM Plex Mono", monospace;
     /* font sizes */
     --fsize1: 1rem;
     --fsize2: 1.125rem;
@@ -52,6 +53,7 @@
     --h1: 700 4rem/1.2em var(--ff2);
     --h2: 600 2rem/1.2em var(--ff2);
     --p: 1rem/1.5em var(--ff1);
+    --code: 600 1rem/1.2em var(--fcode);
 
     --successGreen: hsl(120, 48%, 67%);
     --errorRed: hsl(6, 59%, 55%);
@@ -207,9 +209,10 @@ dialog::backdrop {
     backdrop-filter: blur(2px);
 }
 
-.code-text{
-    font: var(--fcode);
-    font-weight:  400;
+.code-text {
+    font: var(--code);
+    color: var(--accent);
+    background-color: var(--codebackground);
 }
 
 .big-text {
