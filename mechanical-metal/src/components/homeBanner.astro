@@ -1,4 +1,5 @@
 ---
+
 ---
 
 <div id="Home">
@@ -14,8 +15,8 @@
       <div class="intro-box">
         <h2 class="banner-text">I'm Abdu, a Software Developer</h2>
         <p>
-          I build Backend heavy systems, Full Stack apps, automate boring tasks, and create tools
-          to improve UX & DX.
+          I build Backend heavy systems, Full Stack apps, automate boring tasks,
+          and create tools to improve UX & DX.
         </p>
         <div>
           <a
@@ -23,6 +24,10 @@
             target="_blank"
             href="Abdulqadir_Abuharrus_Resume.pdf">Resume</a
           >
+          <button
+            onclick="document.getElementById('Bio')?.scrollIntoView({ behavior: 'smooth' });"
+            ><span class="code-text"> run -f </span>
+          </button>
           <a
             href="https://github.com/Abdo-Abuharrus211"
             target="_blank"
@@ -59,13 +64,6 @@
       </div>
     </div>
   </div>
-  <div class="center">
-    <button
-      class="margin4 code-text"
-      onclick="document.getElementById('Bio')?.scrollIntoView({ behavior: 'smooth' });"
-      >run -f</button
-    >
-  </div>
 
   <style>
     #Home {
@@ -95,9 +93,9 @@
       text-align: start;
       align-self: center;
     }
-    .intro-box button {
+    .intro-box button, a {
       font-size: var(--fsize2);
-      margin-right: var(--spacing3);
+      margin-right: var(--spacing2);
     }
 
     @media (max-width: 900px) {
