@@ -79,9 +79,9 @@ body {
             var(--subbackground));
     background-size: 200% 200%;
     animation: radialGradientMove 20s ease-in-out infinite; */
-    background-color: #10130b;
+    background-color: var(--background);
     opacity: 1;
-    background-image: radial-gradient(#3d4135 0.35000000000000003px, #10130b 0.35000000000000003px);
+    background-image: radial-gradient(var(--secondary) 0.35000000000000003px, var(--background) 0.35000000000000003px);
     background-size: 7px 7px;
 }
 
