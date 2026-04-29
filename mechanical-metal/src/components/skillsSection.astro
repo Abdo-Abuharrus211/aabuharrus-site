@@ -81,10 +81,10 @@ const skills = await getCollection("skills");
         const skillIndex = idx % totalSkills;
         const newPopup = document.getElementById(`skill-${skillIndex}`);
 
-        if (newPopup && !shownSkills.includes(newPopup) && shownSkills.length < 8) {
+        if (newPopup && !shownSkills.includes(newPopup) && shownSkills.length < 4) {
           shownSkills.push(newPopup);
           unhide(newPopup);
-        } else if (shownSkills.length >= 8) {
+        } else if (shownSkills.length >= 4) {
           if (resetMsg) {
             resetMsg.classList.remove("hidden");
             resetMsg.setAttribute("aria-hidden", "false");
