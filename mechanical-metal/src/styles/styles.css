@@ -70,13 +70,19 @@ body {
     text-wrap: balance;
     font: var(--p);
     color: var(--text);
-    /* background: var(--background); */
+    /* green brick wall */
+    /* background-color: #434F2B;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='144' height='144' viewBox='0 0 200 200'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='100' y1='33' x2='100' y2='-3'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='1'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='100' y1='135' x2='100' y2='97'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='%23384421' fill-opacity='0.64'%3E%3Crect x='100' width='100' height='100'/%3E%3Crect y='100' width='100' height='100'/%3E%3C/g%3E%3Cg fill-opacity='0.64'%3E%3Cpolygon fill='url(%23a)' points='100 30 0 0 200 0'/%3E%3Cpolygon fill='url(%23b)' points='100 100 0 130 0 100 200 100 200 130'/%3E%3C/g%3E%3C/svg%3E"); */
 
-    background: radial-gradient(circle at 20% 20%,
+    /* background: radial-gradient(circle at 20% 20%,
             var(--background),
             var(--subbackground));
     background-size: 200% 200%;
-    animation: radialGradientMove 20s ease-in-out infinite;
+    animation: radialGradientMove 20s ease-in-out infinite; */
+    background-color: var(--background);
+    opacity: 1;
+    background-image: radial-gradient(var(--secondary) 0.35000000000000003px, var(--background) 0.35000000000000003px);
+    background-size: 7px 7px;
 }
 
 section {
@@ -208,7 +214,7 @@ dialog::backdrop {
     backdrop-filter: blur(2px);
 }
 
-.code-highlight{
+.code-highlight {
     background-color: var(--codebackground);
     color: var(--accent);
 }
