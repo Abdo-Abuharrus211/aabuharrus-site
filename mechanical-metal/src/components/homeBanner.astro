@@ -1,6 +1,4 @@
 ---
-import { Image } from "astro:assets";
-import bannerImage from "../images/silver-dunes.webp";
 ---
 
 <div id="Home">
@@ -60,19 +58,12 @@ import bannerImage from "../images/silver-dunes.webp";
         </div>
       </div>
     </div>
-    <div class="visual-box">
-      <Image class:list={"banner-img"} src={bannerImage} alt="banner" />
-      <small
-        >// Not much of a web/graphic designer, so here's one of my fav photos
-        I've ever taken.</small
-      >
-    </div>
   </div>
   <div class="center">
     <button
       class="margin4 code-text"
       onclick="document.getElementById('Bio')?.scrollIntoView({ behavior: 'smooth' });"
-      >~abdu> check -it</button
+      >run -f</button
     >
   </div>
 
@@ -82,7 +73,7 @@ import bannerImage from "../images/silver-dunes.webp";
       height: auto;
       width: 100vw;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: center;
       overflow: hidden;
     }
     .greeting {
@@ -95,23 +86,18 @@ import bannerImage from "../images/silver-dunes.webp";
     }
 
     .greeting-box2 {
+      margin-left: 30%;
       align-self: flex-start;
     }
 
     .intro-box {
       padding: 0%;
       text-align: start;
-      align-self: flex-start;
+      align-self: center;
     }
     .intro-box button {
       font-size: var(--fsize2);
       margin-right: var(--spacing3);
-    }
-
-    .banner-img {
-      width: clamp(60%, 40vw, 100%);
-      height: auto;
-      align-self: flex-start;
     }
 
     @media (max-width: 900px) {
@@ -124,21 +110,6 @@ import bannerImage from "../images/silver-dunes.webp";
       .greeting {
         font-size: 4rem;
         margin: 0 var(--spacing3);
-      }
-      .greeting-box1 {
-        align-self: flex-end;
-      }
-      .visual-box {
-        margin-top: var(--spacing3);
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      .banner-img {
-        width: 100%;
-        height: auto;
-        max-width: fit-content;
       }
       .intro-box {
         align-self: center;
