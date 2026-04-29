@@ -70,6 +70,14 @@ import bannerBG from "../images/silver-dunes.webp";
             </svg>
           </a>
         </div>
+      </div>
+    </div>
+    <div class="visual-box">
+      <Image class:list={"banner-img"} src={bannerBG} alt="banner" />
+      <small
+        >// Not much of a web/graphic designer, so here's one of my fav photos
+        I've ever taken.</small
+      >
     </div>
   </div>
 </div>
@@ -113,11 +121,23 @@ import bannerBG from "../images/silver-dunes.webp";
     text-align: start;
     align-self: center;
   }
-    .intro-box button, a {
+  .intro-box button,
+  a {
     font-size: var(--fsize2);
     margin-right: var(--spacing2);
   }
-
+  .visual-box {
+    margin-top: var(--spacing3);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .banner-img {
+    width: 100%;
+    height: auto;
+    max-width: fit-content;
+  }
   @media (max-width: 900px) {
     #Home {
       margin-top: var(--spacing6);
