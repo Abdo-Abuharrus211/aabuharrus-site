@@ -53,7 +53,6 @@
     --h1: 700 4rem/1.2em var(--ff2);
     --h2: 600 2rem/1.2em var(--ff2);
     --p: 1rem/1.5em var(--ff1);
-    --code: 600 1rem/1.2em var(--fcode);
 
     --successGreen: hsl(120, 48%, 67%);
     --errorRed: hsl(6, 59%, 55%);
@@ -209,10 +208,15 @@ dialog::backdrop {
     backdrop-filter: blur(2px);
 }
 
-.code-text {
-    font: var(--code);
-    color: var(--accent);
+.code-highlight{
     background-color: var(--codebackground);
+    color: var(--accent);
+}
+
+.code-text {
+    font-family: var(--fcode);
+    font-weight: 600;
+    font-size: var(--fsize2);
 }
 
 .big-text {
