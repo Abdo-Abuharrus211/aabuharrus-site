@@ -544,6 +544,19 @@ import NavMenu from "./navMenu.astro";
   }
 
   @media (max-width: 900px) {
+    .navbar {
+      flex-wrap: wrap;
+      padding: var(--spacing2) var(--spacing3);
+    }
+
+    .navbar h2 {
+      font-size: 1.1rem;
+      white-space: nowrap;
+    }
+
+    /* #menu-btn {
+      margin-left: auto;
+    } */
     .nav-links {
       display: none;
     }
