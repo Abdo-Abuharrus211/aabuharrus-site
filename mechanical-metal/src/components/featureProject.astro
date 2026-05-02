@@ -1,0 +1,27 @@
+---
+/**
+ * A feature project is highlighted among the others using a large image
+ * with the name also emphasised and a little teaser description underneath.
+ * 
+ * TODO:
+ * Refactor with proper data
+ * Implement styling
+ */
+
+
+import { Image } from "astro:assets";
+
+const { data } = Astro.props;
+---
+
+<div class="container feature-proj">
+  <div class="showcase__image">
+    <img src={data.data.images[0]} alt={data.data.name} />
+  </div>
+  <div>
+    <h2>{data.data.name}</h2>
+    <p>{data.data.teaser}</p>
+  </div>
+</div>
+
+<style></style>

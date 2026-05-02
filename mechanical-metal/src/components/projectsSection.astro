@@ -8,8 +8,12 @@
 import { getCollection } from "astro:content";
 import ProjectGallery from "../components/projectGallery.svelte";
 import FilterBar from "./filterBar.astro";
+import FeatureProject from "./featureProject.astro";
 
 const projects = await getCollection("projects");
+// TODO: uncomment when data restructured
+// const featuredProjects = projects.filter((p) => p.data.featured);
+const featuredProjects = projects.slice(0, 2);
 
 const tags = [
   "Systems",
@@ -24,13 +28,24 @@ const tags = [
 
 <section id="Projects">
   <h1>PROJECTS</h1>
-  <FilterBar tags={tags} />
   <!-- TODO: add the TWO big case study projects-->
+  <div class="featured-showcase">
+    <h3>Featured</h3>
+    {featuredProjects.map((proj: any) => <FeatureProject data={proj} />)}
+  </div>
+  <FilterBar tags={tags} />
   <!-- Pass the data to the island -->
   <ProjectGallery client:load="svelte" projects={projects} />
 </section>
 
 <style>
+  .showcase {
+    position: relative;
+    border: 0.5px solid var(--accent);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
   .proj-gallery {
     display: flex;
     flex-wrap: wrap;
