@@ -5,11 +5,11 @@ import bannerBG from "../images/silver-dunes.webp";
 
 <div id="Home">
   <!-- <Image src={bannerBG} alt="Background" class="bg-image" /> -->
-  <img
+  <!-- <img
     src="/src/images/blurry-gradient-haikei.svg"
     alt="Background"
     class="bg-image"
-  />
+  /> -->
   <div class="flex padding2">
     <div class="flex column">
       <div class="greeting-box1">
@@ -26,16 +26,11 @@ import bannerBG from "../images/silver-dunes.webp";
           and create tools that improve UX & DX.
         </p>
         <div>
-          <a
-            class="btn outline-btn"
-            target="_blank"
-            href="Abdulqadir_Abuharrus_Resume.pdf">Resume</a
-          >
           <!-- &gt; is the esc char for '>' -->
           <button
             class="code-highlight outline-btn"
             onclick="document.getElementById('Bio')?.scrollIntoView({ behavior: 'smooth' });"
-            ><span class="code-text">~abdu&gt; run -f </span>
+            ><span class="code-text">abdu@home$ run -f </span>
           </button>
           <a
             href="https://github.com/Abdo-Abuharrus211"
@@ -75,8 +70,8 @@ import bannerBG from "../images/silver-dunes.webp";
     <div class="visual-box">
       <Image class:list={"banner-img"} src={bannerBG} alt="banner" />
       <small
-        >// Not much of a web/graphic designer, so here's one of my fav photos
-        I've ever taken.</small
+        >// Not much of a web/graphic designer, so here's one of my favourite
+        photos that I've ever taken.</small
       >
     </div>
   </div>
@@ -85,14 +80,14 @@ import bannerBG from "../images/silver-dunes.webp";
 <style>
   #Home {
     padding: 10%;
-    height: auto;
-    width: 100vw;
+    height: 100dvh;
+    width: 100dvw;
     align-items: center;
     justify-content: center;
     overflow: hidden;
   }
 
-  #Home img.bg-image {
+  /* #Home img.bg-image {
       position: absolute;
       top: 0;
       left: 0;
@@ -101,7 +96,7 @@ import bannerBG from "../images/silver-dunes.webp";
       object-fit: cover;
       z-index: -1;
       filter: blur(4px);
-    }
+    } */
   .greeting {
     font-size: clamp(2.5rem, 9vw, 10rem);
     font-weight: 400;
@@ -112,7 +107,6 @@ import bannerBG from "../images/silver-dunes.webp";
   }
 
   .greeting-box2 {
-    margin-left: 30%;
     align-self: flex-start;
   }
 
@@ -125,6 +119,49 @@ import bannerBG from "../images/silver-dunes.webp";
   a {
     font-size: var(--fsize2);
     margin-right: var(--spacing2);
+  }
+  .intro-box button {
+    position: relative;
+    border-bottom: 2px solid var(--primary);
+    overflow: hidden;
+  }
+
+  /* Gives it the glowing signal effect */
+  .intro-box button::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 2px;
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent), 0 0 12px var(--accent);
+    animation: signal-left-right 4s ease-in-out infinite;
+    animation-direction: alternate;
+  }
+  @keyframes signal-left-right {
+    0% {
+      width: 0%;
+      left: 0;
+    }
+    45% {
+      width: 100%;
+      left: 0;
+    }
+    50% {
+      width: 100%;
+      left: auto;
+      right: 0;
+    }
+    95% {
+      width: 0%;
+      left: auto;
+      right: 0;
+    }
+    100% {
+      width: 0%;
+      left: 0;
+      right: auto;
+    }
   }
   .visual-box {
     margin-top: var(--spacing3);
@@ -154,6 +191,42 @@ import bannerBG from "../images/silver-dunes.webp";
     }
     .intro-box button {
       margin-bottom: 1rem;
+    }
+  }
+  @media (max-width: 768px) {
+    #Home {
+      padding: 4%;
+      height: auto;
+      justify-content: flex-start;
+      flex-direction: column;
+    }
+    .greeting {
+      font-size: 3.5rem;
+      text-align: center;
+    }
+    .greeting-box1, .greeting-box2 {
+      margin: 0 auto;
+    }
+    .intro-box {
+      padding: 3%;
+    }
+    .visual-box {
+      margin-top: 2rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    #Home {
+      padding: 3%;
+    }
+    .greeting {
+      font-size: 3rem;
+    }
+    .intro-box button {
+      font-size: 0.9rem;
+    }
+    .banner-img {
+      max-width: 90%;
     }
   }
 </style>

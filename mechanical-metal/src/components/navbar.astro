@@ -241,8 +241,12 @@ import NavMenu from "./navMenu.astro";
           </circle>
         </svg>
       </button>
-      <a href="https://garden.aabuharrus.dev/">Blog</a>
+      <a href="https://garden.aabuharrus.dev/" class="code-text">dgtl garden</a>
       <a href="#Projects">Projects</a>
+      <a
+        target="_blank"
+        href="Abdulqadir_Abuharrus_Resume.pdf">Resume</a
+      >
       <button
         class="outline-btn"
         onclick="document.getElementById('Contact')?.scrollIntoView({behavior: 'smooth'});"
@@ -534,12 +538,25 @@ import NavMenu from "./navMenu.astro";
     background-color: transparent;
     color: var(--accent);
   }
-  
-  #menu-theme-toggle{
+
+  #menu-theme-toggle {
     margin-right: var(--spacing2);
   }
 
   @media (max-width: 900px) {
+    .navbar {
+      flex-wrap: wrap;
+      padding: var(--spacing2) var(--spacing3);
+    }
+
+    .navbar h2 {
+      font-size: 1.1rem;
+      white-space: nowrap;
+    }
+
+    /* #menu-btn {
+      margin-left: auto;
+    } */
     .nav-links {
       display: none;
     }
