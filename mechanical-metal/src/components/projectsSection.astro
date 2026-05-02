@@ -10,11 +10,22 @@ import ProjectGallery from "../components/projectGallery.svelte";
 import FilterBar from "./filterBar.astro";
 
 const projects = await getCollection("projects");
+
+const tags = [
+  "Systems",
+  "Full Stack",
+  "Backend",
+  "Frontend",
+  "Rust",
+  "Python",
+  "JS/TS",
+];
 ---
 
 <section id="Projects">
-  <FilterBar />
   <h1>PROJECTS</h1>
+  <FilterBar tags={tags} />
+  <!-- TODO: add the TWO big case study projects-->
   <!-- Pass the data to the island -->
   <ProjectGallery client:load="svelte" projects={projects} />
 </section>
