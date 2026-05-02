@@ -11,9 +11,11 @@ import FilterBar from "./filterBar.astro";
 import FeatureProject from "./featureProject.astro";
 
 const projects = await getCollection("projects");
-// TODO: uncomment when data restructured
-// const featuredProjects = projects.filter((p) => p.data.featured);
-const featuredProjects = projects.slice(0, 2);
+const featuredProjects = projects.filter((p) => p.data.featured);
+// removes the featured from the rest
+featuredProjects.map((p) =>{
+  projects.splice(projects.indexOf(p),1)
+})
 
 const tags = [
   "Systems",
@@ -28,7 +30,6 @@ const tags = [
 
 <section id="Projects">
   <h1>PROJECTS</h1>
-  <!-- TODO: add the TWO big case study projects-->
   <div class="featured-showcase">
     <h3>Featured</h3>
     {featuredProjects.map((proj: any) => <FeatureProject data={proj} />)}
