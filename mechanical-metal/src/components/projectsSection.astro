@@ -3,6 +3,9 @@
  * Projects section with featured carousel and filterable gallery.
  * Featured projects are displayed in an auto-rotating carousel at the top.
  * Remaining projects are displayed in a filterable grid below.
+ *
+ * Features a carousel for "Featured" projects that are emphasiszed and highlighted
+ * and a filterable gallery (grid) for the other projects that uses toggle buttons.
  */
 
 import { getCollection } from "astro:content";
@@ -12,10 +15,9 @@ import FeaturedProjectCarousel from "./FeaturedProjectCarousel.svelte";
 
 const allProjects = await getCollection("projects");
 const featuredProjects = allProjects.filter((p) => p.data.featured);
-
-// Remove featured projects from the main gallery
 const galleryProjects = allProjects.filter((p) => !p.data.featured);
 
+// TODO: Tags for the filtering system, replace with tags retrieved from DB later.
 const tags = [
   "Systems",
   "Full Stack",
@@ -29,14 +31,16 @@ const tags = [
 
 <section id="Projects">
   <h1>PROJECTS</h1>
-  
-  {featuredProjects.length > 0 && (
-  <div class="featured-showcase">
-    <h3>Featured</h3>
-      <FeaturedProjectCarousel client:load projects={featuredProjects} />
-  </div>
-  )}
-  
+
+  {
+    featuredProjects.length > 0 && (
+      <div class="featured-showcase">
+        <h3>Featured</h3>
+        <FeaturedProjectCarousel client:load projects={featuredProjects} />
+      </div>
+    )
+  }
+
   <FilterBar tags={tags} />
   <!-- Pass the data to the island -->
   <ProjectGallery client:load="svelte" projects={galleryProjects} />
