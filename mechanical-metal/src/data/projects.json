@@ -169,7 +169,7 @@
     "teaser": "A mock radio station app for streaming and managing playlists",
     "featured": true,
     "images": [
-      "/images/projects/snail2.jpg"
+      "https://picsum.photos/1200/720"
     ],
     "date": "2025-06-10",
     "text": "MOCK FM is a fun project designed to simulate a radio station experience. Users can create and manage playlists, stream music, and even schedule 'mock' broadcasts. This project was built to explore the integration of audio streaming APIs and real-time scheduling.",
