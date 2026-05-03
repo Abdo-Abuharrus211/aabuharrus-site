@@ -67,37 +67,37 @@
 {#if projects.length > 0}
   <div class="carousel-container">
     <div class={`carousel-slide ${isTransitioning ? 'transitioning' : ''}`}>
-        <div class="carousel-image">
-          <img
+      <div class="carousel-image">
+        <img
           src={displayProject.data.images[0]}
           alt={displayProject.data.name}
-          />
-        </div>
+        />
+      </div>
 
-        <div class="carousel-content">
+      <div class="carousel-content">
         <h2>{displayProject.data.name}</h2>
         <p class="teaser">{displayProject.data.teaser}</p>
 
-          <div class="tags">
+        <div class="tags">
           {#each displayProject.data.tags as tag (tag)}
-              <span class="tag">{tag}</span>
-            {/each}
-          </div>
+            <span class="tag">{tag}</span>
+          {/each}
+        </div>
 
-          <div class="links">
+        <div class="links">
           {#if displayProject.data.link}
             <a href={displayProject.data.link} target="_blank" class="link">
-                Live Demo →
-              </a>
-            {/if}
+              Live Demo →
+            </a>
+          {/if}
           {#if displayProject.data.github}
             <a href={displayProject.data.github} target="_blank" class="link">
-                GitHub →
-              </a>
-            {/if}
-          </div>
+              GitHub →
+            </a>
+          {/if}
         </div>
       </div>
+    </div>
 
     <!-- Dot Navigation -->
     <div class="carousel-dots">
