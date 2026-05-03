@@ -6,6 +6,7 @@
   let currentIndex = $state(0);
   let autoRotateInterval: ReturnType<typeof setInterval> | null = null;
   let isTransitioning = $state(false);
+  let nextIndex = $state(0);
 
   // start auto-rotation if there are featured projects
   onMount(() => {
@@ -34,11 +35,12 @@
   function goToProject(index: number) {
     if (isTransitioning || index === currentIndex) return;
     
+    nextIndex = index;
     isTransitioning = true;
-    currentIndex = index;
     
-    // Reset transition flag after animation completes
+    // gotta wait for animation to complete
     setTimeout(() => {
+      currentIndex = index;
       isTransitioning = false;
     }, 400);
 
@@ -59,36 +61,37 @@
 
   // proj to be rendered
   const currentProject = $derived(projects[currentIndex]);
+  const displayProject = $derived(isTransitioning ? projects[nextIndex] : projects[currentIndex]);
 </script>
 
 {#if projects.length > 0}
   <div class="carousel-container">
-    <div class="carousel-slide" key={currentIndex}>
+    <div class={`carousel-slide ${isTransitioning ? 'transitioning' : ''}`}>
         <div class="carousel-image">
           <img
-            src={currentProject.data.images[0]}
-            alt={currentProject.data.name}
+          src={displayProject.data.images[0]}
+          alt={displayProject.data.name}
           />
         </div>
 
         <div class="carousel-content">
-          <h2>{currentProject.data.name}</h2>
-          <p class="teaser">{currentProject.data.teaser}</p>
+        <h2>{displayProject.data.name}</h2>
+        <p class="teaser">{displayProject.data.teaser}</p>
 
           <div class="tags">
-            {#each currentProject.data.tags as tag (tag)}
+          {#each displayProject.data.tags as tag (tag)}
               <span class="tag">{tag}</span>
             {/each}
           </div>
 
           <div class="links">
-            {#if currentProject.data.link}
-              <a href={currentProject.data.link} target="_blank" class="link">
+          {#if displayProject.data.link}
+            <a href={displayProject.data.link} target="_blank" class="link">
                 Live Demo →
               </a>
             {/if}
-            {#if currentProject.data.github}
-              <a href={currentProject.data.github} target="_blank" class="link">
+          {#if displayProject.data.github}
+            <a href={displayProject.data.github} target="_blank" class="link">
                 GitHub →
               </a>
             {/if}
@@ -105,7 +108,7 @@
           onclick={() => goToProject(index)}
           aria-label={`Go to project ${index + 1}`}
           disabled={isTransitioning}
-        />
+        ></button>
       {/each}
     </div>
   </div>
@@ -131,6 +134,9 @@
     grid-template-columns: 1fr 1fr;
     gap: var(--spacing3);
     align-items: stretch;
+  }
+
+  .carousel-slide.transitioning {
     animation: slideIn 0.4s ease-in-out forwards;
   }
 
