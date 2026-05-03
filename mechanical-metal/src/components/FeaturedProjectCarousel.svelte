@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { onMount } from "svelte";
-  import { slide } from "svelte/transition";
+  import { onMount } from 'svelte';
 
   let { projects = [] } = $props();
 
   let currentIndex = $state(0);
   let autoRotateInterval: ReturnType<typeof setInterval> | null = null;
+  let isTransitioning = $state(false);
 
   // start auto-rotation if there are featured projects
   onMount(() => {
@@ -23,7 +23,7 @@
 
   function startAutoRotate() {
     autoRotateInterval = setInterval(() => {
-      currentIndex = (currentIndex + 1) % projects.length;
+      goToNextProject();
     }, 5000);
   }
 
@@ -32,19 +32,28 @@
    * @param index of the project to move to
    */
   function goToProject(index: number) {
+    if (isTransitioning || index === currentIndex) return;
+    
+    isTransitioning = true;
     currentIndex = index;
-    // restarting timer
+    
+    // Reset transition flag after animation completes
+    setTimeout(() => {
+      isTransitioning = false;
+    }, 400);
+
+    // Restart the auto-rotation timer when user interacts
     if (autoRotateInterval) {
       clearInterval(autoRotateInterval);
     }
     startAutoRotate();
   }
 
-  function nextProject() {
+  function goToNextProject() {
     goToProject((currentIndex + 1) % projects.length);
   }
 
-  function prevProject() {
+  function goToPrevProject() {
     goToProject((currentIndex - 1 + projects.length) % projects.length);
   }
 
@@ -54,11 +63,7 @@
 
 {#if projects.length > 0}
   <div class="carousel-container">
-    {#key currentIndex}
-      <div
-        class="carousel-slide"
-        transition:slide={{ duration: 400, axis: "x" }}
-      >
+    <div class="carousel-slide" key={currentIndex}>
         <div class="carousel-image">
           <img
             src={currentProject.data.images[0]}
@@ -90,7 +95,6 @@
           </div>
         </div>
       </div>
-    {/key}
 
     <!-- Dot Navigation -->
     <div class="carousel-dots">
@@ -100,7 +104,8 @@
           class:active={currentIndex === index}
           onclick={() => goToProject(index)}
           aria-label={`Go to project ${index + 1}`}
-        ></button>
+          disabled={isTransitioning}
+        />
       {/each}
     </div>
   </div>
@@ -126,6 +131,18 @@
     grid-template-columns: 1fr 1fr;
     gap: var(--spacing3);
     align-items: stretch;
+    animation: slideIn 0.4s ease-in-out forwards;
+  }
+
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
   }
 
   .carousel-image {
@@ -223,7 +240,7 @@
     padding: 0;
   }
 
-  .dot:hover {
+  .dot:hover:not(:disabled) {
     border-color: var(--primary);
     transform: scale(1.1);
   }
@@ -231,6 +248,11 @@
   .dot.active {
     background-color: var(--primary);
     border-color: var(--primary);
+  }
+
+  .dot:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
   }
 
   /* Arrow Navigation (hidden on small screens) */
@@ -250,9 +272,14 @@
     opacity: 0.7;
   }
 
-  .nav-arrow:hover {
+  .nav-arrow:hover:not(:disabled) {
     opacity: 1;
     transform: translateY(-50%) scale(1.1);
+  }
+
+  .nav-arrow:disabled {
+    cursor: not-allowed;
+    opacity: 0.3;
   }
 
   .nav-arrow.prev {
