@@ -1,21 +1,20 @@
 ---
 /**
- * This Astro component's a wrapper around the Svelte islands, which I used for modal interactivity.
- * I kept this comp because of the ease of data retrieval using Astro's `getCollection` and content management.
- * Pass the data to the Svelte gallery as a prop, it then renders the flex box display of cards.
+ * Projects section with featured carousel and filterable gallery.
+ * Featured projects are displayed in an auto-rotating carousel at the top.
+ * Remaining projects are displayed in a filterable grid below.
  */
 
 import { getCollection } from "astro:content";
 import ProjectGallery from "../components/projectGallery.svelte";
 import FilterBar from "./filterBar.astro";
-import FeatureProject from "./featureProject.astro";
+import FeaturedProjectCarousel from "./FeaturedProjectCarousel.svelte";
 
-const projects = await getCollection("projects");
-const featuredProjects = projects.filter((p) => p.data.featured);
-// removes the featured from the rest
-featuredProjects.map((p) =>{
-  projects.splice(projects.indexOf(p),1)
-})
+const allProjects = await getCollection("projects");
+const featuredProjects = allProjects.filter((p) => p.data.featured);
+
+// Remove featured projects from the main gallery
+const galleryProjects = allProjects.filter((p) => !p.data.featured);
 
 const tags = [
   "Systems",
@@ -30,13 +29,17 @@ const tags = [
 
 <section id="Projects">
   <h1>PROJECTS</h1>
+  
+  {featuredProjects.length > 0 && (
   <div class="featured-showcase">
     <h3>Featured</h3>
-    {featuredProjects.map((proj: any) => <FeatureProject data={proj} />)}
+      <FeaturedProjectCarousel client:load projects={featuredProjects} />
   </div>
+  )}
+  
   <FilterBar tags={tags} />
   <!-- Pass the data to the island -->
-  <ProjectGallery client:load="svelte" projects={projects} />
+  <ProjectGallery client:load="svelte" projects={galleryProjects} />
 </section>
 
 <style>
