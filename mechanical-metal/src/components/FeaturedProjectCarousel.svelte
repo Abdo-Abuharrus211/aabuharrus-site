@@ -131,7 +131,7 @@
 
   .carousel-slide {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr;
     gap: var(--spacing3);
     align-items: stretch;
   }
