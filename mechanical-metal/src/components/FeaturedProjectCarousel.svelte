@@ -67,7 +67,7 @@
 {#if projects.length > 0}
   <div class="carousel-container">
     <div class={`carousel-slide ${isTransitioning ? 'transitioning' : ''}`}>
-      <div class="carousel-image">
+      <div class="carousel-img-box">
         <img
           src={displayProject.data.images[0]}
           alt={displayProject.data.name}
@@ -75,24 +75,24 @@
       </div>
 
       <div class="carousel-content">
-        <h2>{displayProject.data.name}</h2>
+        <h2 class="margin0">{displayProject.data.name}</h2>
         <p class="teaser">{displayProject.data.teaser}</p>
 
-        <div class="tags">
+        <!-- <div class="tag-box">
           {#each displayProject.data.tags as tag (tag)}
             <span class="tag">{tag}</span>
           {/each}
-        </div>
+        </div> -->
 
-        <div class="links">
+        <div>
           {#if displayProject.data.link}
-            <a href={displayProject.data.link} target="_blank" class="link">
-              Live Demo →
+            <a href={displayProject.data.link} target="_blank">
+              Site
             </a>
           {/if}
           {#if displayProject.data.github}
-            <a href={displayProject.data.github} target="_blank" class="link">
-              GitHub →
+            <a href={displayProject.data.github} target="_blank">
+              GitHub
             </a>
           {/if}
         </div>
@@ -100,7 +100,7 @@
     </div>
 
     <!-- Dot Navigation -->
-    <div class="carousel-dots">
+    <div class="dot-box">
       {#each projects as _, index (index)}
         <button
           class="dot"
@@ -124,7 +124,7 @@
     width: 100%;
     border: 1px solid var(--secondary);
     border-radius: var(--spacing2);
-    background-color: var(--bg-secondary, rgba(255, 255, 255, 0.02));
+    /* background-color: var(--subbackground); */
     overflow: hidden;
     padding: var(--spacing3);
   }
@@ -151,7 +151,7 @@
     }
   }
 
-  .carousel-image {
+  .carousel-img-box {
     width: 100%;
     height: 100%;
     min-height: 400px;
@@ -159,14 +159,14 @@
     border-radius: var(--spacing1);
   }
 
-  .carousel-image img {
+  .carousel-img-box img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.3s ease;
   }
 
-  .carousel-container:hover .carousel-image img {
+  .carousel-container:hover .carousel-img-box img {
     transform: scale(1.02);
   }
 
@@ -178,66 +178,29 @@
     padding: var(--spacing2) 0;
   }
 
-  .carousel-content h2 {
-    margin: 0;
-    font-size: var(--fsize4);
-    color: var(--text);
-  }
-
   .teaser {
     margin: 0;
     font-size: var(--fsize2);
-    color: var(--text-secondary, rgba(255, 255, 255, 0.8));
-    line-height: 1.6;
   }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
-  }
-
-  .tag {
-    padding: var(--spacing1) var(--spacing2);
-    background-color: var(--secondary);
-    border-radius: var(--spacing1);
-    font-size: var(--fsize1);
-    display: inline-block;
-    color: var(--text);
-  }
-
   .links {
     display: flex;
     gap: 1.5rem;
     margin-top: 1rem;
   }
 
-  .link {
-    color: var(--primary);
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s ease;
-    font-size: var(--fsize2);
-  }
-
-  .link:hover {
-    color: var(--accent);
-  }
-
   /* Dot Navigation */
-  .carousel-dots {
+  .dot-box {
     display: flex;
     justify-content: center;
-    gap: 0.75rem;
+    gap: var(--spacing2);
     margin-top: var(--spacing3);
     padding-top: var(--spacing2);
-    border-top: 1px solid var(--secondary);
+    /* border-top: 1px solid var(--secondary); */
   }
 
   .dot {
-    width: 12px;
-    height: 12px;
+    width: var(--spacing2);
+    height: var(--spacing2);
     border-radius: 50%;
     border: 2px solid var(--secondary);
     background-color: transparent;
@@ -261,41 +224,6 @@
     opacity: 0.6;
   }
 
-  /* Arrow Navigation (hidden on small screens) */
-  .nav-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: var(--primary);
-    color: var(--bg);
-    border: none;
-    padding: var(--spacing2);
-    border-radius: var(--spacing1);
-    cursor: pointer;
-    font-size: var(--fsize3);
-    transition: all 0.3s ease;
-    z-index: 10;
-    opacity: 0.7;
-  }
-
-  .nav-arrow:hover:not(:disabled) {
-    opacity: 1;
-    transform: translateY(-50%) scale(1.1);
-  }
-
-  .nav-arrow:disabled {
-    cursor: not-allowed;
-    opacity: 0.3;
-  }
-
-  .nav-arrow.prev {
-    left: var(--spacing2);
-  }
-
-  .nav-arrow.next {
-    right: var(--spacing2);
-  }
-
   .no-featured {
     padding: var(--spacing3);
     text-align: center;
@@ -310,7 +238,7 @@
       gap: var(--spacing2);
     }
 
-    .carousel-image {
+    .carousel-img-box {
       min-height: 350px;
     }
 
@@ -333,7 +261,7 @@
       gap: var(--spacing2);
     }
 
-    .carousel-image {
+    .carousel-img-box {
       min-height: 250px;
       order: -1;
     }
@@ -354,7 +282,7 @@
       display: none;
     }
 
-    .carousel-dots {
+    .dot-box {
       margin-top: var(--spacing2);
       padding-top: var(--spacing2);
       gap: 0.5rem;
