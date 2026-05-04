@@ -192,16 +192,16 @@
   .dot-box {
     display: flex;
     justify-content: center;
-    gap: var(--spacing2);
-    margin-top: var(--spacing3);
+    gap: 0.5rem;
+    margin: var(--spacing3) auto 0;
     padding-top: var(--spacing2);
     width: fit-content;
     /* border-top: 1px solid var(--secondary); */
   }
 
   .dot {
-    width: var(--spacing2);
-    height: var(--spacing2);
+    width: var(--spacing1);
+    height: var(--spacing1);
     border-radius: 50%;
     border: 2px solid var(--secondary);
     background-color: transparent;
