@@ -195,6 +195,7 @@
     gap: var(--spacing2);
     margin-top: var(--spacing3);
     padding-top: var(--spacing2);
+    width: fit-content;
     /* border-top: 1px solid var(--secondary); */
   }
 
