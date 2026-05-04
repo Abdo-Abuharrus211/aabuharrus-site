@@ -336,6 +336,10 @@ dialog::backdrop {
 /* Utility Classes for quick styles during dev*/
 
 /* Margins and Paddings */
+.padding0 {
+    padding: 0;
+}
+
 .padding1 {
     padding: var(--spacing1) 0;
 }
@@ -362,6 +366,10 @@ dialog::backdrop {
 
 .padding7 {
     padding: var(--spacing7) 0;
+}
+
+.margin0 {
+    margin: 0;
 }
 
 .margin1 {
