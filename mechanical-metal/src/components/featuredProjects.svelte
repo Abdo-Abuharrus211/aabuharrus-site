@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+  import { onMount } from "svelte";
 
   let { projects = [] } = $props();
 
@@ -34,10 +34,10 @@
    */
   function goToProject(index: number) {
     if (isTransitioning || index === currentIndex) return;
-    
+
     nextIndex = index;
     isTransitioning = true;
-    
+
     // gotta wait for animation to complete
     setTimeout(() => {
       currentIndex = index;
@@ -61,12 +61,14 @@
 
   // proj to be rendered
   const currentProject = $derived(projects[currentIndex]);
-  const displayProject = $derived(isTransitioning ? projects[nextIndex] : projects[currentIndex]);
+  const displayProject = $derived(
+    isTransitioning ? projects[nextIndex] : projects[currentIndex],
+  );
 </script>
 
 {#if projects.length > 0}
   <div class="carousel-container">
-    <div class={`carousel-slide ${isTransitioning ? 'transitioning' : ''}`}>
+    <div class={`carousel-slide ${isTransitioning ? "transitioning" : ""}`}>
       <div class="carousel-img-box">
         <img
           src={displayProject.data.images[0]}
@@ -86,13 +88,52 @@
 
         <div>
           {#if displayProject.data.link}
-            <a href={displayProject.data.link} target="_blank">
-              Site
+            <a
+              href={displayProject.data.link}
+              target="_blank"
+              aria-label="Project URL"
+            >
+              <svg
+                class="icon"
+                xmlns="http://www.w3.org/2000/svg"
+                width="48"
+                height="48"
+                viewBox="0 0 24 24"
+                ><path
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-dasharray="28"
+                  stroke-dashoffset="28"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 6l2 -2c1 -1 3 -1 4 0l1 1c1 1 1 3 0 4l-5 5c-1 1 -3 1 -4 0M11 18l-2 2c-1 1 -3 1 -4 0l-1 -1c-1 -1 -1 -3 0 -4l5 -5c1 -1 3 -1 4 0"
+                  ><animate
+                    fill="freeze"
+                    attributeName="stroke-dashoffset"
+                    dur="0.6s"
+                    values="28;0"
+                  /></path
+                ></svg
+              >
             </a>
           {/if}
           {#if displayProject.data.github}
-            <a href={displayProject.data.github} target="_blank">
-              GitHub
+            <a
+              href={displayProject.data.github}
+              target="_blank"
+              aria-label="Github url"
+            >
+              <svg
+                class="icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="currentColor"
+                  d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34c-.46-1.16-1.11-1.47-1.11-1.47c-.91-.62.07-.6.07-.6c1 .07 1.53 1.03 1.53 1.03c.87 1.52 2.34 1.07 2.91.83c.09-.65.35-1.09.63-1.34c-2.22-.25-4.55-1.11-4.55-4.92c0-1.11.38-2 1.03-2.71c-.1-.25-.45-1.29.1-2.64c0 0 .84-.27 2.75 1.02c.79-.22 1.65-.33 2.5-.33s1.71.11 2.5.33c1.91-1.29 2.75-1.02 2.75-1.02c.55 1.35.2 2.39.1 2.64c.65.71 1.03 1.6 1.03 2.71c0 3.82-2.34 4.66-4.57 4.91c.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2"
+                ></path>
+              </svg>
             </a>
           {/if}
         </div>
