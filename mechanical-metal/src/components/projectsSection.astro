@@ -12,9 +12,6 @@ import { getCollection } from "astro:content";
 import ProjectGallery from "../components/projectGallery.svelte";
 import FilterBar from "./filterBar.astro";
 import FeaturedProjects from "./featuredProjects.svelte";
-import ProjectModal from "./projectModal.svelte";
-
-import { projModalStore } from "../stores/projModalStore";
 
 const allProjects = await getCollection("projects");
 const showcases = allProjects.filter((p) => p.data.featured);
@@ -47,11 +44,6 @@ const tags = [
   <FilterBar tags={tags} />
   <!-- Pass the data to the island -->
   <ProjectGallery client:load="svelte" projects={galleryProjects} />
-  {
-    projModalStore.showModal && projModalStore.selectedProject !== null && (
-      <ProjectModal projectProps={{ data: projModalStore.selectedProject }} />
-    )
-  }
 </section>
 
 <style>
