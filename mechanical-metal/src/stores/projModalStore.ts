@@ -15,3 +15,11 @@ export function closeModal() {
 
 }
 
+export const projModalStore = {
+    selectedProject,
+    showModal,
+    openModal,
+    closeModal,
+};
+  
+
