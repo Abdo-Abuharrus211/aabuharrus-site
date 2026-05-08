@@ -284,6 +284,16 @@ dialog::backdrop {
     display: inline-block;
 }
 
+.chip-btn{
+    font-size: var(--spacing3);
+    margin-left: var(--spacing4);
+    background-color: transparent;
+    color: var(--primary);
+    border: solid 1px var(--accent);
+    border-radius: var(--spacing3);
+}
+/* TODO: style active chips */
+
 .top-accent-tab {
     border-top: var(--spacing1) solid var(--accent);
     border-top-left-radius: var(--spacing1);
