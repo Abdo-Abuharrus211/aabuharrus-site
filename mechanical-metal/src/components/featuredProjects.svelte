@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import { openModal } from "../stores/projModalStore";
 
   let { projects = [] } = $props();
 
@@ -67,7 +68,8 @@
 </script>
 
 {#if projects.length > 0}
-  <div class="carousel-container">
+  <!-- TODO: add click on the div -->
+  <div id="feat-projects" class="carousel-container">
     <div class={`carousel-slide ${isTransitioning ? "transitioning" : ""}`}>
       <div class="carousel-img-box">
         <img
@@ -136,6 +138,7 @@
               </svg>
             </a>
           {/if}
+          <button onclick={() => openModal(displayProject)}>more</button>
         </div>
       </div>
     </div>
