@@ -1,37 +1,43 @@
 <script lang="ts">
   import ProjectCard from "./projectCard.svelte";
   import ProjectModal from "./projectModal.svelte";
+  import { projModalStore } from "../stores/projModalStore";
 
   let { projects } = $props();
-  projects.sort(
-    (a: any, b: any) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
+
+  const sortedProjects = projects.sort(
+    (a: any, b: any) =>
+      new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
   );
-  // State to track the modal
-  let showModal = $state(false);
-  let selectedProject: any = $state(null);
+  // // State to track the modal
+  // let showModal = $state(false);
+  // let selectedProject: any = $state(null);
 
-  function openModal(project: any) {
-    selectedProject = project;
-    showModal = true;
-  }
+  // function openModal(project: any) {
+  //   selectedProject = project;
+  //   showModal = true;
+  // }
 
-  function closeModal() {
-    showModal = false;
-    selectedProject = null;
-  }
+  // function closeModal() {
+  //   showModal = false;
+  //   selectedProject = null;
+  // }
 </script>
 
 <div class="proj-gallery margin4">
-  {#each projects as project}
+  {#each sortedProjects as project}
     <ProjectCard
       projectProps={project}
       on:select={() => {
-        openModal(project);
+        projModalStore.openModal(project);
       }}
     />
   {/each}
-  {#if showModal}
-    <ProjectModal projectProps={selectedProject} on:close={closeModal} />
+  {#if projModalStore.showModal}
+    <ProjectModal
+      projectProps={{ data: projModalStore.selectedProject }}
+      on:close={() => projModalStore.closeModal()}
+    />
   {/if}
 </div>
 
