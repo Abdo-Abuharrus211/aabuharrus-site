@@ -1,7 +1,7 @@
 <script lang="ts">
   import ProjectCard from "./projectCard.svelte";
   import ProjectModal from "./projectModal.svelte";
-  import { projModalStore } from "../stores/projModalStore";
+  import { selectedProject, showModal, projModalStore } from "../stores/projModalStore";
 
   let { projects } = $props();
 
@@ -9,19 +9,6 @@
     (a: any, b: any) =>
       new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
   );
-  // // State to track the modal
-  // let showModal = $state(false);
-  // let selectedProject: any = $state(null);
-
-  // function openModal(project: any) {
-  //   selectedProject = project;
-  //   showModal = true;
-  // }
-
-  // function closeModal() {
-  //   showModal = false;
-  //   selectedProject = null;
-  // }
 </script>
 
 <div class="proj-gallery margin4">
@@ -33,9 +20,9 @@
       }}
     />
   {/each}
-  {#if projModalStore.showModal}
+  {#if $showModal}
     <ProjectModal
-      projectProps={{ data: projModalStore.selectedProject }}
+      projectProps={$selectedProject}
       on:close={() => projModalStore.closeModal()}
     />
   {/if}
