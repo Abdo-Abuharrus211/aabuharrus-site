@@ -1,11 +1,15 @@
-<script>
-  import { createEventDispatcher } from "svelte";
-  let { projectProps } = $props();
+<script lang="ts">
+  import { createEventDispatcher, onMount } from "svelte";
+  import type { Project } from "../types/types";
 
-  const projText = projectProps.data.text;
+  type ProjectEntry = { id: number; data: Project };
+
+  let { projectProps } = $props<ProjectEntry | null>();
+
+  const projText = projectProps?.data.text ?? "";
 
   let current = $state(0);
-  const images = projectProps.data.images;
+  const images = projectProps?.data.images ?? [];
 
   function prev() {
     current = (current - 1 + images.length) % images.length;
@@ -25,10 +29,18 @@
   }
 
   // Event listener for Esc key
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      dispatch("close");
-    }
+  // Event listener for Esc key - only runs in browser
+  onMount(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        dispatch("close");
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
   });
 </script>
 
@@ -69,11 +81,7 @@
       <p id="proj-text">{@html projText}</p>
       <div class="url-box padding2">
         {#if projectProps.data.link !== ""}
-          <a
-            href={projectProps.data.link}
-            target="_blank"
-            aria-label="Project URL"
-          >
+          <a href={projectProps.data.link} target="_blank" aria-label="Project URL">
             <svg
               class="icon"
               xmlns="http://www.w3.org/2000/svg"
@@ -100,11 +108,7 @@
           </a>
         {/if}
         {#if projectProps.data.github !== ""}
-          <a
-            href={projectProps.data.github}
-            target="_blank"
-            aria-label="GitHub URL"
-          >
+          <a href={projectProps.data.github} target="_blank" aria-label="GitHub URL">
             <svg
               class="icon"
               xmlns="http://www.w3.org/2000/svg"
