@@ -69,7 +69,7 @@
 
 {#if projects.length > 0}
   <!-- TODO: add click on the div -->
-  <div id="feat-projects" class="carousel-container">
+  <div id="feat-projects" class="carousel-container margin3">
     <div class={`carousel-slide ${isTransitioning ? "transitioning" : ""}`}>
       <div class="carousel-img-box">
         <img
@@ -81,13 +81,6 @@
       <div class="carousel-content">
         <h2 class="margin0">{displayProject.data.name}</h2>
         <p class="teaser">{displayProject.data.teaser}</p>
-
-        <!-- <div class="tag-box">
-          {#each displayProject.data.tags as tag (tag)}
-            <span class="tag">{tag}</span>
-          {/each}
-        </div> -->
-
         <div>
           {#if displayProject.data.link}
             <a
@@ -215,11 +208,20 @@
   }
 
   .carousel-content {
+    margin-left: var(--spacing2);
     display: flex;
     flex-direction: column;
     gap: 1rem;
     justify-content: flex-start;
-    padding: var(--spacing2) 0;
+    padding: var(--spacing) 0;
+  }
+
+  .carousel-content h2 {
+    font-family: var(--fcode);
+  }
+  .carousel-content a,
+  button {
+    margin-right: var(--spacing3);
   }
 
   .teaser {
