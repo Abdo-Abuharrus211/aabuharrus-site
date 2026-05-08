@@ -1,10 +1,12 @@
 import { writable } from "svelte/store";
 import type { Project } from "../types/types"
 
-export const selectedProject = writable<Project | null>(null);
+type ProjectEntry = { id: number; data: Project };
+
+export const selectedProject = writable<ProjectEntry | null>(null);
 export const showModal = writable(false);
 
-export function openModal(proj: Project) {
+export function openModal(proj: ProjectEntry) {
     showModal.set(true);
     selectedProject.set(proj);
 }
@@ -21,5 +23,5 @@ export const projModalStore = {
     openModal,
     closeModal,
 };
-  
+
 
