@@ -10,7 +10,6 @@
 
 import { getCollection } from "astro:content";
 import ProjectGallery from "../components/projectGallery.svelte";
-import FilterBar from "./filterBar.astro";
 import FeaturedProjects from "./featuredProjects.svelte";
 
 const allProjects = await getCollection("projects");
@@ -40,9 +39,8 @@ const tags = [
     )
   }
 
-  <FilterBar tags={tags} />
   <!-- Pass the data to the island -->
-  <ProjectGallery client:load="svelte" projects={galleryProjects} />
+  <ProjectGallery client:load="svelte" projects={galleryProjects} tags={tags} />
 </section>
 
 <style>
