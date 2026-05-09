@@ -6,9 +6,11 @@
     selectedProject,
     showModal,
     projModalStore,
+    openModal,
   } from "../stores/projModalStore";
+  import { get } from "svelte/store";
 
-  const { projects, tags } = $props();
+  const { projects, tags: filterTags } = $props();
 
   const sortedProjects = projects.sort(
     (a: any, b: any) =>
@@ -50,19 +52,28 @@
   const selectedToggles: Set<string> = new Set();
 </script>
 
+<!-- if (selectedToggles.size === 0) {
+  // Show all projects
+  render sortedProjects
+} else {
+  // Show only matching projects
+  render filtered results (your current loop)
+} -->
+
 <div class="margin5">
   <!-- filter bar -->
   <div id="filter-box" class="container center">
     <div id="filter-bar">
       <h3 class="code-text">Filter</h3>
-      {#each tags as t}
+      {#each filterTags as t}
         <button
           class="chip-btn"
           onclick={() => {
-            // TODO: add the selected class for styling
+            // TODO: add the selected class for styling -> Needs a unique key per chip btn..?
             selectedToggles.has(t)
               ? selectedToggles.delete(t)
               : selectedToggles.add(t);
+            console.log(Array.from(selectedToggles));
           }}>{t}</button
         >
       {/each}
@@ -70,14 +81,38 @@
   </div>
   <!-- Gallery -->
   <div class="proj-gallery margin4">
-    {#each sortedProjects as project}
+    {#if selectedToggles.size == 0}
+      {#each sortedProjects as project}
+        <ProjectCard
+          projectProps={project}
+          on:select={() => {
+            projModalStore.openModal(project);
+          }}
+        />
+      {/each}
+    {:else}
+      {#each Array.from(selectedToggles) as t}
+        {#each allTags.get(t) as pId}
+          <ProjectCard
+            projectProps={pMap.get(pId)}
+            on:select={() => {
+              projModalStore.openModal({ id: pId, data: pMap.get(pId) });
+            }}
+          />
+        {/each}
+      {/each}
+    {/if}
+
+  
+
+    <!-- {#each sortedProjects as project}
       <ProjectCard
         projectProps={project}
         on:select={() => {
           projModalStore.openModal(project);
         }}
       />
-    {/each}
+    {/each} -->
     {#if $showModal}
       <ProjectModal
         projectProps={$selectedProject}
