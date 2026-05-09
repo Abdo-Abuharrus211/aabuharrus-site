@@ -17,7 +17,7 @@ const showcases = allProjects.filter((p) => p.data.featured);
 const galleryProjects = allProjects.filter((p) => !p.data.featured);
 
 // TODO: Tags for the filtering system, replace with tags retrieved from DB later.
-const tags = [
+const filterTags = [
   "Systems",
   "Full Stack",
   "Backend",
@@ -40,7 +40,7 @@ const tags = [
   }
 
   <!-- Pass the data to the island -->
-  <ProjectGallery client:load="svelte" projects={galleryProjects} tags={tags} />
+  <ProjectGallery client:load="svelte" projects={galleryProjects} tags={filterTags} />
 </section>
 
 <style>
