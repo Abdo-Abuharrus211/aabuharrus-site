@@ -49,7 +49,7 @@
     }
   });
 
-  const selectedToggles: Set<string> = new Set();
+  const selectedToggles = $state(new Set<string>());
 </script>
 
 <!-- if (selectedToggles.size === 0) {
@@ -102,8 +102,6 @@
         {/each}
       {/each}
     {/if}
-
-  
 
     <!-- {#each sortedProjects as project}
       <ProjectCard
