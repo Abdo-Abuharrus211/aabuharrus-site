@@ -29,12 +29,13 @@
 
   // Functions //
   function toggleFilter(filter: string) {
-    if (activeFilters.has(filter)) {
-      activeFilters.delete(filter);
+    const newFilters = new Set(activeFilters);
+    if (newFilters.has(filter)) {
+      newFilters.delete(filter);
     } else {
-      activeFilters.add(filter);
+      newFilters.add(filter);
     }
-    activeFilters = activeFilters; // tells svelte to refresh
+    activeFilters = newFilters; // this triggeres the refresh
     updateFilteredProjects();
   }
 
@@ -60,8 +61,8 @@
       {#each filterTags as t}
         <button
           class="chip-btn"
-          on:click={() => toggleFilter(t)}
-          class:active-chip={activeFilters.has(t)}>{t}</button
+          class:active-chip={activeFilters.has(t)}
+          onclick={() => toggleFilter(t)}>{t}</button
         >
       {/each}
     </div>
