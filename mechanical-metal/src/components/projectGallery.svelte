@@ -10,60 +10,45 @@
   } from "../stores/projModalStore";
 
   const { projects, tags: filterTags } = $props();
-  let selectedToggles = $state(new Set<string>());
-  let filteredIds = $state(new Set<number>());
-  const allTags = new Map<string, number[]>();
-  const pMap = new Map<number, Project>();
+  let activeFilters = $state(new Set<string>());
+  let filteredProjects = $state<pDataEntry[]>([]);
+  let sortedProjects: pDataEntry[] = [];
 
-  // Normalize IDs to number since everything's a string upon ingestion from JSON
-  const normalizedProjects: pDataEntry[] = projects.map((p: pDataEntry) => ({
-    ...p,
-    data: { ...p.data, id: Number(p.data.id) },
-  }));
-
-  const sortedProjects = normalizedProjects.sort(
-    (a: any, b: any) =>
-      new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
-  );
-
-  // Map projects by ID
-  normalizedProjects.forEach((p: pDataEntry) => {
-    if (!pMap.has(p.data.id)) pMap.set(p.data.id, p.data);
-  });
-
-  // Map tags to project IDs
-  normalizedProjects.forEach((p: pDataEntry) => {
-    if (p?.data?.tags && Array.isArray(p.data.tags)) {
-      p.data.tags.forEach((tag: string) => {
-        const cur = allTags.get(tag) ?? [];
-        cur.push(p.data.id);
-        allTags.set(tag, cur);
-      });
+  // Initialize and sort projects when props change
+  $effect(() => {
+    if (projects && Array.isArray(projects)) {
+      // Sort projects by date (newest first)
+      const sorted = [...projects].sort(
+        (a: any, b: any) =>
+          new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
+      );
+      sortedProjects = sorted;
+      filteredProjects = [...sorted];
     }
   });
 
   // Functions //
   function toggleFilter(filter: string) {
-    const next = new Set(selectedToggles);
-    if (next.has(filter)) {
-      next.delete(filter);
+    if (activeFilters.has(filter)) {
+      activeFilters.delete(filter);
     } else {
-      next.add(filter);
+      activeFilters.add(filter);
     }
-    selectedToggles = next;
-    filterProjects(next);
+    activeFilters = activeFilters; // tells svelte to refresh
+    updateFilteredProjects();
   }
 
-  function filterProjects(toggles = selectedToggles) {
-    if (toggles.size === 0) {
-      filteredIds = new Set<number>();
-      return;
+  function updateFilteredProjects() {
+    if (activeFilters.size === 0) {
+      filteredProjects = [...sortedProjects]; // shows all
+    } else {
+      filteredProjects = sortedProjects.filter(
+        (project) =>
+          project.data &&
+          project.data.tags &&
+          project.data.tags.some((tag: string) => activeFilters.has(tag)),
+      );
     }
-    const next = new Set<number>();
-    toggles.forEach((t: string) => {
-      allTags.get(t)?.forEach((id: number) => next.add(id));
-    });
-    filteredIds = next;
   }
 </script>
 
@@ -75,8 +60,8 @@
       {#each filterTags as t}
         <button
           class="chip-btn"
-          class:active-chip={selectedToggles.has(t)}
-          onclick={() => toggleFilter(t)}>{t}</button
+          on:click={() => toggleFilter(t)}
+          class:active-chip={activeFilters.has(t)}>{t}</button
         >
       {/each}
     </div>
@@ -84,24 +69,12 @@
 
   <!-- Gallery -->
   <div class="proj-gallery margin4">
-    {#if selectedToggles.size === 0}
-      {#each sortedProjects as project}
-        <ProjectCard
-          projectProps={project}
-          on:select={() => projModalStore.openModal(project)}
-        />
-      {/each}
-    {:else}
-      {#each Array.from(filteredIds) as filteredId}
-        {@const project = sortedProjects.find((p) => p.data.id === filteredId)}
-        {#if project}
-          <ProjectCard
-            projectProps={project}
-            on:select={() => projModalStore.openModal(project)}
-          />
-        {/if}
-      {/each}
-    {/if}
+    {#each filteredProjects as project (project.id)}
+      <ProjectCard
+        projectProps={project}
+        on:select={() => openModal(project)}
+      />
+    {/each}
 
     {#if $showModal}
       <ProjectModal
