@@ -22,3 +22,5 @@ export type Skill = {
     icon: string,
     points: string[]
 };
+
+export type pDataEntry = { id: number; data: Project };
