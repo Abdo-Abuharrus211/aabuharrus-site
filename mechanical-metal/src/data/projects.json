@@ -25,7 +25,8 @@
       "Environmental",
       "Positive Impact",
       "Volunteer",
-      "Enactus BCIT"
+      "Enactus BCIT",
+      "Full-Stack"
     ]
   },
   {
@@ -53,7 +54,9 @@
       "Next.js",
       "Vercel",
       "Supabase",
-      "Gemini-AI"
+      "Gemini-AI",
+      "JS/TS",
+      "Full-Stack"
     ]
   },
   {
@@ -78,7 +81,8 @@
       "Go",
       "Multithreading",
       "TUI",
-      "Tool"
+      "Tool",
+      "Systems"
     ]
   },
   {
@@ -107,7 +111,8 @@
       "Metadata",
       "I/O",
       "NLP",
-      "LLM"
+      "LLM",
+      "Full-Stack"
     ]
   },
   {
@@ -132,7 +137,8 @@
       "OCaml",
       "Pattern-Matching",
       "Recursion",
-      "MD-to-HTML"
+      "MD-to-HTML",
+      "Tool"
     ]
   },
   {
@@ -160,7 +166,9 @@
       "SSG",
       "MD-to-HTML",
       "Rust",
-      "Blog"
+      "Blog",
+      "Systems",
+      "Tool"
     ]
   },
   {
@@ -187,7 +195,11 @@
       "Node.js",
       "Spotify API",
       "Audio Streaming",
-      "Web App"
+      "Web App",
+      "JS/TS",
+      "Full-Stack",
+      "Frontend",
+      "Backend"
     ]
   }
 ]
