@@ -294,7 +294,8 @@ dialog::backdrop {
 }
 /* TODO: style active chips */
 .active-chip{
-    background-color: var(--accent);
+    background-color: var(--secondary);
+    color: var(--text);
 }
 .top-accent-tab {
     border-top: var(--spacing1) solid var(--accent);
