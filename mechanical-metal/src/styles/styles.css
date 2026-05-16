@@ -293,7 +293,9 @@ dialog::backdrop {
     border-radius: var(--spacing3);
 }
 /* TODO: style active chips */
-
+.active-chip{
+    background-color: var(--accent);
+}
 .top-accent-tab {
     border-top: var(--spacing1) solid var(--accent);
     border-top-left-radius: var(--spacing1);
