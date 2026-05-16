@@ -8,65 +8,62 @@
     projModalStore,
     openModal,
   } from "../stores/projModalStore";
-  import { onMount } from "svelte";
 
   const { projects, tags: filterTags } = $props();
-
   let selectedToggles = $state(new Set<string>());
   let filteredIds = $state(new Set<number>());
   const allTags = new Map<string, number[]>();
-  // mapped projects
   const pMap = new Map<number, Project>();
-  const sortedProjects = projects.sort(
+
+  // Normalize IDs to number since everything's a string upon ingestion from JSON
+  const normalizedProjects: pDataEntry[] = projects.map((p: pDataEntry) => ({
+    ...p,
+    data: { ...p.data, id: Number(p.data.id) },
+  }));
+
+  const sortedProjects = normalizedProjects.sort(
     (a: any, b: any) =>
       new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
   );
-  // mapping projects
-  sortedProjects.forEach((p: pDataEntry) => {
-    if (!pMap.has(p.id)) pMap.set(p.id, p.data);
+
+  // Map projects by ID
+  normalizedProjects.forEach((p: pDataEntry) => {
+    if (!pMap.has(p.data.id)) pMap.set(p.data.id, p.data);
   });
 
-  onMount(() => {
-    // map tags to project IDs
-    sortedProjects.forEach((p: pDataEntry) => {
-      if (p && p.data.tags && Array.isArray(p.data.tags)) {
-        p.data.tags.forEach((tag: string) => {
-          if (allTags.has(tag)) {
-            let cur: number[] = allTags.get(tag);
-            cur.push(p.id);
-            allTags.set(tag, cur);
-          } else {
-            allTags.set(tag, [p.id]);
-          }
-        });
-      }
-    });
-    console.log(pMap.entries().next().value?.[1]);
+  // Map tags to project IDs
+  normalizedProjects.forEach((p: pDataEntry) => {
+    if (p?.data?.tags && Array.isArray(p.data.tags)) {
+      p.data.tags.forEach((tag: string) => {
+        const cur = allTags.get(tag) ?? [];
+        cur.push(p.data.id);
+        allTags.set(tag, cur);
+      });
+    }
   });
 
-  // Functions
-  function filterProjects() {
-    filteredIds.clear();
-    // need if grabbing from set and maps?
-    Array.from(selectedToggles).forEach((t: string) => {
-      const IDs: number[] = allTags.get(t);
-      if (IDs) {
-        IDs.forEach((id) => {
-          filteredIds.add(id);
-        });
-      }
-    });
-    filteredIds = filteredIds; // svelte refresh
+  // Functions //
+  function toggleFilter(filter: string) {
+    const next = new Set(selectedToggles);
+    if (next.has(filter)) {
+      next.delete(filter);
+    } else {
+      next.add(filter);
+    }
+    selectedToggles = next;
+    filterProjects(next);
   }
 
-  function toggleFilter(filter: string) {
-    if (selectedToggles.has(filter)) {
-      selectedToggles.delete(filter);
-    } else {
-      selectedToggles.add(filter);
+  function filterProjects(toggles = selectedToggles) {
+    if (toggles.size === 0) {
+      filteredIds = new Set<number>();
+      return;
     }
-    selectedToggles = selectedToggles; // triggers Svelte refresh
-    filterProjects();
+    const next = new Set<number>();
+    toggles.forEach((t: string) => {
+      allTags.get(t)?.forEach((id: number) => next.add(id));
+    });
+    filteredIds = next;
   }
 </script>
 
@@ -78,44 +75,34 @@
       {#each filterTags as t}
         <button
           class="chip-btn"
-          onclick={() => {
-            // TODO: add the selected class for styling -> Needs a unique key per chip btn..?
-            toggleFilter(t);
-            this.classList.toggle("active-chip");
-          }}>{t}</button
+          class:active-chip={selectedToggles.has(t)}
+          onclick={() => toggleFilter(t)}>{t}</button
         >
       {/each}
     </div>
   </div>
+
   <!-- Gallery -->
   <div class="proj-gallery margin4">
-    {#if selectedToggles.size == 0}
+    {#if selectedToggles.size === 0}
       {#each sortedProjects as project}
         <ProjectCard
           projectProps={project}
-          on:select={() => {
-            projModalStore.openModal(project);
-          }}
+          on:select={() => projModalStore.openModal(project)}
         />
       {/each}
     {:else}
-      {#each Array.from(filteredIds) as pId}
-        <ProjectCard
-          projectProps={pMap.get(pId)}
-          on:select={() =>
-            projModalStore.openModal({ id: pId, data: pMap.get(pId) })}
-        />
+      {#each Array.from(filteredIds) as filteredId}
+        {@const project = sortedProjects.find((p) => p.data.id === filteredId)}
+        {#if project}
+          <ProjectCard
+            projectProps={project}
+            on:select={() => projModalStore.openModal(project)}
+          />
+        {/if}
       {/each}
     {/if}
 
-    <!-- {#each sortedProjects as project}
-      <ProjectCard
-        projectProps={project}
-        on:select={() => {
-          projModalStore.openModal(project);
-        }}
-      />
-    {/each} -->
     {#if $showModal}
       <ProjectModal
         projectProps={$selectedProject}
