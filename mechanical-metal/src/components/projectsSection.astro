@@ -9,12 +9,50 @@
  */
 
 import { getCollection } from "astro:content";
+import { turso } from "../data/turso.ts";
 import ProjectGallery from "../components/projectGallery.svelte";
 import FeaturedProjects from "./featuredProjects.svelte";
+import type { Project } from "../types/types";
 
-const allProjects = await getCollection("projects");
-const showcases = allProjects.filter((p) => p.data.featured);
-const galleryProjects = allProjects.filter((p) => !p.data.featured);
+const pQuery = `SELECT
+  p.id,
+  p.name,
+  p.teaser,
+  p.text,
+  p.featured,
+  p.date,
+  p.status,
+  p.link,
+  p.github,
+  GROUP_CONCAT(pi.image_url) AS images,
+  GROUP_CONCAT(pt.tag)       AS tags
+FROM projects p
+LEFT JOIN project_images    pi ON pi.project_id = p.id
+LEFT JOIN project_tags      pt ON pt.project_id = p.id
+GROUP BY p.id;`;
+
+let Projects: Project[] = [];
+
+let proj_data = [];
+let proj_points = [];
+
+try {
+  // returns array of JS objects containing needed data
+  const { rows: p_rows } = await turso.execute(pQuery);
+  const { rows: point_rows } = await turso.execute(
+    "SELECT * FROM project_keypoints",
+  );
+  if (p_rows && p_rows.length > 0) proj_data =  p_rows;
+  if (point_rows && point_rows.length > 0) proj_points = point_rows;
+  
+  // Combine all data into Project objects
+  Projects = combineKeyPoints();
+} catch (e) {
+  console.log(`Error fetching project data:${e}`);
+}
+
+const showcases = Projects.filter((p) => p.featured);
+const galleryProjects = Projects.filter((p) => !p.featured);
 
 // TODO: Tags for the filtering system, replace with tags retrieved from DB later.
 const filterTags = [
@@ -26,6 +64,41 @@ const filterTags = [
   "Python",
   "JS/TS",
 ];
+
+/**
+ * Combine the keypoints with their respective projects to produce and array of `Project` objects
+ */
+function combineKeyPoints(): Project[] {
+  return proj_data.map((pd) => {
+    // Parse GROUP_CONCAT'd strings back into arrays
+    const images = pd.images ? pd.images.split(',').filter((img: string) => img.trim()) : [];
+    const tags = pd.tags ? pd.tags.split(',').map((tag: string) => tag.trim()).filter((tag: string) => tag) : [];
+    
+    // Get keypoints for this project, sorted by sort_order
+    const keyPoints = proj_points
+      .filter((kp: any) => kp.project_id === pd.id)
+      .sort((a: any, b: any) => a.sort_order - b.sort_order)
+      .map((kp: any) => kp.keypoint);
+    
+    // Construct the Project object
+    const newProj: Project = {
+      id: pd.id,
+      name: pd.name,
+      teaser: pd.teaser,
+      text: pd.text,
+      featured: pd.featured === 1 || pd.featured === true,
+      date: pd.date,
+      status: pd.status,
+      link: pd.link || '',
+      github: pd.github || '',
+      images,
+      tags,
+      keyPoints,
+    };
+    
+    return newProj;
+  });
+}
 ---
 
 <section id="Projects">
