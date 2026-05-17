@@ -68,7 +68,6 @@
 </script>
 
 {#if projects.length > 0}
-  <!-- TODO: add click on the div -->
   <div id="feat-projects" class="carousel-container margin3">
     <div class={`carousel-slide ${isTransitioning ? "transitioning" : ""}`}>
       <div class="carousel-img-box">
