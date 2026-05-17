@@ -14,10 +14,8 @@ const pQuery = `SELECT
   p.status,
   p.link,
   p.github,
-  GROUP_CONCAT(pi.image_url) AS images,
   GROUP_CONCAT(pt.tag)       AS tags
 FROM projects p
-LEFT JOIN project_images    pi ON pi.project_id = p.id
 LEFT JOIN project_tags      pt ON pt.project_id = p.id
 GROUP BY p.id;`;
 
@@ -33,9 +31,10 @@ const filterTags = [
 ];
 
 let Projects: Project[] = [];
+// fetched data
 let proj_data: any[] = [];
 let proj_points: any[] = [];
-
+let proj_imgs: any[] = [];
 // get za data
 try {
   // returns array of objects
@@ -43,6 +42,10 @@ try {
   const { rows: point_rows } = await turso.execute(
     "SELECT * FROM project_keypoints",
   );
+  const { rows: img_rows } = await turso.execute(
+    "SELECT * FROM project_images",
+  );
+  // checks
   if (p_rows && p_rows.length > 0) {
     proj_data = p_rows;
   } else {
@@ -51,9 +54,13 @@ try {
   if (point_rows && point_rows.length > 0) {
     proj_points = point_rows;
   } else {
-    console.error("Project data is null!");
+    console.error("Project keypoints are null!");
   }
-  console.log(proj_data[0].images)
+  if (img_rows && img_rows.length > 0) {
+    proj_imgs = img_rows;
+  } else {
+    console.error("Project images are null!");
+  }
 
   Projects = combineKeyPoints();
 } catch (e) {
@@ -69,9 +76,6 @@ const galleryProjects = Projects.filter((p) => !p.featured);
 function combineKeyPoints(): Project[] {
   return proj_data.map((pd) => {
     // Parse GROUP_CONCAT'd strings back into arrays
-    const images = pd.images
-      ? pd.images.split(",").filter((img: string) => img.trim())
-      : [];
     const tags = pd.tags
       ? pd.tags
           .split(",")
@@ -85,6 +89,11 @@ function combineKeyPoints(): Project[] {
       .sort((a: any, b: any) => a.sort_order - b.sort_order)
       .map((kp: any) => kp.keypoint);
 
+    // Get images
+    const imgs = proj_imgs
+      .filter((pImg) => pImg.project_id === pd.id)
+      .map((i) => i.image_url.split(","));
+
     const newProj: Project = {
       id: pd.id,
       name: pd.name,
@@ -95,7 +104,7 @@ function combineKeyPoints(): Project[] {
       status: pd.status,
       link: pd.link || "",
       github: pd.github || "",
-      images,
+      images: imgs,
       tags,
       keyPoints,
     };
