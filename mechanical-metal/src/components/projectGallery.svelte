@@ -11,8 +11,8 @@
 
   const { projects, tags: filterTags } = $props();
   let activeFilters = $state(new Set<string>());
-  let filteredProjects = $state<pDataEntry[]>([]);
-  let sortedProjects: pDataEntry[] = [];
+  let filteredProjects = $state<Project[]>([]);
+  let sortedProjects: Project[] = [];
 
   // Initialize and sort projects when props change
   $effect(() => {
