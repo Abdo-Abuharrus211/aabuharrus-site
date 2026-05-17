@@ -73,18 +73,18 @@
     <div class={`carousel-slide ${isTransitioning ? "transitioning" : ""}`}>
       <div class="carousel-img-box">
         <img
-          src={displayProject.data.images[0]}
-          alt={displayProject.data.name}
+          src={displayProject.images[0]}
+          alt={displayProject.name}
         />
       </div>
 
       <div class="carousel-content">
-        <h2 class="margin0">{displayProject.data.name}</h2>
-        <p class="teaser">{displayProject.data.teaser}</p>
+        <h2 class="margin0">{displayProject.name}</h2>
+        <p class="teaser">{displayProject.teaser}</p>
         <div>
-          {#if displayProject.data.link}
+          {#if displayProject.link}
             <a
-              href={displayProject.data.link}
+              href={displayProject.link}
               target="_blank"
               aria-label="Project URL"
             >
@@ -113,9 +113,9 @@
               >
             </a>
           {/if}
-          {#if displayProject.data.github}
+          {#if displayProject.github}
             <a
-              href={displayProject.data.github}
+              href={displayProject.github}
               target="_blank"
               aria-label="Github url"
             >

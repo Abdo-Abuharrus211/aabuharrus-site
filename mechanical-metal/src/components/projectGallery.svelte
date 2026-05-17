@@ -20,7 +20,7 @@
       // Sort projects by date (newest first)
       const sorted = [...projects].sort(
         (a: any, b: any) =>
-          new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
+          new Date(b.date).getTime() - new Date(a.date).getTime(),
       );
       sortedProjects = sorted;
       filteredProjects = [...sorted];
@@ -45,9 +45,9 @@
     } else {
       filteredProjects = sortedProjects.filter(
         (project) =>
-          project.data &&
-          project.data.tags &&
-          project.data.tags.some((tag: string) => activeFilters.has(tag)),
+          project &&
+          project.tags &&
+          project.tags.some((tag: string) => activeFilters.has(tag)),
       );
     }
   }
