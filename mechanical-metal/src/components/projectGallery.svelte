@@ -27,6 +27,16 @@
     }
   });
 
+  // Reset button activation
+  $effect(() => {
+    const btn = document.getElementById("reset-btn") as HTMLButtonElement;
+    if (activeFilters.size >= 3) {
+      btn.disabled = false;
+    } else if (activeFilters.size <= 2) {
+      btn.disabled = true;
+    }
+  });
+
   // Functions //
   function toggleFilter(filter: string) {
     const newFilters = new Set(activeFilters);
@@ -51,6 +61,12 @@
       );
     }
   }
+
+  function resetFilters() {
+    const newSet = new Set<string>();
+    activeFilters = newSet;
+    filteredProjects = [...sortedProjects];
+  }
 </script>
 
 <div class="margin5">
@@ -58,6 +74,12 @@
   <div id="filter-box" class="container center">
     <div id="filter-bar">
       <h3 class="code-text">Filter</h3>
+      <button
+        id="reset-btn"
+        class="code-text"
+        disabled={true}
+        onclick={() => resetFilters()}>Reset:</button
+      >
       {#each filterTags as t}
         <button
           class="chip-btn"
