@@ -116,4 +116,12 @@
     justify-content: space-between;
     align-items: flex-start;
   }
+
+  
+  @media (max-width: 640px) {
+    #reset-btn {
+      font-size: var(--fsize1);
+      padding: var(--spacing1) var(--spacing2);
+    }
+  }
 </style>
