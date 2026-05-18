@@ -172,9 +172,20 @@ button {
     cursor: pointer;
 }
 
+.btn:disabled,
+button:disabled {
+    background-color: var(--subbackground);
+    color: var(--text);
+}
 
 
 @media (hover: hover) {
+
+    .btn:disabled:hover,
+    button:disabled:hover {
+        box-shadow: none;
+        scale: 1.0;
+    }
 
     .btn:hover,
     button:hover {
@@ -284,19 +295,22 @@ dialog::backdrop {
     display: inline-block;
 }
 
-.chip-btn{
+.chip-btn {
     font-size: var(--spacing3);
     margin-left: var(--spacing4);
     background-color: transparent;
     color: var(--primary);
     border: solid 1px var(--accent);
     border-radius: var(--spacing3);
+    transform: scale(0.9375);
 }
-.active-chip{
-    background-color: var(--subtext);
+
+.active-chip {
+    background-color: var(--accent);
     color: var(--subbackground);
-    transform: scale(1.0625);
+    transform: scale(1.0);
 }
+
 .top-accent-tab {
     border-top: var(--spacing1) solid var(--accent);
     border-top-left-radius: var(--spacing1);
