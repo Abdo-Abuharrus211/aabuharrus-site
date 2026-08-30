@@ -9,14 +9,14 @@ import type { TabContent } from "../types/types";
   // Image URLs are passed in from astro parent for URL resolution
   let { whoImg, bgImg, hobbyImg } = $props();
 
-  const toggles: string[] = ["Who's Abdu?", "Background", "Interests/Hobbies"];
+  const toggles: string[] = ["Intro", "Background", "Interests/Hobbies"];
   const content = new Map<string, TabContent>();
   let currentToggle = $state<string>(toggles[0]);
 
   content.set(toggles[0], {
     heading: "Who's Abdu?",
     img: whoImg,
-    caption: "Fueled by a good café roast.",
+    caption: "I always appreciate a cafe with good roasts!",
     body: "This is all about me and me and me and meeee",
   });
   content.set(toggles[1], {
@@ -28,7 +28,7 @@ import type { TabContent } from "../types/types";
   content.set(toggles[2], {
     heading: "Interests / Hobbies",
     img: hobbyImg,
-    caption: "Out and about with the camera.",
+    caption: "Jackie the Harris's hawk. New Mexico, USA. Circa 2017",
     body: "I like photographing nature and automobiles, the outdoors, Sci-Fi and Fantasy media, and music",
   });
 
@@ -76,13 +76,13 @@ import type { TabContent } from "../types/types";
   #content-box {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--spacing4);
-    align-items: flex-start;
+    gap: var(--spacing5);
+    align-items: center;
   }
 
   #content-box > * {
     flex: 1;
-    min-width: 260px;
+    min-width: 300px;
   }
 
   .content-img {
