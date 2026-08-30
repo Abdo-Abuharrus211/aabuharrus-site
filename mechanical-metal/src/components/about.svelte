@@ -76,4 +76,33 @@ import type { TabContent } from "../types/types";
 </div>
 
 <style>
+  #content-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing4);
+    align-items: flex-start;
+  }
+
+  #content-box > * {
+    flex: 1;
+    min-width: 260px;
+  }
+
+  .content-img {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing1);
+  }
+
+  .content-img img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: var(--spacing1);
+  }
+
+  .content-img small {
+    color: var(--accent);
+    font-size: var(--fsize1);
+  }
 </style>
