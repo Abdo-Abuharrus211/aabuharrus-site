@@ -1,15 +1,14 @@
 <script lang="ts">
   /**
    * TODO:
-   * Store the content in a data source -> maybe just begin the database conversion...\
-   * Render ONLY the content for the current toggle
+   * SRefactor for the database conversion...\
    */
   import type { TabContent } from "../types/types";
 
   // Image URLs are passed in from astro parent for URL resolution
   let { whoImg, bgImg, hobbyImg } = $props();
 
-  const toggles: string[] = ["Intro", "Background", "Interests/Hobbies"];
+  const toggles: string[] = ["Intro", "Background", "Interests"];
   const content = new Map<string, TabContent>();
   let currentToggle = $state<string>(toggles[0]);
 
@@ -17,19 +16,19 @@
     heading: "Who's Abdu?",
     img: whoImg,
     caption: "I always appreciate a good coffee roast!",
-    body: `I'm a software developer from Tripoli, Libya.\nBuilding things that make life easier for myself and others.`,
+    body: `I'm a software developer with a variety of project experiences, across various tech stacks and domains.\nBuilding things that make life easier for myself and others.`,
   });
   content.set(toggles[1], {
     heading: "Background",
     img: bgImg,
     caption: "BCIT Tech Collider.",
-    body:"Old computers and video games sparked my interest in technology early on.\nI started coding Arduino Uno boards and one thing lead to another.\nI'm currently based in Vancouver, BC",
+    body:"I'm from Tripoli, Libya.\nOld computers and video games sparked my interest in technology early on.\nI started coding Arduino Uno boards and one thing lead to another...\nI'm currently based in Vancouver, BC",
   });
   content.set(toggles[2], {
-    heading: "Interests / Hobbies",
+    heading: "Interests, Hobbies, and Obsessions",
     img: hobbyImg,
     caption: "Jackie the Harris's hawk. New Mexico, USA, 2017",
-    body: `I have a wide range of itnerests. Including photographing nature and automobiles, café hopping hiking, camping, travelling, Sci-Fi and Fantasy media, and music.\nSlowly learning guitar...`,
+    body: `My wide range of interests include photography (nature and automobiles), aquariums, gardening, café hopping, the outdoors, travelling, gaming, and more!.\nSlowly learning guitar...`,
   });
 
   /// Functions ///
@@ -65,7 +64,7 @@
         <small>{current.caption}</small>
       </div>
       <div>
-        <h3>{current.heading}</h3>
+        <h2>{current.heading}</h2>
         <p>{current.body}</p>
       </div>
     </div>
@@ -83,6 +82,10 @@
   #content-box > * {
     flex: 1;
     min-width: 300px;
+  }
+
+  #content-box p{
+    font-size: var(--fsize2);
   }
 
   .content-img {
