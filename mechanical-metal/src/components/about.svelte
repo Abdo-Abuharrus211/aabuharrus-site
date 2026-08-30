@@ -4,16 +4,36 @@
    * Store the content in a data source -> maybe just begin the database conversion...\
    * Render ONLY the content for the current toggle
    */
-  const toggles: string[] = ["Who's Abdu?", "Background", "Interests/Hobbies"];
-  const content = new Map<string, string>(); // placeholder map, toggle:contenObject
-  let currentToggle = $state<string>("");
+import type { TabContent } from "../types/types";
 
-  content.set(toggles[0], "This is all about me and me and me and meeee");
-  content.set(toggles[1], "My backgroudn is bscvis vsiu sosv [REDACTED]");
-  content.set(
-    toggles[2],
-    "I like photographing nature and automobiles, the outdoors, Sci-Fi and Fantasy media, and music",
-  );
+  import bioHeadshot from "../images/cafe-roast-pfp.jpg";
+  import eduPhoto from "../images/bcit-tech-collider.webp";
+  import hobbyPhoto from "../images/Jackie.webp";
+
+ 
+
+  const toggles: string[] = ["Who's Abdu?", "Background", "Interests/Hobbies"];
+  const content = new Map<string, TabContent>(); // toggle -> content object
+  let currentToggle = $state<string>(toggles[0]);
+
+  content.set(toggles[0], {
+    heading: "Who's Abdu?",
+    img: bioHeadshot,
+    caption: "Fueled by a good café roast.",
+    body: "This is all about me and me and me and meeee",
+  });
+  content.set(toggles[1], {
+    heading: "Background",
+    img: eduPhoto,
+    caption: "BCIT Tech Collider.",
+    body: "Video games and old PCs sparked my interest in tech early on, started coding Arduino boards and one thing lead to another.",
+  });
+  content.set(toggles[2], {
+    heading: "Interests / Hobbies",
+    img: hobbyPhoto,
+    caption: "Out and about with the camera.",
+    body: "I like photographing nature and automobiles, the outdoors, Sci-Fi and Fantasy media, and music",
+  });
 
   /// Functions ///
 
