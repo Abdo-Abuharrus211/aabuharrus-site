@@ -20,6 +20,7 @@ npm run preview # Preview production build
 
 ## Notes
 - No test suite configured
+- Don't overwrite nor delete existing comments
 - No lint/typecheck commands (Astro check available via `npx astro check`)
 - Data lives in JSON files - edit those to update skills/projects
 - Delete astro-intro.md if present (deprecated starter docs)

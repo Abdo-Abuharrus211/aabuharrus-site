@@ -2,6 +2,8 @@
   {
     "id": 0,
     "name": "Ecometer",
+    "teaser": "Leading the restoration of a Rails app for conscious dining decisions",
+    "featured": false,
     "images": [
       "/images/projects/ecometer2.png"
     ],
@@ -23,12 +25,15 @@
       "Environmental",
       "Positive Impact",
       "Volunteer",
-      "Enactus BCIT"
+      "Enactus BCIT",
+      "Full-Stack"
     ]
   },
   {
     "id": 1,
     "name": "ClickClack",
+    "teaser": "A typing test game powered by AI-generated prompts and real-time stats",
+    "featured": false,
     "images": [
       "/images/projects/clickclack.png",
       "/images/projects/clickclack2.png"
@@ -49,12 +54,16 @@
       "Next.js",
       "Vercel",
       "Supabase",
-      "Gemini-AI"
+      "Gemini-AI",
+      "JS/TS",
+      "Full-Stack"
     ]
   },
   {
     "id": 2,
     "name": "Project Vitalis",
+    "teaser": "A Go-based system monitor with a simple TUI for real-time PC insights",
+    "featured": false,
     "images": [
       "/images/projects/project-vitalis.png"
     ],
@@ -72,12 +81,15 @@
       "Go",
       "Multithreading",
       "TUI",
-      "Tool"
+      "Tool",
+      "Systems"
     ]
   },
   {
     "id": 3,
     "name": "AudioReaper",
+    "teaser": "Making it easy to sync your music library to Spotify with smart metadata matching",
+    "featured": false,
     "images": [
       "/images/projects/audioreaper.png",
       "/images/projects/audioreaper2.png"
@@ -99,12 +111,16 @@
       "Metadata",
       "I/O",
       "NLP",
-      "LLM"
+      "LLM",
+      "Full-Stack",
+      "JS/TS"
     ]
   },
   {
     "id": 4,
     "name": "NaqaMD",
+    "teaser": "A functional programming journey: Markdown to HTML in OCaml",
+    "featured": false,
     "images": [
       "/images/projects/NaqaMD.png"
     ],
@@ -122,12 +138,15 @@
       "OCaml",
       "Pattern-Matching",
       "Recursion",
-      "MD-to-HTML"
+      "MD-to-HTML",
+      "Tool"
     ]
   },
   {
     "id": 5,
     "name": "Digital Garden",
+    "teaser": "Publishing my Obsidian vault as a living blog using Quartz and automation",
+    "featured": true,
     "images": [
       "/images/projects/project-shrubgarden.png"
     ],
@@ -148,7 +167,38 @@
       "SSG",
       "MD-to-HTML",
       "Rust",
-      "Blog"
+      "Blog",
+      "Systems",
+      "Tool"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "MOCK FM",
+    "teaser": "A mock radio station app for streaming and managing playlists",
+    "featured": true,
+    "images": [
+      "https://picsum.photos/1200/720"
+    ],
+    "date": "2025-06-10",
+    "text": "MOCK FM is a fun project designed to simulate a radio station experience. Users can create and manage playlists, stream music, and even schedule 'mock' broadcasts. This project was built to explore the integration of audio streaming APIs and real-time scheduling.",
+    "keyPoints": [
+      "Built with React and Node.js.",
+      "Integrated with Spotify API for streaming.",
+      "Real-time scheduling for playlist broadcasts.",
+      "Responsive and user-friendly UI."
+    ],
+    "status": "In Progress",
+    "link": "https://mockfm.aabuharrus.dev/",
+    "github": "https://github.com/Abdo-Abuharrus211/MockFM",
+    "tags": [
+      "React",
+      "Node.js",
+      "Spotify API",
+      "Audio Streaming",
+      "Web App",
+      "JS/TS",
+      "Full-Stack"
     ]
   }
 ]

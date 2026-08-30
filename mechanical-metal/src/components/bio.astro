@@ -1,14 +1,27 @@
 ---
 import Image from "astro/components/Image.astro";
+// images imported here to resolve the URL hash
 import bioHeadshot from "../images/cafe-roast-pfp.jpg";
 import workPhoto from "../images/setup-2025.jpg";
 import hobbyPhoto from "../images/Jackie.webp";
 import eduPhoto from "../images/bcit-tech-collider.webp";
+import About from "./about.svelte";
+
+// Old bio layout is superseded by the tabbed <About /> component.
+// Kept in the markup below for reference; flip to true to restore it.
+const SHOW_OLD_BIO = false;
 ---
 
 <!-- Build out the Bio -->
 <section id="Bio">
   <h1>BIO</h1>
+  <About
+    whoImg={bioHeadshot.src}
+    bgImg={eduPhoto.src}
+    hobbyImg={hobbyPhoto.src}
+    client:load
+  />
+  {SHOW_OLD_BIO && (
   <div class="container flex column">
     <div class="bio-box flex">
       <div>
@@ -41,14 +54,14 @@ import eduPhoto from "../images/bcit-tech-collider.webp";
           <p class="tag">CLI Tools</p>
           <p class="tag">Automated workflows</p>
         </div>
-        <!-- <button
+        {/* <button
           class="outline-btn"
           onclick="document.getElementById('Contact')?.scrollIntoView({behavior: 'smooth'});"
-          >Let's chat</button> -->
+          >Let's chat</button> */}
       </div>
     </div>
 
-    <!-- <div class="bio-box flex">
+    {/* <div class="bio-box flex">
       <div>
         <Image class:list={"bio-img"} src={eduPhoto} alt={"Education"} />
       </div>
@@ -59,7 +72,7 @@ import eduPhoto from "../images/bcit-tech-collider.webp";
         <p>Shuhada Al-Shat High School - (2017-2019)</p>
         <p>Kennedy-Lugar YES Exchange Program - (2017-2018)</p>
       </div>
-    </div> -->
+    </div> */}
 
     <div class="bio-box flex reverse">
       <div>
@@ -86,6 +99,7 @@ import eduPhoto from "../images/bcit-tech-collider.webp";
       </div>
     </div>
   </div>
+  )}
 
   <style>
     .bio-img {
