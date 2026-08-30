@@ -1,5 +1,6 @@
 ---
 import Image from "astro/components/Image.astro";
+// images imported here to resolve the URL hash
 import bioHeadshot from "../images/cafe-roast-pfp.jpg";
 import workPhoto from "../images/setup-2025.jpg";
 import hobbyPhoto from "../images/Jackie.webp";
@@ -20,7 +21,6 @@ const SHOW_OLD_BIO = false;
     hobbyImg={hobbyPhoto.src}
     client:load
   />
-  {/* Old bio markup kept for reference; replaced by the tabbed <About /> above */}
   {SHOW_OLD_BIO && (
   <div class="container flex column">
     <div class="bio-box flex">

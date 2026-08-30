@@ -4,7 +4,7 @@
    * Store the content in a data source -> maybe just begin the database conversion...\
    * Render ONLY the content for the current toggle
    */
-import type { TabContent } from "../types/types";
+  import type { TabContent } from "../types/types";
 
   // Image URLs are passed in from astro parent for URL resolution
   let { whoImg, bgImg, hobbyImg } = $props();
@@ -16,20 +16,20 @@ import type { TabContent } from "../types/types";
   content.set(toggles[0], {
     heading: "Who's Abdu?",
     img: whoImg,
-    caption: "I always appreciate a cafe with good roasts!",
-    body: "This is all about me and me and me and meeee",
+    caption: "I always appreciate a good coffee roast!",
+    body: `I'm a software developer from Tripoli, Libya.\nBuilding things that make life easier for myself and others.`,
   });
   content.set(toggles[1], {
     heading: "Background",
     img: bgImg,
     caption: "BCIT Tech Collider.",
-    body: "Video games and old PCs sparked my interest in tech early on, started coding Arduino boards and one thing lead to another.",
+    body:"Old computers and video games sparked my interest in technology early on.\nI started coding Arduino Uno boards and one thing lead to another.\nI'm currently based in Vancouver, BC",
   });
   content.set(toggles[2], {
     heading: "Interests / Hobbies",
     img: hobbyImg,
-    caption: "Jackie the Harris's hawk. New Mexico, USA. Circa 2017",
-    body: "I like photographing nature and automobiles, the outdoors, Sci-Fi and Fantasy media, and music",
+    caption: "Jackie the Harris's hawk. New Mexico, USA, 2017",
+    body: `I have a wide range of itnerests. Including photographing nature and automobiles, café hopping hiking, camping, travelling, Sci-Fi and Fantasy media, and music.\nSlowly learning guitar...`,
   });
 
   /// Functions ///
@@ -101,5 +101,10 @@ import type { TabContent } from "../types/types";
   .content-img small {
     color: var(--accent);
     font-size: var(--fsize1);
+  }
+
+  /* Honor \n line breaks in the body strings while still wrapping normally */
+  #content-box p {
+    white-space: pre-line;
   }
 </style>
