@@ -44,11 +44,6 @@ import type { TabContent } from "../types/types";
   function setToggle(newTog: string) {
     currentToggle = newTog; // triggers reactivity from Svelte
   }
-
-  /**
-   * Switch the content displayed, triggering Svelte reactivity
-   */
-  function switchContent() {}
 </script>
 
 <div class="container">
@@ -61,26 +56,23 @@ import type { TabContent } from "../types/types";
       >
         {tog}
       </button>
-      {/each}
-    </div>
+    {/each}
+  </div>
 
-    <!-- Content -->
-    <div id="content-box margin3 padding2">
+  <!-- Content -->
+  {#if content.get(currentToggle)}
+    {@const current = content.get(currentToggle)!}
+    <div id="content-box" class="margin3 padding2">
       <div class="content-img margin3">
-        <img src="https://picsum.photos/1200/720" alt="placeholder-img" />
-        <small>Img Caption Here...</small>
+        <img src={current.img} alt={current.heading} />
+        <small>{current.caption}</small>
       </div>
       <div>
-      <h3>Heading Here</h3>
-        <p>{content?.get(currentToggle)}</p>
-        <p>
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. In molestias
-          eos ducimus architecto asperiores excepturi ad ratione adipisci
-          voluptatem dolore tempora quo, et odio quaerat amet magnam expedita
-          dolorem modi!
-        </p>
+        <h3>{current.heading}</h3>
+        <p>{current.body}</p>
       </div>
     </div>
+  {/if}
 </div>
 
 <style>
