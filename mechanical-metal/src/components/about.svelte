@@ -6,31 +6,28 @@
    */
 import type { TabContent } from "../types/types";
 
-  import bioHeadshot from "../images/cafe-roast-pfp.jpg";
-  import eduPhoto from "../images/bcit-tech-collider.webp";
-  import hobbyPhoto from "../images/Jackie.webp";
-
- 
+  // Image URLs are passed in from astro parent for URL resolution
+  let { whoImg, bgImg, hobbyImg } = $props();
 
   const toggles: string[] = ["Who's Abdu?", "Background", "Interests/Hobbies"];
-  const content = new Map<string, TabContent>(); // toggle -> content object
+  const content = new Map<string, TabContent>();
   let currentToggle = $state<string>(toggles[0]);
 
   content.set(toggles[0], {
     heading: "Who's Abdu?",
-    img: bioHeadshot,
+    img: whoImg,
     caption: "Fueled by a good café roast.",
     body: "This is all about me and me and me and meeee",
   });
   content.set(toggles[1], {
     heading: "Background",
-    img: eduPhoto,
+    img: bgImg,
     caption: "BCIT Tech Collider.",
     body: "Video games and old PCs sparked my interest in tech early on, started coding Arduino boards and one thing lead to another.",
   });
   content.set(toggles[2], {
     heading: "Interests / Hobbies",
-    img: hobbyPhoto,
+    img: hobbyImg,
     caption: "Out and about with the camera.",
     body: "I like photographing nature and automobiles, the outdoors, Sci-Fi and Fantasy media, and music",
   });
