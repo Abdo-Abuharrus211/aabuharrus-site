@@ -1,6 +1,7 @@
 ---
 import HomeBanner from "../components/homeBanner.astro";
 import Bio from "../components/bio.astro";
+import About from "../components/about.svelte";
 import ProjectsSection from "../components/projectsSection.astro";
 import SkillsSection from "../components/skillsSection.astro";
 import BaseLayout from "../layouts/baseLayout.astro";
@@ -18,8 +19,9 @@ const layoutProps = {
   </header>
   <main>
     <BackToTop />
-    <Bio />
-    <ProjectsSection />
+    <!-- <Bio /> -->
+    <About client:load/>
+    <ProjectsSection client:visible />
     <SkillsSection />
   </main>
   <ContactForm />
