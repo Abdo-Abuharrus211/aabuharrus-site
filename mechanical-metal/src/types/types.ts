@@ -23,4 +23,11 @@ export type Skill = {
     points: string[]
 };
 
+export type TabContent = {
+    heading: string;
+    img: string;
+    caption: string;
+    body: string;
+};
+
 export type pDataEntry = { id: number; data: Project };
