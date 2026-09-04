@@ -6,7 +6,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "db:seed": "node --experimental-strip-types src/scripts/seedDb.ts",
+    "db:reset": "node --experimental-strip-types src/scripts/seedDb.ts"
   },
   "dependencies": {
     "@astrojs/svelte": "^9.0.1",
