@@ -39,7 +39,7 @@
 
   // Functions //
   function toggleFilter(filter: string) {
-    const newFilters = new Set(activeFilters);
+    const newFilters = new Set(activeFilters);oj
     if (newFilters.has(filter)) {
       newFilters.delete(filter);
     } else {
