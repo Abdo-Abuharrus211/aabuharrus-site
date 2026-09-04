@@ -92,7 +92,8 @@ function combineKeyPoints(): Project[] {
     // Get images
     const imgs = proj_imgs
       .filter((pImg) => pImg.project_id === pd.id)
-      .map((i) => i.image_url.split(","));
+      .sort((a: any, b: any) => a.sort_order - b.sort_order)
+      .map((i) => i.image_url);
 
     const newProj: Project = {
       id: pd.id,
