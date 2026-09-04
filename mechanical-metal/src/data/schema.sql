@@ -34,6 +34,7 @@ CREATE INDEX IF NOT EXISTS idx_project_keypoints_project_id ON project_keypoints
 CREATE TABLE IF NOT EXISTS project_images (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   project_id INTEGER,
+  sort_order INTEGER,
   image_url TEXT,
   FOREIGN KEY (project_id) REFERENCES projects(id) ON DELETE CASCADE
 );
