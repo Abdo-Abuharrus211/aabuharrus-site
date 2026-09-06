@@ -1,8 +1,9 @@
 ---
-import { turso } from "../data/turso.ts";
+import { turso } from "../data/turso";
 import type { Project } from "../types/types";
 import ProjectGallery from "../components/projectGallery.svelte";
 import FeaturedProjects from "./featuredProjects.svelte";
+import type { Row } from "@libsql/client";
 
 const pQuery = `SELECT
   p.id,
@@ -31,10 +32,6 @@ const filterTags = [
 ];
 
 let Projects: Project[] = [];
-// fetched data
-let proj_data: any[] = [];
-let proj_points: any[] = [];
-let proj_imgs: any[] = [];
 // get za data
 try {
   // returns array of objects
@@ -45,24 +42,25 @@ try {
   const { rows: img_rows } = await turso.execute(
     "SELECT * FROM project_images",
   );
-  // checks
-  if (p_rows && p_rows.length > 0) {
-    proj_data = p_rows;
-  } else {
-    console.error("Project data is null!");
+
+  if (p_rows && p_rows.length <= 0) {
+    console.error(
+      `Error fetching projects data: query returned no rows, might be null.`,
+    );
   }
-  if (point_rows && point_rows.length > 0) {
-    proj_points = point_rows;
-  } else {
-    console.error("Project keypoints are null!");
-  }
-  if (img_rows && img_rows.length > 0) {
-    proj_imgs = img_rows;
-  } else {
-    console.error("Project images are null!");
+  if (point_rows && point_rows.length <= 0) {
+    console.error(
+      `Error fetching projects' points: query returned no rows, might be null.`,
+    );
   }
 
-  Projects = combineKeyPoints();
+  if (img_rows && img_rows.length <= 0) {
+    console.error(
+      `Error fetching projects' images: query returned no rows, might be null.`,
+    );
+  }
+
+  Projects = combineKeyPoints(p_rows, point_rows, img_rows);
 } catch (e) {
   console.error(`Error fetching project data:${e}`);
 }
@@ -71,13 +69,21 @@ const showcases = Projects.filter((p) => p.featured);
 const galleryProjects = Projects.filter((p) => !p.featured);
 
 /**
- * Combine the keypoints with their respective projects to produce and array of `Project` objects
+ * Combine the Projects with their respective keypoints and media (images)
+ * @param proj_data array of `Row` database results, representing projects
+ * @param proj_points array of `Row` database results, representing project keypoints
+ * @param proj_imgs array of `Row` database results, representing project media
  */
-function combineKeyPoints(): Project[] {
+function combineKeyPoints(
+  proj_data: Row[],
+  proj_points: Row[],
+  proj_imgs: Row[],
+): Project[] {
   return proj_data.map((pd) => {
     // Parse GROUP_CONCAT'd strings back into arrays
     const tags = pd.tags
       ? pd.tags
+          .toString()
           .split(",")
           .map((tag: string) => tag.trim())
           .filter((tag: string) => tag)
@@ -92,19 +98,20 @@ function combineKeyPoints(): Project[] {
     // Get images
     const imgs = proj_imgs
       .filter((pImg) => pImg.project_id === pd.id)
-      .map((i) => i.image_url.split(","));
+      .sort((a: any, b: any) => a.sort_order - b.sort_order)
+      .map((i) => i.image_url);
 
     const newProj: Project = {
-      id: pd.id,
-      name: pd.name,
-      teaser: pd.teaser,
-      text: pd.text,
-      featured: pd.featured === 1 || pd.featured === true,
-      date: pd.date,
-      status: pd.status,
-      link: pd.link || "",
-      github: pd.github || "",
-      images: imgs,
+      id: pd.id as number,
+      name: pd.name as string,
+      teaser: pd.teaser as string,
+      text: pd.text as string,
+      featured: pd.featured === 1 || pd.featured === "true",
+      date: pd.date as string,
+      status: pd.status as string,
+      link: (pd.link as string) || "",
+      github: (pd.github as string) || "",
+      images: imgs as string[],
       tags,
       keyPoints,
     };
@@ -115,7 +122,7 @@ function combineKeyPoints(): Project[] {
 ---
 
 <section id="Projects">
-  <h1>PROJECTS</h1>
+  <h1>PROJECTS</h1>hj
 
   {
     showcases.length > 0 && (
