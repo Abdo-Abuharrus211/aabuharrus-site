@@ -1,9 +1,59 @@
 ---
 import { getCollection } from "astro:content";
+
+import { turso } from "../data/turso";
+import type { Skill } from "../types/types";
+
 import SkillCard from "./skillCard.astro";
 import SkillCarousel from "./skillCarousel.astro";
+import type { Row } from "@libsql/client";
 
-const skills = await getCollection("skills");
+const sQuery = `
+      SELECT s.id, s.name, s.icon,
+      FROM skills s
+      LEFT JOIN skill_points sp ON sp.skill_id = s.id  -- NOT sp.id = s.id
+      GROUP BY s.id`;
+
+let skills: Skill[] = [];
+
+try {
+  const { rows: s_rows } = await turso.execute(sQuery);
+  const { rows: sp_rows } = await turso.execute(
+    `SELECT * FROM skill_points sp ORDER BY sort_order;`,
+  );
+
+  if (s_rows == null || s_rows.length <= 0) {
+    console.error(
+      `Error fetching skills: query returned no rows, skills might be null.`,
+    );
+  }
+  if (sp_rows == null || sp_rows.length <= 0) {
+    console.error(
+      `Error fetching skill points: query returned no rows, skills might be null.`,
+    );
+  }
+
+  skills = combineSkillPoints(s_rows, sp_rows);
+
+} catch (error) {
+  console.error(`Error fetching skills: ${error}`);
+}
+
+function combineSkillPoints(s_rows: Row[], sp_rows: Row[]): Skill[]{
+  return s_rows.map((sr) =>{
+
+    const points: string[] = sp_rows? sp_rows.filter((pz:any) => pz.skill_id ==sr.id).map((p) => p.point) : [];
+
+    const newSkill: Skill = {
+    id: sr.id,
+    name: sr.name,
+    icon: sr.icon,
+    points: points
+  };
+  return newSkill;
+
+  });
+}
 ---
 
 <section id="Skills">
@@ -16,7 +66,8 @@ const skills = await getCollection("skills");
     {skills.map((skill: any) => <SkillCard skillProps={skill} />)}
   </div>
   <div class="center">
-    <button id="skill-reset" class="outline-btn hidden" aria-hidden="true">Reset</button
+    <button id="skill-reset" class="outline-btn hidden" aria-hidden="true"
+      >Reset</button
     >
     <p id="reset-msg" class="hidden" aria-hidden="true">Easy there!🫵✋🤌</p>
   </div>
@@ -81,7 +132,11 @@ const skills = await getCollection("skills");
         const skillIndex = idx % totalSkills;
         const newPopup = document.getElementById(`skill-${skillIndex}`);
 
-        if (newPopup && !shownSkills.includes(newPopup) && shownSkills.length < 4) {
+        if (
+          newPopup &&
+          !shownSkills.includes(newPopup) &&
+          shownSkills.length < 4
+        ) {
           shownSkills.push(newPopup);
           unhide(newPopup);
         } else if (shownSkills.length >= 4) {
