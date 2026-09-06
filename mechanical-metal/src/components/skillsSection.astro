@@ -32,15 +32,21 @@ try {
   }
 
   skills = combineSkillPoints(s_rows, sp_rows);
-
 } catch (error) {
   console.error(`Error fetching skills: ${error}`);
 }
 
+/**
+ * Combine the Skills data with their respective keypoints
+ * @param s_rows array of `Row` database results, representing skills
+ * @param sp_rows array of `Row` database results, representing skills' points
+ */
 function combineSkillPoints(s_rows: Row[], sp_rows: Row[]): Skill[] {
   return s_rows.map((sr) => {
     const points: string[] = sp_rows
-      ? sp_rows.filter((pz) => pz.skill_id === sr.id).map((p) => p.point as string)
+      ? sp_rows
+          .filter((pz) => pz.skill_id === sr.id)
+          .map((p) => p.point as string)
       : [];
 
     const newSkill: Skill = {
