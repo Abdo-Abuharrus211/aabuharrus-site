@@ -13,12 +13,14 @@ const projects = defineCollection({
     loader: file("src/data/projects.json"),
     schema: z.object({
         name: z.string(),
-        images: z.array(z.string()),
         date: z.string(),
+        teaser: z.string(),
         text: z.string(),
         keyPoints: z.array(z.string()), //array of string for the bullet points
+        images: z.array(z.string()),
         link: z.string(),
         github: z.string(),
+        featured: z.boolean(),
         status: z.enum(["Planning", "Upcoming", "In Progress", "Completed", "Paused"]),
         tags: z.array(z.string()),
     })

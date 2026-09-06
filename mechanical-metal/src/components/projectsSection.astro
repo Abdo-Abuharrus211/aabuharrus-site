@@ -1,23 +1,153 @@
 ---
-/**
- * This Astro component's a wrapper around the Svelte islands, which I used for modal interactivity.
- * I kept this comp because of the ease of data retrieval using Astro's `getCollection` and content management.
- * Pass the data to the Svelte gallery as a prop, it then renders the flex box display of cards.
- */
-
-import { getCollection } from "astro:content";
+import { turso } from "../data/turso";
+import type { Project } from "../types/types";
 import ProjectGallery from "../components/projectGallery.svelte";
+import FeaturedProjects from "./featuredProjects.svelte";
+import type { Row } from "@libsql/client";
 
-const projects = await getCollection("projects");
+const pQuery = `SELECT
+  p.id,
+  p.name,
+  p.teaser,
+  p.text,
+  p.featured,
+  p.date,
+  p.status,
+  p.link,
+  p.github,
+  GROUP_CONCAT(pt.tag)       AS tags
+FROM projects p
+LEFT JOIN project_tags      pt ON pt.project_id = p.id
+GROUP BY p.id;`;
+
+// Add more when needed
+const filterTags = [
+  "Systems",
+  "Full-Stack",
+  // "Backend",
+  // "Frontend",
+  // "Rust",
+  "Python",
+  "JS/TS",
+];
+
+let Projects: Project[] = [];
+// get za data
+try {
+  // returns array of objects
+  const { rows: p_rows } = await turso.execute(pQuery);
+  const { rows: point_rows } = await turso.execute(
+    "SELECT * FROM project_keypoints",
+  );
+  const { rows: img_rows } = await turso.execute(
+    "SELECT * FROM project_images",
+  );
+
+  if (p_rows && p_rows.length <= 0) {
+    console.error(
+      `Error fetching projects data: query returned no rows, might be null.`,
+    );
+  }
+  if (point_rows && point_rows.length <= 0) {
+    console.error(
+      `Error fetching projects' points: query returned no rows, might be null.`,
+    );
+  }
+
+  if (img_rows && img_rows.length <= 0) {
+    console.error(
+      `Error fetching projects' images: query returned no rows, might be null.`,
+    );
+  }
+
+  Projects = combineKeyPoints(p_rows, point_rows, img_rows);
+} catch (e) {
+  console.error(`Error fetching project data:${e}`);
+}
+
+const showcases = Projects.filter((p) => p.featured);
+const galleryProjects = Projects.filter((p) => !p.featured);
+
+/**
+ * Combine the Projects with their respective keypoints and media (images)
+ * @param proj_data array of `Row` database results, representing projects
+ * @param proj_points array of `Row` database results, representing project keypoints
+ * @param proj_imgs array of `Row` database results, representing project media
+ */
+function combineKeyPoints(
+  proj_data: Row[],
+  proj_points: Row[],
+  proj_imgs: Row[],
+): Project[] {
+  return proj_data.map((pd) => {
+    // Parse GROUP_CONCAT'd strings back into arrays
+    const tags = pd.tags
+      ? pd.tags
+          .toString()
+          .split(",")
+          .map((tag: string) => tag.trim())
+          .filter((tag: string) => tag)
+      : [];
+
+    // Get keypoints for this project, sorted by sort_order
+    const keyPoints = proj_points
+      .filter((kp: any) => kp.project_id === pd.id)
+      .sort((a: any, b: any) => a.sort_order - b.sort_order)
+      .map((kp: any) => kp.keypoint);
+
+    // Get images
+    const imgs = proj_imgs
+      .filter((pImg) => pImg.project_id === pd.id)
+      .sort((a: any, b: any) => a.sort_order - b.sort_order)
+      .map((i) => i.image_url);
+
+    const newProj: Project = {
+      id: pd.id as number,
+      name: pd.name as string,
+      teaser: pd.teaser as string,
+      text: pd.text as string,
+      featured: pd.featured === 1 || pd.featured === "true",
+      date: pd.date as string,
+      status: pd.status as string,
+      link: (pd.link as string) || "",
+      github: (pd.github as string) || "",
+      images: imgs as string[],
+      tags,
+      keyPoints,
+    };
+
+    return newProj;
+  });
+}
 ---
 
 <section id="Projects">
   <h1>PROJECTS</h1>
+
+  {
+    showcases.length > 0 && (
+      <div class="featured-showcase">
+        <FeaturedProjects client:load projects={showcases} />
+      </div>
+    )
+  }
+
   <!-- Pass the data to the island -->
-  <ProjectGallery client:load="svelte" projects={projects} />
+  <ProjectGallery
+    client:load="svelte"
+    projects={galleryProjects}
+    tags={filterTags}
+  />
 </section>
 
 <style>
+  .showcase {
+    position: relative;
+    border: 0.5px solid var(--accent);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
   .proj-gallery {
     display: flex;
     flex-wrap: wrap;
