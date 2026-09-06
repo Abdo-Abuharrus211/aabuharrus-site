@@ -1,6 +1,4 @@
 ---
-import { getCollection } from "astro:content";
-
 import { turso } from "../data/turso";
 import type { Skill } from "../types/types";
 
@@ -19,7 +17,7 @@ let skills: Skill[] = [];
 try {
   const { rows: s_rows } = await turso.execute(sQuery);
   const { rows: sp_rows } = await turso.execute(
-    `SELECT * FROM skill_points sp WHERE skill_id = ? ORDER BY sort_order;`,
+    `SELECT * FROM skill_points ORDER BY sort_order;`,
   );
 
   if (s_rows == null || s_rows.length <= 0) {
@@ -39,19 +37,19 @@ try {
   console.error(`Error fetching skills: ${error}`);
 }
 
-function combineSkillPoints(s_rows: Row[], sp_rows: Row[]): Skill[]{
-  return s_rows.map((sr) =>{
-
-    const points: string[] = sp_rows? sp_rows.filter((pz) => pz.skill_id ==sr.id).map((p) => p.point) : [];
+function combineSkillPoints(s_rows: Row[], sp_rows: Row[]): Skill[] {
+  return s_rows.map((sr) => {
+    const points: string[] = sp_rows
+      ? sp_rows.filter((pz) => pz.skill_id === sr.id).map((p) => p.point as string)
+      : [];
 
     const newSkill: Skill = {
-    id: sr.id,
-    name: sr.name,
-    icon: sr.icon,
-    points: points
-  };
-  return newSkill;
-
+      id: sr.id as number,
+      name: sr.name as string,
+      icon: sr.icon as string,
+      points,
+    };
+    return newSkill;
   });
 }
 ---
@@ -63,7 +61,7 @@ function combineSkillPoints(s_rows: Row[], sp_rows: Row[]): Skill[]{
     >Resume</a
   >
   <div class="flex">
-    {skills.map((skill: any) => <SkillCard skillProps={skill} />)}
+    {skills.map((skill: Skill) => <SkillCard skillProps={skill} />)}
   </div>
   <div class="center">
     <button id="skill-reset" class="outline-btn hidden" aria-hidden="true"
