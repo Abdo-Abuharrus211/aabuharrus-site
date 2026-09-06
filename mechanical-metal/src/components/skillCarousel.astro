@@ -1,25 +1,20 @@
 ---
-import { getCollection } from "astro:content";
-import SkillCard from "./skillCard.astro";
+import type { Skill } from "../types/types";
 
-const skillsCollection = await getCollection("skills");
+const { skills } = Astro.props;
 ---
 
 <div id="skill-carousel" class="margin4">
   <div class="carousel padding5">
     <div class="track">
       {
-        skillsCollection.concat(skillsCollection).map((skill: any, index) => (
+        skills.concat(skills).map((skill: Skill, index: number) => (
           <div
             id={`carousel-item-${index}`}
             class="carousel-item"
             data-index={index}
           >
-            <img
-              class="track-icon"
-              src={skill.data.icon}
-              alt={`${skill.data.name}`}
-            />
+            <img class="track-icon" src={skill.icon} alt={`${skill.name}`} />
           </div>
         ))
       }
