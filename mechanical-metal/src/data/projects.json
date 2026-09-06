@@ -171,34 +171,5 @@
       "Systems",
       "Tool"
     ]
-  },
-  {
-    "id": 6,
-    "name": "MOCK FM",
-    "teaser": "A mock radio station app for streaming and managing playlists",
-    "featured": true,
-    "images": [
-      "https://picsum.photos/1200/720"
-    ],
-    "date": "2025-06-10",
-    "text": "MOCK FM is a fun project designed to simulate a radio station experience. Users can create and manage playlists, stream music, and even schedule 'mock' broadcasts. This project was built to explore the integration of audio streaming APIs and real-time scheduling.",
-    "keyPoints": [
-      "Built with React and Node.js.",
-      "Integrated with Spotify API for streaming.",
-      "Real-time scheduling for playlist broadcasts.",
-      "Responsive and user-friendly UI."
-    ],
-    "status": "In Progress",
-    "link": "https://mockfm.aabuharrus.dev/",
-    "github": "https://github.com/Abdo-Abuharrus211/MockFM",
-    "tags": [
-      "React",
-      "Node.js",
-      "Spotify API",
-      "Audio Streaming",
-      "Web App",
-      "JS/TS",
-      "Full-Stack"
-    ]
   }
 ]
