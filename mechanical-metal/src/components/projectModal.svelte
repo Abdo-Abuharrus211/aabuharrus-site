@@ -1,11 +1,15 @@
-<script>
-  import { createEventDispatcher } from "svelte";
-  let { projectProps } = $props();
+<script lang="ts">
+  import { createEventDispatcher, onMount } from "svelte";
+  import type { Project } from "../types/types";
 
-  const projText = projectProps.data.text;
+  type ProjectEntry = { id: number; data: Project };
+
+  let { projectProps } = $props<ProjectEntry | null>();
+
+  const projText = projectProps?.text ?? "";
 
   let current = $state(0);
-  const images = projectProps.data.images;
+  const images = projectProps?.images ?? [];
 
   function prev() {
     current = (current - 1 + images.length) % images.length;
@@ -25,10 +29,18 @@
   }
 
   // Event listener for Esc key
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      dispatch("close");
-    }
+  // Event listener for Esc key - only runs in browser
+  onMount(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        dispatch("close");
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
   });
 </script>
 
@@ -65,15 +77,11 @@
       >
     </button>
     <div class="details-box">
-      <h2>{projectProps.data.name}</h2>
+      <h2>{projectProps.name}</h2>
       <p id="proj-text">{@html projText}</p>
       <div class="url-box padding2">
-        {#if projectProps.data.link !== ""}
-          <a
-            href={projectProps.data.link}
-            target="_blank"
-            aria-label="Project URL"
-          >
+        {#if projectProps.link !== ""}
+          <a href={projectProps.link} target="_blank" aria-label="Project URL">
             <svg
               class="icon"
               xmlns="http://www.w3.org/2000/svg"
@@ -99,12 +107,8 @@
             >
           </a>
         {/if}
-        {#if projectProps.data.github !== ""}
-          <a
-            href={projectProps.data.github}
-            target="_blank"
-            aria-label="GitHub URL"
-          >
+        {#if projectProps.github !== ""}
+          <a href={projectProps.github} target="_blank" aria-label="GitHub URL">
             <svg
               class="icon"
               xmlns="http://www.w3.org/2000/svg"
@@ -123,7 +127,7 @@
         <img
           class="proj-thumbnail"
           src={images[current]}
-          alt={projectProps.data.name}
+          alt={projectProps.name}
         />
         <div class="proj-carousel center">
           <button
@@ -178,20 +182,20 @@
         <div class="center">
           <img
             class="proj-thumbnail"
-            src={projectProps.data.images[0]}
-            alt={`${projectProps.data.name}`}
+            src={projectProps.images[0]}
+            alt={`${projectProps.name}`}
           />
         </div>
       {/if}
       <!-- If ya need to add more details in the future,here -->
       <ul class="margin3">
-        {#each projectProps.data.keyPoints as point}
+        {#each projectProps.keyPoints as point}
           <li>{@html point}</li>
         {/each}
       </ul>
       <div class="flex">
         <div class="tag-box margin2">
-          {#each projectProps.data.tags as tag}
+          {#each projectProps.tags as tag}
             <p class="tag">{tag}</p>
           {/each}
         </div>

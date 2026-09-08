@@ -1,38 +1,111 @@
 <script lang="ts">
+  import type { Project, pDataEntry } from "../types/types";
   import ProjectCard from "./projectCard.svelte";
   import ProjectModal from "./projectModal.svelte";
+  import {
+    selectedProject,
+    showModal,
+    projModalStore,
+    openModal,
+  } from "../stores/projModalStore";
 
-  let { projects } = $props();
-  projects.sort(
-    (a: any, b: any) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
-  );
-  // State to track the modal
-  let showModal = $state(false);
-  let selectedProject: any = $state(null);
+  const { projects, tags: filterTags } = $props();
+  let activeFilters = $state(new Set<string>());
+  let filteredProjects = $state<Project[]>([]);
+  let sortedProjects: Project[] = [];
 
-  function openModal(project: any) {
-    selectedProject = project;
-    showModal = true;
+  // Initialize and sort projects when props change
+  $effect(() => {
+    if (projects && Array.isArray(projects)) {
+      // Sort projects by date (newest first)
+      const sorted = [...projects].sort(
+        (a: any, b: any) =>
+          new Date(b.date).getTime() - new Date(a.date).getTime(),
+      );
+      sortedProjects = sorted;
+      filteredProjects = [...sorted];
+    }
+  });
+
+  // Reset button activation
+  $effect(() => {
+    const btn = document.getElementById("reset-btn") as HTMLButtonElement;
+    if (activeFilters.size >= 3) {
+      btn.disabled = false;
+    } else if (activeFilters.size <= 2) {
+      btn.disabled = true;
+    }
+  });
+
+  // Functions //
+  function toggleFilter(filter: string) {
+    const newFilters = new Set(activeFilters);
+    if (newFilters.has(filter)) {
+      newFilters.delete(filter);
+    } else {
+      newFilters.add(filter);
+    }
+    activeFilters = newFilters; // this triggeres the refresh
+    updateFilteredProjects();
   }
 
-  function closeModal() {
-    showModal = false;
-    selectedProject = null;
+  function updateFilteredProjects() {
+    if (activeFilters.size === 0) {
+      filteredProjects = [...sortedProjects]; // shows all
+    } else {
+      filteredProjects = sortedProjects.filter(
+        (project) =>
+          project &&
+          project.tags &&
+          project.tags.some((tag: string) => activeFilters.has(tag)),
+      );
+    }
+  }
+
+  function resetFilters() {
+    const newSet = new Set<string>();
+    activeFilters = newSet;
+    filteredProjects = [...sortedProjects];
   }
 </script>
 
-<div class="proj-gallery margin4">
-  {#each projects as project}
-    <ProjectCard
-      projectProps={project}
-      on:select={() => {
-        openModal(project);
-      }}
-    />
-  {/each}
-  {#if showModal}
-    <ProjectModal projectProps={selectedProject} on:close={closeModal} />
-  {/if}
+<div class="margin5">
+  <!-- filter bar -->
+  <div id="filter-box" class="container center">
+    <div id="filter-bar">
+      <h3 class="code-text">Filter</h3>
+      <button
+        id="reset-btn"
+        class="code-text"
+        disabled={true}
+        onclick={() => resetFilters()}>Reset:</button
+      >
+      {#each filterTags as t}
+        <button
+          class="chip-btn"
+          class:active-chip={activeFilters.has(t)}
+          onclick={() => toggleFilter(t)}>{t}</button
+        >
+      {/each}
+    </div>
+  </div>
+
+  <!-- Gallery -->
+  <div class="proj-gallery margin4">
+    {#each filteredProjects as project (project.id)}
+      <ProjectCard
+        projectProps={project}
+        on:select={() => openModal(project)}
+      />
+    {/each}
+
+    {#if $showModal}
+      <ProjectModal
+        projectProps={$selectedProject}
+        on:close={() => projModalStore.closeModal()}
+      />
+    {/if}
+  </div>
 </div>
 
 <style>
@@ -42,5 +115,13 @@
     gap: 2rem;
     justify-content: space-between;
     align-items: flex-start;
+  }
+
+  
+  @media (max-width: 640px) {
+    #reset-btn {
+      font-size: var(--fsize1);
+      padding: var(--spacing1) var(--spacing2);
+    }
   }
 </style>

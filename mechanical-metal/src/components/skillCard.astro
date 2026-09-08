@@ -8,15 +8,15 @@ const { skillProps } = Astro.props;
   aria-hidden="true"
 >
   <div class="flex column padding3">
-    <h2>{skillProps.data.name}</h2>
+    <h2>{skillProps.name}</h2>
     <img
-      src={skillProps.data.icon}
-      alt={`${skillProps.data.name}`}
+      src={skillProps.icon}
+      alt={`${skillProps.name}`}
       class="skill-icon"
     />
     <div class="margin2 points-box">
       <ul class="points-list">
-        {skillProps.data.points.map((point: string) => <li>{point}</li>)}
+        {skillProps.points.map((point: string) => <li>{point}</li>)}
       </ul>
     </div>
   </div>
